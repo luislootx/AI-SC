@@ -339,7 +339,7 @@ def main():
         use_pso = coordinator_name.startswith("PSO")
 
         preset_name = st.selectbox(
-            "Demo Preset", list(PRESETS.keys()), index=1,
+            "Demo Preset", list(PRESETS.keys()), index=0,
             key="demo_preset",
         )
         preset = PRESETS[preset_name]

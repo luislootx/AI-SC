@@ -31,6 +31,14 @@ PARAM_LABELS = {
 
 # Presets for different demo durations
 PRESETS = {
+    "Cloud (~15s)": {
+        "n_labs": 4,
+        "n_meta_gen": 2,
+        "meta_elite": 1,
+        "meta_mutation_rate": 0.4,
+        "override": {"ga_pop_size": [8, 10], "ga_n_gen": [8, 10],
+                      "n_tanh": [40, 60, 80]},
+    },
     "Quick (~30s)": {
         "n_labs": 6,
         "n_meta_gen": 3,
