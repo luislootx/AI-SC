@@ -1,0 +1,83 @@
+{
+  "pde": "burgers",
+  "config": {
+    "epochs": 40,
+    "samples": 256,
+    "resolution": 128,
+    "seed": 42,
+    "hybrid_tag": "paper_burgers_seed42"
+  },
+  "results": [
+    {
+      "name": "Discovered Hybrid (paper_burgers_seed42)",
+      "blocks": [
+        "fourier",
+        "residual_conv",
+        "fourier",
+        "branch_trunk",
+        "attention",
+        "fourier"
+      ],
+      "params": 290193,
+      "rel_l2_clean": 0.07366994023323059,
+      "rel_l2_noisy": 0.08240684866905212,
+      "efficiency": 0.9682656488258361,
+      "time_seconds": 7.294079542160034
+    },
+    {
+      "name": "Pure FNO (4xfourier)",
+      "blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "params": 217601,
+      "rel_l2_clean": 0.11650070548057556,
+      "rel_l2_noisy": 0.13125118613243103,
+      "efficiency": 0.9774121345352174,
+      "time_seconds": 5.494325637817383
+    },
+    {
+      "name": "Pure Wavelet (4xwavelet)",
+      "blocks": [
+        "wavelet",
+        "wavelet",
+        "wavelet",
+        "wavelet"
+      ],
+      "params": 104737,
+      "rel_l2_clean": 0.43051591515541077,
+      "rel_l2_noisy": 0.9674486517906189,
+      "efficiency": 0.9885943932998658,
+      "time_seconds": 4.856515169143677
+    },
+    {
+      "name": "Pure Transformer (3xattention)",
+      "blocks": [
+        "attention",
+        "attention",
+        "attention"
+      ],
+      "params": 104769,
+      "rel_l2_clean": 0.7838099002838135,
+      "rel_l2_noisy": 0.7845319509506226,
+      "efficiency": 0.988939272504425,
+      "time_seconds": 4.464708089828491
+    },
+    {
+      "name": "Pure DeepONet (4xbranch_trunk)",
+      "blocks": [
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk"
+      ],
+      "params": 78657,
+      "rel_l2_clean": 0.7908777594566345,
+      "rel_l2_noisy": 0.7927033305168152,
+      "efficiency": 0.9913595469062806,
+      "time_seconds": 4.714029312133789
+    }
+  ]
+}
