@@ -1,162 +1,203 @@
-# AI Science Community for Automated CINN Discovery
+# An Agentic AI Science Community for Automated Neural Operator Discovery
 
-## What is this?
+> A swarm of virtual labs that exchanges *citations* like a research community
+> and discovers hybrid neural operator architectures for PDEs **with no human
+> prior on which family** (FNO, DeepONet, Attention, Wavelet, Conv) to use.
 
-This is a working implementation of the AI Science Community framework (Braga-Neto, arXiv:2603.21344) applied to automated discovery of optimal neural network architectures for PDEs with discontinuities.
+<p align="center">
+  <img src="poster/figures/architecture_overview.png" width="92%"
+       alt="Architecture overview - 16 virtual labs, citation graph,
+            PSO swarm coordinator, discovered architecture pipeline">
+</p>
 
-The system coordinates a swarm of virtual laboratories, where each lab independently runs a Step-CINN experiment and the community collectively discovers which architecture works best through citation-based influence and natural selection.
+This repository accompanies the ICERM 2026 poster *"An Agentic AI Science
+Community for Automated Neural Operator Discovery"* (Loo, advisor:
+Braga-Neto, Texas A&M University) and implements the AI Science Community
+framework of [Braga-Neto, *AI Scientific Community: Agentic Virtual Lab
+Swarms*, arXiv:2603.21344, 2026](https://arxiv.org/abs/2603.21344).
 
-## The Problem
+## The story in one paragraph
 
-When solving PDEs with discontinuities (shocks, contact surfaces), standard neural networks with tanh activations fail because smooth basis functions cannot represent sharp jumps. Step-CINN solves this by adding step neurons (sigmoid functions at learnable positions) that capture discontinuities exactly. But the question remains: **what is the best configuration?** How many tanh neurons? How many step neurons? What steepness? What regularization?
+Neural operators (FNO, DeepONet, GNOT, Multiwavelet, ...) are reshaping PDE
+surrogate modelling, but **which family is right for which PDE regime is
+still picked by hand**. We ask a simple question: can a swarm of virtual
+laboratories search the architecture space *without* a human prior, and
+recover the right operator family per PDE on its own? The answer turns out
+to be yes -- and the architecture the swarm converges on is **different for
+every PDE family** we test.
 
-This demo answers that question automatically.
+## Headline results
 
-## Algorithm: Two Levels of Optimization
+We ran the same swarm framework (16 labs x 20 iterations, PSO coordinator
+over architecture genomes, citation-based peer-review economy) on four
+benchmarks. Each lab proposes a sequence of typed blocks
+(`Fourier | Attention | Wavelet | ResConv | Branch-Trunk`); a multi-objective
+fitness combines accuracy, generalization, efficiency, novelty, and peer
+votes. The swarm decides which lab to keep, cull, or spawn from -- nobody
+hand-codes the architecture.
 
-The system has two nested loops:
+<p align="center">
+  <img src="poster/figures/master_results.png" width="100%"
+       alt="Master results - 4 PDEs, convergence curves, discovered
+            architectures, best-ever rel L2, vs pure-family baselines">
+</p>
+
+### What the swarm discovered, per PDE
+
+| PDE                   | Composite winner                        | Best-ever rel L2 | Setup                                    |
+|-----------------------|------------------------------------------|------------------|-------------------------------------------|
+| Piecewise Reg. 1D     | `R + R + R`  (pure local conv)           | **0.039**  (`W+W+W`, lab 15) | 16 labs x 20 iter x 40 epochs x 256 train, res 128 |
+| Linear Advection 1D   | `A + F + F + T + A`                      | **0.017**        | 16 labs x 20 iter x 40 epochs x 256 train, res 128 |
+| Burgers 1D            | `F + R + F + T + A + F`                  | **0.073**  (`A+F+F+F`, lab 0) | 16 labs x 20 iter x 40 epochs x 256 train, res 128 |
+| Navier-Stokes 2D      | `F + A + W + R + T + T + F`              | **2.6e-4** (`F+F+A+W+R+T+F`, lab 2) | 16 labs x 20 iter x 50 epochs x 512 train, res 32x32 |
+
+Block legend: `F` = Fourier, `A` = Attention, `W` = Wavelet,
+`R` = Residual Conv, `T` = Branch-Trunk (DeepONet-style).
+
+**Different PDE family => different emergent architecture.** Piecewise
+regression is local in nature, so the swarm picks pure local conv (or
+wavelet) and stops. Linear advection is a global shift, so the swarm
+recruits Attention plus Fourier plus a DeepONet block. 2-D Navier-Stokes
+is multi-scale chaotic, and the swarm builds a 7-block hybrid that mixes
+all four operator-learning families.
+
+### Honest comparison vs pure-family baselines
+
+Same data, same training budget per architecture per PDE.
+1D rows: 40 epochs, 256 train samples, res 128.
+NS-2D row: 50 epochs, 512 train samples, res 32x32.
+Lower `rel L2` is better. **Bold** = best per row.
+
+| PDE              | Discovered Hybrid | Pure FNO   | Pure DeepONet | Pure Wavelet | Pure Transformer |
+|------------------|------------------:|-----------:|--------------:|-------------:|-----------------:|
+| Piecewise Reg.   | 0.043             | 0.062      | 0.224         | **0.043**    | 0.078            |
+| Lin. Advection   | **0.020**         | 0.033      | 0.866         | 0.546        | 0.862            |
+| Burgers          | **0.074**         | 0.117      | 0.791         | 0.430        | 0.784            |
+| Navier-Stokes 2D | 0.0003            | **0.0002** | 0.161         | --           | 0.262            |
+
+The discovered hybrid **wins** on advection and Burgers and **ties** the
+regime-optimal pure family on piecewise regression. On NS-2D a pure FNO
+h64 m12 (4.7M params) still has the lowest rel L2; the swarm's hybrid is
+within 50 % of it at **3 x fewer parameters** (1.5M). The honest claim
+is regime-aware discovery + competitive parameter efficiency, not "we
+beat DeepONet" everywhere.
+
+### Caveat: rel L2 is *not* comparable across PDEs
+
+Different problems have different signal energies, noise floors, and
+spectral structure (e.g., piecewise regression has built-in noise sigma
+0.15 plus Gibbs phenomenon at jumps; NS-2D vorticity is dominated by low
+modes thanks to viscosity). The right comparison is **per-PDE**, vs
+pure-family baselines on the same data, as in the table above.
+
+## Repository structure
 
 ```
-OUTER LOOP: Swarm of Virtual Labs (coordinated by PSO or GA)
-  Evolves LAB CONFIGURATIONS (n_tanh, kappa, max_steps, ...)
-  
-  INNER LOOP: Each Lab (runs a complete Step-CINN experiment)
-    Evolves STEP NEURON POSITIONS ([x1, x2, ..., xK])
+AI-SC/
+|-- README.md            <- you are here
+|-- nod/                 Neural Operator Discovery (paper-grade swarm)
+|   |-- code/            modules implementing the swarm + 1D / 2D blocks
+|   `-- results/         FINAL.json + per-iteration snapshots for the four
+|                         paper-grade runs reported above
+|-- poster/              ICERM 2026 poster + figures
+    |-- poster_ICERM.pptx
+    |-- figures/         all generated figures + the FigureLabs overview
+    `-- prompts/         the prompt used to generate the architecture
+                          overview in FigureLabs
 ```
 
-### Outer Loop: The AI Science Community
+## Quickstart
 
-The swarm manages N labs (default 8), each with a different configuration. After all labs run, the community evaluates results, exchanges citations, and evolves toward better configurations.
-
-```
-Initialize N labs with diverse configs
-  (at least one pure-tanh baseline, one step-heavy)
-
-For each iteration:
-  1. Each lab runs its experiment (inner loop) -> fitness
-  2. Citation: each lab votes for the 2 best peers
-     - 1st place gets 2 points, 2nd gets 1 point
-     - Citations accumulate across iterations
-  3. Lab dynamics:
-     - Cited labs get more compute budget (larger inner GA)
-     - Labs with 0 cumulative citations get replaced (culled)
-  4. Coordination strategy evolves configs:
-     PSO: v = w*v + c1*r1*(pbest - x) + c2*r2*(gbest - x)
-     GA:  tournament selection -> crossover -> mutation
-     (both use citation-weighted fitness for selection)
-  5. Elite labs keep their config (successful labs persist)
-```
-
-### Inner Loop: What Each Lab Does
-
-Each lab receives a configuration and runs a complete Step-CINN experiment:
-
-```
-Input: config = {n_tanh=100, kappa=500, max_steps=6, ga_pop=25, ga_gen=25, ...}
-
-1. Generate training data (PDE initial condition, 800 points)
-2. Create fixed tanh weights (ELM-style, one random draw)
-3. If max_steps = 0: solve ridge regression with tanh only -> done
-4. If max_steps > 0: run inner GA to find step positions:
-
-   Initialize population of 25 individuals:
-     Individual 1: steps at [0.3, 0.7, 1.2]      (3 steps)
-     Individual 2: steps at [0.5]                  (1 step)
-     Individual 3: steps at [0.2, 0.9, 1.1, 1.5]  (4 steps)
-     ...variable length, 1 to max_steps
-
-   For each generation (25 total):
-     For each individual:
-       a. Build feature matrix: H = [tanh(Wx+b) | sigmoid(kappa*(x-pos))]
-       b. Solve output weights analytically: beta = (H'H + lam*I)^{-1} H'y
-       c. Compute validation error: L2 = ||y_exact - H_val @ beta|| / ||y_exact||
-       d. Fitness = L2 + parsimony * num_steps
-     
-     Sort by fitness, keep elite
-     Tournament selection -> crossover positions -> mutate (shift/add/remove)
-
-5. Return best individual: fitness, positions, predictions
-```
-
-**Key insight**: There is no gradient descent anywhere. The tanh weights are fixed random (ELM), the step positions are optimized by GA, and the output weights are solved analytically via ridge regression. This makes each evaluation ~1ms, enabling the entire swarm to run in seconds.
-
-### For PDE Problems: Characteristic Transform
-
-Step-CINN is **not a PINN**. Instead of minimizing a PDE residual loss, it uses the method of characteristics:
-
-- **Linear advection** (u_t + v*u_x = 0): The exact solution is u(x,t) = u_0(x - vt). The network learns the initial condition u_0, and the solution at any time t is obtained by evaluating the network at the shifted coordinate x - vt. The PDE is satisfied by construction.
-
-- **Burgers equation** (u_t + u*u_x = 0): The shock speed is given by the Rankine-Hugoniot condition. Step neurons at the shock position capture the discontinuity exactly.
-
-The step neurons are interpretable: their positions directly correspond to the physical locations of discontinuities in the solution.
-
-## Concrete Example
-
-```
-ITERATION 1 (8 labs):
-  Lab 1.1: n_tanh=60,  max_steps=0             -> L2=6.54  (pure tanh, fails)
-  Lab 1.2: n_tanh=120, max_steps=8, kappa=1000 -> L2=0.012 (step neurons, excellent)
-  Lab 1.3: n_tanh=80,  max_steps=4, kappa=100  -> L2=0.18  (too few steps, low kappa)
-  Lab 1.4: n_tanh=200, max_steps=2, kappa=50   -> L2=0.45  (weak steps)
-  ...
-  
-  Citations: Lab 1.2 -> 14 citations (everyone votes for it)
-             Lab 1.1 -> 0 citations (pure tanh failed)
-  
-  Lab 1.2 gets more compute budget (inner GA grows)
-  Lab 1.1 gets minimum budget (will be culled if uncited again)
-
-ITERATION 2:
-  Configs evolved toward Lab 1.2's architecture (high kappa, many steps)
-  Lab 1.1 replaced with random new config (natural selection)
-  Best fitness improves: 0.012 -> 0.009
-
-ITERATION 3-4:
-  Community consensus: step neurons with kappa >= 500 dominate
-  Discovery: "Step neurons improve accuracy by 323x over pure tanh"
-```
-
-## Demo Output
-
-After all iterations complete, the dashboard displays:
-
-- **Swarm View**: Grid of mini-plots showing each lab's solution vs. the exact solution, color-coded by fitness, with citation counts displayed per lab.
-
-- **Best Solution**: Large plot of the best solution found across all iterations, alongside the inner GA convergence curve of the winning lab.
-
-- **Fitness Evolution**: Chart tracking best and mean fitness across iterations, with individual lab results as scatter points.
-
-- **Discoveries**: Automatically generated findings from the swarm's collective behavior, such as:
-  - "Step neurons improve accuracy by 323x over pure tanh"
-  - "Most-cited lab received 26 cumulative citations (community consensus leader)"
-  - "1 lab(s) received 0 citations and were replaced (natural selection of research directions)"
-
-- **Agent Log**: Chronological record of every lab's result and every iteration's citation dynamics, including which labs were selected as elite and which were culled.
-
-- **Configuration Table**: Sortable table comparing all lab configurations tested across iterations, ranked by L2 error.
-
-## Run Locally
+### 1. Paper-grade Neural Operator Discovery (2D PDEs)
 
 ```bash
-git clone https://github.com/luislootx/AI-SC.git
-cd AI-SC
-pip install -r requirements.txt
-python -m streamlit run app.py
+cd nod
+pip install torch matplotlib numpy scipy
+python code/run_swarm_resumable.py paper-grade --pde ns    --tag paper_ns_seed42    --seed 42
+python code/run_swarm_resumable.py paper-grade --pde darcy --tag paper_darcy_seed42 --seed 42
 ```
 
-## Try Online
+Each paper-grade run is 16 labs x 20 iterations x 50 epochs x 512 train
+samples on resolution 32 (~3.5 hours on an RTX 4080). Re-run the same
+command after a crash / reboot and the runner picks up at the last
+checkpointed iteration.
 
-https://ai-sciencecommunity.streamlit.app/
+### 2. Paper-grade Neural Operator Discovery (1D PDEs)
 
-Use the "Cloud" preset for fast execution. For deeper experiments, run locally with "Standard" or "Full" presets.
+```bash
+cd nod
+python code/run_swarm_1d.py paper-grade-1d --pde pwreg   --tag paper_pwreg_seed42   --seed 42
+python code/run_swarm_1d.py paper-grade-1d --pde advec   --tag paper_advec_seed42   --seed 42
+python code/run_swarm_1d.py paper-grade-1d --pde burgers --tag paper_burgers_seed42 --seed 42
+```
+
+Each 1D run is ~40 minutes (faster than 2D NS) and uses 1D blocks
+(`blocks_1d.py`, Conv1d / rfft / 1D attention / 1D branch-trunk / 1D
+wavelet) and the same swarm orchestrator.
+
+### 3. Honest baseline validation
+
+Trains the discovered hybrid + each pure-family baseline on identical
+data with identical training budget, then reports relative L2:
+
+```bash
+cd nod
+python code/validate_baselines_v3.py --pde ns                                    # 2D
+python code/validate_baselines_1d.py --pde pwreg   --epochs 40 --samples 256     # 1D
+python code/validate_baselines_1d.py --pde advec   --epochs 40 --samples 256
+python code/validate_baselines_1d.py --pde burgers --epochs 40 --samples 256
+```
+
+Output is written to `results/validation_baselines_*.json`.
+
+### 4. Reproduce the poster figures
+
+```bash
+cd poster
+python figures/make_master_results_figure.py    # 4-PDE results dashboard
+python figures/make_1d_figures.py               # per-PDE 1D figures
+python figures/make_results_figure.py           # 5-panel 2D NS summary
+python build_pptx.py                            # rebuilds poster_ICERM.pptx
+```
+
+The figure scripts read directly from `nod/results/swarm_runs/` and
+`nod/results/validation_baselines_*.json`, so the rendered numbers
+always match the latest committed run output.
+
+## Reproducibility notes
+
+- **Seeds:** all reported runs use seed 42. Torch / NumPy / Python random
+  state is restored from per-iteration checkpoints, so a reboot loses at
+  most one iteration of work.
+- **Agentic layer:** the rule-based PSO planner / reviewer is the default
+  and was used for all runs reported here. The optional LLM-backed
+  planner / reviewer (Ollama or OpenAI) is implemented in
+  [`nod/code/agents/`](nod/code/agents) and is a separate experiment.
+- **Hardware:** all numbers above were measured on a single RTX 4080
+  desktop (Windows 11, PyTorch 2.x, CUDA).
 
 ## References
 
-- Braga-Neto, U. "The AI Scientific Community: Agentic Virtual Lab Swarms." arXiv:2603.21344, 2026.
-- Lu, C. et al. "Towards end-to-end automation of AI research." Nature 651, 914-919, 2026.
-- Toscano, J.D., Chen, D.T., Karniadakis, G.E. "Athena: Agentic team for hierarchical evolutionary numerical algorithms." arXiv:2512.03476, 2025.
+- U. Braga-Neto. *The AI Scientific Community: Agentic Virtual Lab
+  Swarms*. arXiv:2603.21344 (2026).
+- L. Lu et al. *The AI Scientist*. **Nature** 651, 914-919 (2026).
+- J. Toscano, S. Chen, G. E. Karniadakis. *Athena: Agentic team for
+  hierarchical evolutionary numerical algorithms*. arXiv:2512.03476
+  (2025).
+- Z. Li et al. *Fourier Neural Operator for Parametric Partial
+  Differential Equations*. ICLR 2021.
+- L. Lu, P. Jin, G. E. Karniadakis. *DeepONet: Learning nonlinear
+  operators ...*. **Nat. Mach. Intell.** 3 (2021).
+- G. Gupta, X. Xiao, P. Bogdan. *Multiwavelet-based Operator Learning
+  for Differential Equations*. NeurIPS 2021.
 
-## Authors
+## Acknowledgments
 
-Luis Loo & Ulisses Braga-Neto
-Scientific Machine Learning Lab, Texas A&M University
+Prof. Ulisses Braga-Neto for advising; the ICERM workshop organising
+committee (Karniadakis, Lu, Kevrekidis, Buehler, Lin); TAMU ECEN travel
+grant; ICERM lodging support.
+
+## Contact
+
+Luis Loo - `loo@tamu.edu`
+Department of Electrical & Computer Engineering, Texas A&M University.
