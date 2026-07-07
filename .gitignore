@@ -1,0 +1,37 @@
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+dist/
+build/
+
+# internal working documents and personal tooling -- never publish
+nod/AUTONOMOUS_PLAN.md
+nod/code/build_report.py
+nod/code/build_report_es.py
+nod/code/build_slides.py
+nod/results/SUMMARY.md
+nod/results/logs/
+poster/build_pptx.py
+poster/figures/make_1d_figures.py
+poster/figures/make_master_results_figure.py
+poster/figures/make_results_figure.py
+
+# regenerable run artifacts (training tensors only; transcripts, FINAL/iter
+# json, and per-run logs ARE tracked -- the paper's evidence audit needs them)
+*.pt
+*.pkl
+nod/results/swarm_runs/smoke_*
+_smoke_transcript.jsonl
+_patch_evidence.py
+
+# LaTeX build artifacts (main.pdf, tables/ and figures/ ARE tracked so the
+# paper compiles straight from a clone)
+nod/paper/*.aux
+nod/paper/*.log
+nod/paper/*.out
+nod/paper/*.blg
+nod/paper/*.fls
+nod/paper/*.fdb_latexmk
+nod/results/campaign.lock
+nod/results/PAPER_BUILT

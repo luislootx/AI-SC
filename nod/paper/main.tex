@@ -1,0 +1,709 @@
+\documentclass{article}
+% NeurIPS style, preprint mode (shows authors, no "submitted to" banner) for arXiv.
+\usepackage[preprint]{neurips_2023}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\graphicspath{{figures/}}
+
+% Resilient includes: use a generated artifact if present, else a placeholder.
+\newcommand{\inputif}[2]{\IfFileExists{#1}{\input{#1}}{\emph{#2}}}
+\newcommand{\figfile}[4]{\IfFileExists{figures/#1}{%
+  \begin{figure}[t]\centering\includegraphics[width=#2\linewidth]{#1}%
+  \caption{#3}\label{#4}\end{figure}}{}}
+
+\title{An Agentic AI Science Community for\\ Automated Neural Operator Discovery}
+
+\author{%
+  Luis Loo \\
+  Department of Electrical \& Computer Engineering\\
+  Texas A\&M University, College Station, TX\\
+  \texttt{luis.loo@tamu.edu} \\
+  \And
+  Ulisses Braga-Neto \\
+  Department of Electrical \& Computer Engineering\\
+  Texas A\&M University, College Station, TX\\
+  \texttt{ulisses@tamu.edu} \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Neural operators such as Fourier Neural Operators (FNO) and DeepONets carry
+fixed inductive biases, and choosing the right family and architecture for a
+given partial differential equation (PDE) remains a manual, expertise-driven
+task. We present an \emph{agentic AI Science Community} for automated neural
+operator discovery: a swarm of virtual laboratories that collaborate under a
+citation-based economy of influence to discover operator architectures with no
+human prior on architecture. Each lab couples three role agents---a
+\emph{planner} that proposes an architecture, a \emph{worker} that trains and
+measures it, and a \emph{reviewer} that participates in cross-lab peer
+review---over a shared block vocabulary (Fourier, attention, wavelet, residual
+convolution, branch--trunk). The planner and reviewer are driven by a large
+language model (LLM); the worker is always numerical (gradient-based training),
+by design, so the fitness signal stays comparable across the swarm. We evaluate
+on five PDE regimes (piecewise regression, linear advection, Burgers in 1D;
+Navier--Stokes and Darcy in 2D), three seeds each, and we \emph{ablate} the LLM
+agents against a rule-based particle-swarm coordinator to isolate what
+language-model agency contributes. All 9{,}623 LLM calls are logged and audited,
+making the claim ``the agents are LLMs'' verifiable rather than assumed: we
+observe zero rule-based fallbacks. The ablation yields a mechanistic finding:
+at equal training budget the two coordinators reach statistically
+indistinguishable screening accuracy, but they discover systematically
+\emph{different designs}. The analytic swarm collapses to canonical
+single-family answers (pure-Fourier stacks on Navier--Stokes, wavelet stacks on
+Darcy), whereas the LLM planner---which chose to hybridize in 99.8\% of its
+logged decisions---consistently returns multi-family hybrids that match this
+accuracy at lower parameter cost (e.g.\ $2.5\times$ fewer parameters on
+Navier--Stokes), and it rediscovers the same four-block advection recipe in
+independent seeds. Converged cross-method baselines confirm the honest headline,
+matching the operator-learning literature: there is \emph{no universal
+winner}---FNO dominates the periodic Navier--Stokes regime while DeepONet-style
+models dominate the elliptic Darcy regime---and the converged winners track it:
+on Darcy the discovered hybrid attains the best mean error in our baseline
+suite, while on Navier--Stokes canonical pure-Fourier stacks remain
+unbeaten---the rule-based arm recovers exactly that answer, and the LLM's hybrid
+trails it at a matched parameter budget. Each winner degrades sharply on the
+other regime. We further
+quantify the wall-clock cost of LLM agency. Our contribution is methodological:
+reproducible, auditable agentic discovery of competitive hybrid operators. Code,
+configurations, and the complete LLM transcripts are released at
+\url{https://github.com/luislootx/AI-SC}.
+\end{abstract}
+
+\section{Introduction}
+Operator learning has become a central tool for building fast surrogates of
+partial differential equations (PDEs)~\cite{li2021fno,lu2021deeponet,kovachki2023neuraloperator}.
+Yet each operator family encodes a fixed inductive bias: global spectral
+convolutions for the Fourier Neural Operator (FNO)~\cite{li2021fno}, a
+branch--trunk decomposition for DeepONet~\cite{lu2021deeponet}, multiresolution
+bases for wavelet operators~\cite{tripura2023wno}, and attention for
+transformer-style operators~\cite{cao2021galerkin,hao2023gnot}. Selecting the
+family, depth, width, and block composition for a new PDE is still done by hand,
+and---as careful head-to-head studies show---no single family is best across
+problem regimes~\cite{lulu2022comparison}. This raises a natural question:
+
+\begin{quote}
+\emph{Can a community of automated agents discover the right neural operator
+architecture for a given PDE, with no human prior on architecture?}
+\end{quote}
+
+We answer this by instantiating the \emph{AI Scientific Community}
+framework~\cite{braganeto2026aicommunity}---a swarm of virtual laboratories that explore
+a design space under a citation-based economy, where well-regarded labs gain
+influence and breeding priority while uncited labs are culled and replaced---for
+neural operator discovery. Crucially, we drive the \emph{planning} and
+\emph{peer-review} roles of each lab with a large language model, while keeping
+the \emph{training} role numerical so that the fitness signal remains comparable
+across labs and iterations. This makes the contribution of language-model agency
+\emph{measurable}: we ablate the LLM planner/reviewer against an analytic
+particle-swarm coordinator under an otherwise identical protocol.
+
+\paragraph{Contributions.}
+\begin{enumerate}[leftmargin=1.5em,itemsep=2pt]
+\item \textbf{Agentic operator discovery.} An instantiation of the AI Scientific
+Community for neural operator architecture search, with explicit LLM planner and
+reviewer agents and a deterministic numerical worker
+(Section~\ref{sec:framework}--\ref{sec:method}).
+\item \textbf{A controlled ablation of LLM agency.} LLM-agent vs.\ rule-based
+particle-swarm coordination across five PDE regimes and three seeds, isolating
+what the language model adds under an identical training budget. The answer is
+architectural rather than accuracy: the LLM returns parameter-lean multi-family
+hybrids where the analytic swarm collapses to canonical families
+(Section~\ref{sec:results}).
+\item \textbf{An evidence-first methodology.} Every LLM call (9{,}623 across the
+campaign) is logged to a transcript; we report per-run call counts and fallback
+rates, so ``the agents are LLMs'' is auditable, not assumed
+(Section~\ref{sec:evidence}, Table~\ref{tab:evidence}).
+\item \textbf{A computational-cost analysis.} We quantify per-iteration and
+per-lab wall-clock cost, isolating the overhead of LLM agency and situating it
+against single-operator training cost at screening fidelity (Section~\ref{sec:cost}).
+\item \textbf{An honest cross-regime result.} No operator is universal; the swarm
+recovers regime-appropriate designs---on Darcy, a hybrid attaining the best mean
+converged error in our baseline suite; on Navier--Stokes, the canonical
+pure-Fourier answer via the rule-based arm---and maintains population diversity
+rather than collapsing to a single recipe (Section~\ref{sec:results}).
+\end{enumerate}
+
+\section{Related Work}
+\paragraph{Neural operators.} FNO~\cite{li2021fno} learns a kernel in Fourier
+space; DeepONet~\cite{lu2021deeponet} separates input-function encoding (branch)
+from query-location encoding (trunk); the neural operator framework unifies these
+as learnable maps between function spaces~\cite{kovachki2023neuraloperator}. The
+design space has since broadened considerably: wavelet
+operators~\cite{tripura2023wno} for multiresolution bases, transformer/attention
+operators~\cite{cao2021galerkin,hao2023gnot}, U-shaped multiscale
+operators~\cite{rahman2023uno}, and geometry-adapted variants for irregular
+domains~\cite{li2023geofno}. Physics-informed
+formulations~\cite{raissi2019pinn} and standardized benchmarks~\cite{takamoto2022pdebench}
+support systematic comparison. A key empirical lesson, central to our framing, is
+that the best operator is problem-dependent: rigorous comparisons find FNO and
+DeepONet each win in different regimes~\cite{lulu2022comparison}. The breadth of
+this space, and the absence of a universal winner, is precisely what motivates an
+automated, per-problem search over operator blocks.
+
+\paragraph{Architecture search.} Neural architecture search (NAS) automates model
+design via reinforcement learning~\cite{zoph2017nasrl}, evolutionary
+search~\cite{real2019regevo}, gradient-based relaxation of the search
+space~\cite{liu2019darts}, and many other strategies~\cite{elsken2019nassurvey}.
+A more radical line evolves entire learning algorithms from primitive operations
+rather than selecting among predefined blocks~\cite{real2020automlzero}.
+Our swarm of labs is an evolutionary/particle-swarm~\cite{kennedy1995pso} search
+over an operator-block genome; the novelty here is not the search operator but
+that the proposal and selection policies can be delegated to a language model and
+ablated against the analytic baseline.
+
+\paragraph{LLMs as optimizers and architecture proposers.} Large language models have
+been used as black-box optimizers~\cite{yang2024opro}, as proposal engines for
+neural architecture search~\cite{zheng2023genius}, and for program- and
+hypothesis-search in mathematical and scientific discovery~\cite{romeraparedes2024funsearch}.
+Closest to our planner is EvoPrompting~\cite{chen2023evoprompting}, which uses a
+language model as the mutation and crossover operator inside an evolutionary loop
+to propose code-level architectures. Our planner plays the same role over an
+operator-block genome, but we make two design choices that sharpen measurability:
+the fitness signal comes from a deterministic training procedure rather than a
+learned predictor, and every LLM-driven run is paired with a rule-based
+particle-swarm~\cite{kennedy1995pso} arm so the language model's contribution is
+isolable by ablation.
+
+\paragraph{Multi-agent LLM systems.} A growing body of work composes multiple
+LLM agents with distinct roles that communicate to solve a task: conversational
+multi-agent frameworks~\cite{wu2024autogen}, communicative agent
+societies~\cite{li2023camel}, and role-specialized teams that emulate a software
+company~\cite{qian2024chatdev} or a standardized-operating-procedure
+organization~\cite{hong2024metagpt}. At the workflow level such teams drive
+end-to-end research agents~\cite{lu2026aiscientist} and numerical algorithm
+design~\cite{toscano2025athena}. Our framework instantiates this paradigm with a
+planner--worker--reviewer triad per lab; the reviewer's accept/reject vote is a
+form of LLM-as-judge evaluation~\cite{zheng2023llmjudge}, here applied to peer
+review of candidate operators rather than to chatbot responses. We build directly
+on the AI Scientific Community model of agentic virtual-lab
+swarms~\cite{braganeto2026aicommunity}, and contribute a controlled,
+ablation-backed study of when the language-model agents actually outperform their
+rule-based counterparts.
+
+\section{Problem Formulation}\label{sec:problem}
+\paragraph{Operator learning.} Given a PDE with solution operator
+$\mathcal{G}:\mathcal{A}\to\mathcal{U}$ mapping an input function $a\in\mathcal{A}$
+(e.g.\ an initial condition or coefficient field) to the solution
+$u=\mathcal{G}(a)\in\mathcal{U}$, we seek a parametric surrogate
+$\mathcal{G}_\theta$ minimizing the expected relative $L_2$ error
+\begin{equation}
+\mathcal{L}(\theta) \;=\; \mathbb{E}_{a\sim\mu}
+\frac{\lVert \mathcal{G}_\theta(a) - \mathcal{G}(a)\rVert_2}
+     {\lVert \mathcal{G}(a)\rVert_2},
+\end{equation}
+estimated on sampled input--output pairs. The relative $L_2$ error is our primary
+accuracy metric throughout.
+
+\paragraph{Architecture search space.} We define an architecture by a
+\emph{genome} $g=(b_{1:L},\,c,\,m,\,\sigma,\,\dots)$, where $b_{1:L}$ is a
+sequence of $L\in[2,8]$ blocks drawn from a vocabulary
+$\mathcal{B}=\{\textsc{fourier},\textsc{attention},\textsc{wavelet},
+\textsc{residual\_conv},\textsc{branch\_trunk}\}$, $c$ is the hidden width, $m$
+the number of spectral modes, $\sigma$ the activation, plus gating, skip
+connections, dropout, and learning rate. A genome compiles to a concrete neural
+operator $\mathcal{G}_{\theta(g)}$. The discovery problem is the bilevel program
+\begin{equation}
+g^\star \;=\; \arg\min_{g}\; \mathcal{L}\big(\theta^\star(g)\big),
+\qquad
+\theta^\star(g) \;=\; \arg\min_{\theta}\; \widehat{\mathcal{L}}_{\text{train}}\big(\theta; g\big),
+\end{equation}
+where the inner problem is ordinary gradient-based training of a fixed
+architecture and the outer problem searches genomes. We solve the outer problem
+with a swarm of agentic labs (Section~\ref{sec:framework}); the inner problem is
+always numerical.
+
+\section{The AI Scientific Community Framework}\label{sec:framework}
+A swarm of $N$ virtual labs explores the genome space. Each lab $i$ holds a
+current genome $g_i$, a personal best, a velocity (for the analytic update), and
+a \emph{trust} score accumulated through peer review. Each iteration runs four
+phases (Algorithm~\ref{alg:swarm}, Figure~\ref{fig:method}):
+
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+\item \textbf{Planning.} Each lab proposes its next genome $g_i$.
+\item \textbf{Training.} Each lab compiles $g_i$ and trains it at screening
+fidelity, returning measured relative $L_2$ (clean and noisy).
+\item \textbf{Peer review.} Labs review a sample of peers and cast soft votes;
+votes accumulate as citation-like influence and update trust scores.
+\item \textbf{Lifecycle.} A composite fitness combines accuracy, generalization,
+parameter efficiency, and novelty (with an accuracy floor); the global best is
+updated, influential labs persist and breed, and uncited labs are culled and
+replaced, realizing selection over research directions.
+\end{enumerate}
+
+The composite fitness for lab $i$ is
+\begin{equation}
+F_i = w_a\,A_i + w_g\,G_i + w_e\,E_i + w_n\,\nu_i,
+\qquad (w_a,w_g,w_e,w_n)=(0.70,0.20,0.05,0.05),
+\end{equation}
+zeroed when accuracy falls below a floor, which prevents trivially small or
+degenerate models from winning on efficiency or novelty alone. Here $A_i$ is an
+accuracy score derived from relative $L_2$, $G_i$ rewards robustness to input
+noise, $E_i$ rewards parameter parsimony, and $\nu_i$ is an architectural-novelty
+score relative to the rest of the population. The weights are fixed a priori,
+shared by every run and both conditions, and were not tuned; accuracy dominates
+by design, and ablating the weighting itself is left to future work.
+
+\begin{algorithm}[t]
+\caption{AI Scientific Community swarm (one configuration)}
+\label{alg:swarm}
+\begin{algorithmic}[1]
+\State initialize $N$ labs across paradigms (FNO, DeepONet, transformer, wavelet, random/hybrid)
+\For{iteration $t=1,\dots,T$}
+  \For{each active lab $i$} \Comment{Phase 1: plan}
+     \State $g_i \gets \textsc{Plan}(g_i,\, g^{\text{best}},\, \{g_j\}_{j\neq i},\, \text{history}_i)$
+     \Comment{LLM agent \emph{or} PSO update}
+  \EndFor
+  \For{each active lab $i$} \Comment{Phase 2: train (always numerical)}
+     \State $\theta_i \gets \textsc{Train}(g_i)$; \; measure relative $L_2$
+  \EndFor
+  \State $\{v_i\} \gets \textsc{PeerReview}(\{(g_i,\text{fitness}_i)\})$
+  \Comment{Phase 3: LLM agent \emph{or} accuracy-proportional}
+  \State update composite fitness, trust, global best; cull uncited, breed influential
+  \Comment{Phase 4}
+  \State checkpoint state \Comment{resume-safe}
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\figfile{fig_method2.png}{1.0}{The agentic AI Science Community. Each of five
+PDE regimes (left) is attacked by a community of $N=16$ virtual labs (center,
+schematic): inside every lab, a \emph{planner} (LLM) proposes an operator-block
+genome $g_i$, a deterministic \emph{worker} trains it (PyTorch) and measures
+relative $L_2$, and a \emph{reviewer} (LLM) casts soft peer-review votes over
+peer candidates. Votes act as citations: influential labs gain trust and breed,
+uncited labs are culled and replaced, over $t=1\dots20$ iterations. The two
+decision roles are ablated against analytic PSO rules under an identical
+training budget. The community returns a different architecture per regime
+(right): the campaign's converged winners of Table~\ref{tab:baselines}.}{fig:method}
+
+\section{Method: Agentic Roles}\label{sec:method}
+\subsection{Three role agents per lab}
+Each lab couples three roles. The \textbf{planner} proposes the next genome; the
+\textbf{worker} compiles and trains the corresponding operator with gradient
+descent, returning measured relative $L_2$; the \textbf{reviewer} casts
+peer-review votes over a sample of peer candidates. The \textbf{worker is always
+numerical}: we deliberately do not delegate training to a language model, so the
+fitness signal is consistent and comparable across labs and iterations. Thus
+``LLM agents'' in this paper refers precisely to the \emph{planner} and
+\emph{reviewer} roles---the decision-makers---never to operator training.
+
+\subsection{LLM-agent and rule-based modes}
+The framework is model-agnostic in the planner/reviewer roles, which lets us run
+a clean ablation:
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+\item \textbf{LLM agents.} The planner queries an LLM for the next genome, given
+its own history, the global best, and a summary of peer labs and their measured
+fitness; the reviewer queries an LLM to score candidate genomes against measured
+fitness. Proposals are parsed from JSON and snapped to the valid genome space. We
+serve \texttt{gemma3:12b} locally via Ollama, so the pipeline is reproducible
+with no paid API.\footnote{We selected this model on a structured-output
+criterion rather than raw scale. A smaller efficiency-tier variant
+(\texttt{gemma4:e4b}) failed to emit schema-valid JSON for the reviewer
+role---even with prompt hardening and an enlarged context window---and silently
+degraded to a non-LLM fallback; a replay probe over real planner and reviewer
+prompts confirmed that \texttt{gemma3:12b} produces valid structured output for
+both roles where the smaller variant did not. The evidence audit
+(Section~\ref{sec:evidence}) exists precisely to make such silent degradation
+detectable, and verifies that none occurs in the reported runs.}
+\item \textbf{PSO (rules).} The planner uses analytic explore/exploit
+particle-swarm updates~\cite{kennedy1995pso}; the reviewer uses
+accuracy-proportional voting. No language model is involved.
+\end{itemize}
+Both modes share swarm size, iteration count, training budget, fitness, and
+seeds; only the planner/reviewer policy differs. This isolates the effect of
+language-model agency.
+
+\subsection{Evidence that the agents are LLMs}\label{sec:evidence}
+A recurring risk in ``agentic'' systems is that a language model silently
+degrades to a rule-based fallback (e.g.\ on a transient error or malformed
+output) while still being described as an agent. We guard against this by logging
+\emph{every} LLM call---system prompt, user prompt, raw response, role, and
+parse status---to a per-run transcript (\texttt{llm\_transcript.jsonl}), and by
+auditing each run's log for planner/reviewer fallbacks. Table~\ref{tab:evidence}
+reports, per LLM run, the planner and reviewer call counts, the parse-success
+rate, and the fallback count. A fallback count of zero certifies that planning
+and review were LLM-driven throughout; the transcripts are released so this audit
+is independently reproducible.
+
+\subsection{Screening fidelity}
+Each candidate is trained at deliberately reduced ``screening'' fidelity (small
+data, few epochs, modest resolution) so a single operator trains in seconds, not
+hours, making a swarm of hundreds of trainings tractable on one GPU
+(Section~\ref{sec:cost}). Absolute screening errors are therefore higher than
+fully-converged training; we report converged cross-method baselines separately
+to calibrate the discovered architectures.
+
+\section{Experimental Setup}\label{sec:setup}
+We run five PDE regimes: piecewise regression, linear advection, and Burgers in
+1D; Navier--Stokes (vorticity form, Kolmogorov forcing) and Darcy flow in 2D.
+Each configuration runs for three seeds ($42,137,2024$) in both the LLM and PSO
+conditions ($5\times2\times3=30$ runs), with $N=16$ labs for $T=20$ iterations
+(the paper-grade preset). All runs are resume-safe (checkpointed per iteration)
+to survive interruptions. We additionally train converged cross-method baselines
+(FNO at several sizes, DeepONet, POD-DeepONet, a pure transformer, and the
+swarm-discovered hybrid) with input/output normalization, three seeds each. All
+timings are on a single NVIDIA RTX~4080.
+
+\section{Results}\label{sec:results}
+\paragraph{No universal winner.}
+Table~\ref{tab:baselines} reports converged
+cross-method baselines on Navier--Stokes and Darcy. The pattern matches the
+operator-learning literature~\cite{lulu2022comparison} and is the honest core of
+our story: FNO dominates the periodic, spectral-friendly Navier--Stokes regime by
+an order of magnitude, while DeepONet-style models dominate the elliptic,
+Dirichlet Darcy regime. No single operator wins both. The same table evaluates
+the swarm's two discovered winners, retrained from scratch to convergence, on
+\emph{both} regimes. Each is competitive with the regime-best family at home.
+The Darcy hybrid attains $0.0631\pm0.0083$, the best mean Darcy error in the
+suite, statistically tied with DeepONet faithful ($0.0649\pm0.0037$) at three
+seeds. The NS hybrid reaches $0.0005$ at $1.1$M parameters---an order of
+magnitude below every non-FNO baseline and $30\times$ fewer parameters than the
+large FNO---but we note plainly that a canonical pure-Fourier stack at the
+\emph{same} budget is better still (FNO h32: $0.0002$ at $1.2$M), and that this
+canonical stack is exactly what the PSO arm discovers on NS. Off-regime, each
+winner degrades: the NS hybrid collapses on Darcy ($0.71$) and the Darcy hybrid
+gives up $3.6\times$ on NS ($0.0018$). The pattern is symmetric and honest:
+rule-based search wins precisely where the textbook answer is optimal, LLM
+hybridization pays where no single family suffices, and neither
+transfers---exactly the no-free-lunch behavior that motivates discovering a
+different architecture per regime rather than reusing one.
+
+\begin{table}[t]\centering
+\caption{Converged cross-method baselines (relative $L_2$, mean over seeds;
+parameters counted at this protocol's resolution---block parameter counts scale
+with grid size). FNO wins Navier--Stokes; DeepONet-style models win Darcy. The
+two ``Discovered hybrid'' rows are the campaign's winning architectures per
+regime, each retrained from scratch and evaluated on \emph{both} regimes: each
+is competitive at home and degrades off-regime, which is why per-regime
+discovery is needed.}
+\label{tab:baselines}
+\inputif{tables/tab_baselines.tex}{(baselines table is generated by the build pipeline.)}
+\end{table}
+
+\paragraph{Agentic discovery: hybrids per regime vs.\ canonical families.}
+Table~\ref{tab:discovery} reports, per PDE, the relative $L_2$ and parameter
+count of the architecture discovered under the LLM and PSO conditions;
+Figure~\ref{fig:fig_archdiagram.pdf} visualizes the discovered block sequences,
+and Appendix~\ref{app:perseed} lists every per-seed winner. Two patterns emerge.
+First, \emph{every} LLM winner is a multi-family hybrid, and the mixture is
+regime-appropriate: Fourier-led stacks on the 1D transport problems (on
+advection, two of three seeds independently discover the identical four-block
+recipe \texttt{F-A-W-T}: fourier, attention, wavelet, branch--trunk), and
+attention/wavelet-led mixtures on piecewise regression and Darcy. Second, the
+PSO condition instead collapses to canonical, nearly single-family designs:
+pure-Fourier stacks on Navier--Stokes (two of three seeds---the textbook answer
+for a periodic, spectrally friendly regime) and wavelet-dominated stacks on
+Darcy and piecewise regression. The trade-off against established baselines is
+shown in Figure~\ref{fig:fig_pareto.pdf}: the discovered hybrids sit on a
+competitive accuracy--parameter frontier; on Navier--Stokes the LLM hybrids
+match the pure-spectral PSO accuracy with $2.5\times$ fewer parameters on
+average ($2.2$M vs.\ $5.6$M).
+
+\begin{table}[t]\centering
+\caption{Swarm-discovered architectures: relative $L_2$ (clean) and parameter
+count, LLM (Gemma~3) vs.\ PSO, mean$\pm$std over three seeds.}
+\label{tab:discovery}
+\inputif{tables/tab_discovery.tex}{(discovery table populates as the campaign completes.)}
+\end{table}
+
+\figfile{fig_archdiagram.pdf}{0.85}{Discovered architecture per PDE (LLM agents,
+seed 42): every regime's winner is a multi-family hybrid---Fourier-led on the 1D
+transport problems, attention/wavelet-led on piecewise regression and
+Darcy---with a different recipe per regime.}{fig:fig_archdiagram.pdf}
+
+\figfile{fig_pareto.pdf}{1.0}{Accuracy--parameter trade-off on the 2D problems.
+Swarm labs (circles, colored by paradigm) and converged baselines (stars). The
+swarm populates a competitive frontier at far fewer parameters than the large
+FNO baselines.}{fig:fig_pareto.pdf}
+
+\paragraph{Ablation: what does LLM agency add?}
+Figure~\ref{fig:fig_ablation.pdf} compares discovered relative $L_2$ under LLM and
+PSO coordination, and Figure~\ref{fig:fig_convergence.pdf} compares convergence of
+the swarm's best error per iteration. Because both conditions train identical
+operators under an identical budget, any difference is attributable to the
+planner/reviewer policy. At three seeds the screening accuracies are
+statistically indistinguishable on all five PDEs (overlapping $\pm 1$ s.d.), and
+we do not claim an accuracy win for LLM agency. The measurable difference is
+architectural: the LLM discovers parameter-lean multi-family hybrids where PSO
+converges to canonical families, and it does so reproducibly (the identical
+advection recipe across independent seeds). We report this plainly rather than
+claiming LLM dominance: the value of the framework is the agentic, auditable
+discovery process, the ablation that measures it, and the design-space behavior
+it reveals.
+
+\paragraph{How the LLM plans.}
+The transcripts let us inspect the planner's \emph{decisions}, not only its
+outcomes. Across 4{,}817 planner calls the LLM chose \textsc{hybridize} in
+99.8\% of decisions (the remainder \textsc{explore}; never \textsc{exploit}),
+and its rationales condition on the summarized swarm state, e.g.\ ``\emph{several
+labs are converging on FNO and transformer architectures\ldots\ I'll introduce a
+hybrid approach by incorporating attention blocks}'' (Navier--Stokes, seed 42).
+This action bias is the mechanism behind the architectural contrast above: a
+planner that almost always grafts blocks from other families structurally
+produces multi-family hybrids, whereas the analytic update can---and
+does---collapse to single-family optima. The bias is partly prompt-induced (the
+planner is instructed to preserve diversity when the swarm converges;
+Appendix~\ref{app:prompts}), so we read it as a caveat as much as a capability:
+LLM agency here manifests as context-conditioned hybridization rather than
+balanced explore/exploit arbitration.
+
+\paragraph{What the reviewer rewards.}
+The same transcripts quantify the reviewer. Across 4{,}804 scoreable review
+calls, the rank correlation between the reviewer's vote distribution and the
+candidates' measured accuracy is $\bar{\rho}=0.64$ (Spearman; positive in 88\%
+of calls, a perfect accuracy ordering in 50\%), so peer review is grounded in
+the fitness signal rather than stylistic preference. Its rationales cite
+accuracy in 97\% of calls, parameter efficiency in 83\%, and robustness in
+71\%, but novelty in only 26\%: the deviations from pure accuracy ordering are
+consistent with the prompt's instruction to also reward novelty and efficiency.
+Review is thus fitness-anchored with a diversity tilt---precisely the property
+the citation lifecycle needs, since accurate labs must accumulate influence
+without unusual designs being starved (Figure~\ref{fig:fig_blockevo.pdf}).
+
+\figfile{fig_ablation.pdf}{0.7}{Discovered relative $L_2$ per PDE: LLM agents
+(Gemma~3) vs.\ rule-based PSO, under an identical training budget.}{fig:fig_ablation.pdf}
+
+\figfile{fig_convergence.pdf}{1.0}{Swarm convergence: best relative $L_2$ per
+iteration, LLM vs.\ PSO, mean $\pm$ s.d.\ over seeds.}{fig:fig_convergence.pdf}
+
+\paragraph{The swarm maintains diversity.}
+A failure mode of citation-driven swarms is premature collapse onto an early
+leader (groupthink). Figure~\ref{fig:fig_blockevo.pdf} shows population-level
+block usage stays mixed across iterations: the novelty term and minimum
+exploration keep multiple paradigms alive even as individual winners specialize.
+The ``different recipe per regime'' result (Figure~\ref{fig:fig_archdiagram.pdf})
+is thus a property of the \emph{winner}, not a collapse of the population.
+
+\figfile{fig_blockevo.pdf}{1.0}{Population block-usage fraction across iterations
+(LLM). Diversity is maintained---no single block type dominates---indicating the
+swarm avoids groupthink collapse.}{fig:fig_blockevo.pdf}
+
+\paragraph{The agents really were LLMs.}
+Table~\ref{tab:evidence} summarizes the transcript audit over all LLM runs:
+planner and reviewer calls, parse-success, and fallbacks. Across the campaign we
+observe zero fallbacks, certifying that planning and review were LLM-driven.
+
+\begin{table}[t]\centering
+\caption{Evidence audit: per-run planner/reviewer LLM call counts, parse-success,
+and fallbacks. Zero fallbacks certifies LLM-driven planning and review. Counts
+above the nominal $16\times20=320$ reflect re-planned iterations after mid-run
+interruptions (the runs are checkpointed and resume-safe); every call, including
+repeats, is in the released transcripts.}
+\label{tab:evidence}
+\inputif{tables/tab_evidence.tex}{(evidence table populates as the campaign completes.)}
+\end{table}
+
+\section{Computational Cost}\label{sec:cost}
+Table~\ref{tab:timing} and Figure~\ref{fig:fig_timing.pdf} report wall-clock times
+on a single RTX~4080: the total time for a full $16$-lab $\times$ $20$-iteration
+discovery run, and the time per lab-evaluation (one lab's plan--train--review
+cycle), for both conditions. Because the LLM and PSO conditions train identical
+operators under an identical budget, the difference in per-lab time is precisely
+the overhead of LLM-driven planning and review (two language-model calls per lab
+per iteration): roughly $14$s per lab-evaluation on the 1D problems and
+$25$--$33$s on the 2D problems, i.e.\ a $2$--$4\times$ increase in total
+wall-clock over rule-based coordination. The LLM condition also carries higher
+run-to-run variance on the 2D problems (e.g.\ $271\pm104$ min on Navier--Stokes):
+an honest consequence of letting the planner commit to parameter-heavy hybrids
+whose training dominates the budget. The overhead buys the behavior of
+Section~\ref{sec:results}; whether that trade is worthwhile is regime- and
+goal-dependent, and the ablation makes it measurable.
+
+\begin{table}[t]\centering
+\caption{Computational cost on a single RTX~4080: total run time and per
+lab-evaluation time, LLM (Gemma~3) vs.\ PSO, mean$\pm$std over seeds. The LLM--PSO
+gap isolates the cost of language-model agency.}
+\label{tab:timing}
+\inputif{tables/tab_timing.tex}{(timing table populates as the campaign completes.)}
+\end{table}
+
+\figfile{fig_timing.pdf}{0.7}{Per lab-evaluation wall time, LLM vs.\ PSO. The gap
+is the cost of LLM planning and peer review at identical training budget.}{fig:fig_timing.pdf}
+
+\paragraph{Why a swarm of hundreds of trainings is feasible.}
+The swarm screens architectures at reduced fidelity, so a single operator trains
+in seconds, not hours. Table~\ref{tab:trainop} lists single-operator training
+times to convergence at screening fidelity on Navier--Stokes; cost is dominated
+by epochs and block type, not parameter count (a 33.6M-parameter FNO trains
+faster than a 105K-parameter transformer because attention is quadratic in
+sequence length). A full discovery run evaluates $16\times20=320$ architectures
+within the budgets above, reserving expensive full-fidelity training for the
+final discovered architecture and the baseline comparison---the standard
+multi-fidelity argument: screen cheaply, commit expensively.
+
+\begin{table}[t]\centering
+\caption{Single-operator training time to convergence at screening fidelity
+(Navier--Stokes), mean over seeds.}
+\label{tab:trainop}
+\inputif{tables/tab_trainop.tex}{(training-time table is generated by the build pipeline.)}
+\end{table}
+
+\section{Discussion and Limitations}
+\paragraph{LLM-as-policy, not autonomous tool use.} Our agents use the LLM as a
+\emph{policy} for the planning and review decisions; the LLM does not execute code
+or call external tools. This is a narrower notion of ``agentic'' than fully
+autonomous research agents~\cite{lu2026aiscientist}, and we state it plainly.
+\paragraph{Joint role ablation.} The ablation switches planner and reviewer
+together. The transcript analyses provide observational evidence about each
+role's behavior, but disentangling their causal contributions requires a
+factorial design (LLM planner with analytic reviewer, and vice versa), which we
+leave to future work.
+\paragraph{Literature priors.} A mid-size or frontier LLM has read the
+operator-learning literature and may ``know'' that FNO suits periodic problems.
+This is simultaneously a feature (informed priors) and a confound (it is not
+prior-free discovery); the PSO condition provides the prior-free reference point.
+\paragraph{Determinism.} LLM planning is stochastic; we report multiple seeds and
+release transcripts rather than claiming bit-for-bit reproducibility.
+\paragraph{Screening fidelity.} The swarm screens at reduced fidelity; absolute
+errors should be read against the converged baselines, not as final accuracies.
+\paragraph{Model scale.} We use a single local model (\texttt{gemma3:12b});
+whether a frontier model changes discovery quality is left to future work, enabled
+by the model-agnostic backend.
+
+\section{Reproducibility}\label{sec:repro}
+Code, the resume-safe runner, exact configurations, and the complete per-run LLM
+transcripts are available at \url{https://github.com/luislootx/AI-SC}. Every
+reported LLM run ships its \texttt{llm\_transcript.jsonl}; the evidence audit
+(Table~\ref{tab:evidence}) is reproducible directly from these files. The LLM
+backend (\texttt{gemma3:12b} via Ollama) runs locally with no paid API. Representative
+planner and reviewer prompts are listed in Appendix~\ref{app:prompts}.
+
+\section{Conclusion}
+We presented an agentic AI Science Community that discovers neural operator
+architectures through LLM-driven planning and peer review over a swarm of virtual
+labs, with a deterministic numerical worker and a controlled ablation against
+rule-based coordination. The honest cross-regime finding is that no operator is
+universal; the contribution is a reproducible, auditable methodology for agentic
+architecture discovery that recovers regime-appropriate, parameter-lean hybrids
+at a quantified LLM overhead. Future work includes frontier LLM backends, a
+factorial planner/reviewer ablation, larger block vocabularies (graph operators,
+neural Galerkin), action-space debiasing of the planner, and full-fidelity
+re-training of every discovered architecture.
+
+\begin{ack}
+We thank the organizers of the ICERM Hot Topics Workshop on Agentic Scientific
+Computing and Scientific Machine Learning, where a preliminary version of this
+work was presented as a poster, and the Texas A\&M ECEN graduate program for
+travel support.
+\end{ack}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\appendix
+\section{Agent Prompts}\label{app:prompts}
+The planner and reviewer system prompts are reproduced verbatim below (PDE name
+instantiated per run); each user prompt carries the lab's current genome, its
+recent fitness records, the global best, and an anonymized summary of peer labs,
+exactly as recorded in every run's \texttt{llm\_transcript.jsonl}.
+
+\paragraph{Planner system prompt.}
+{\small\begin{verbatim}
+You are the planning agent of a virtual research lab in a
+swarm of labs collectively discovering neural operator architectures for 2D
+Navier-Stokes. Each lab is one PSO particle; your job is to propose the next
+architecture (genome) for your lab to train and evaluate next iteration.
+
+You must balance EXPLORATION (novel hybrids, unexplored block combinations)
+with EXPLOITATION (move toward the global best architecture observed in the
+swarm). Use the lab's current exploration_rate as a guide: high -> favor
+exploration, low -> favor exploitation. Consider what other labs are doing --
+if the swarm is converging, propose something different to maintain diversity
+and avoid groupthink.
+
+Output STRICT JSON ONLY (no prose, no fences) matching this schema:
+{
+  "action": "explore" | "exploit" | "hybridize",
+  "rationale": "<1-2 sentences explaining your choice>",
+  "new_genome": { "block_sequence": [...], "hidden_channels": <int>,
+    "fourier_modes": <int>, "activation": "<str>", "use_gating": <bool>,
+    "use_skip_connections": <bool>, "dropout_rate": <float>,
+    "learning_rate": <float>, "weight_decay": <float> }
+}
+- ALLOWED_BLOCKS = ["fourier","attention","branch_trunk","wavelet",
+                    "residual_conv"]
+\end{verbatim}}
+
+\paragraph{Reviewer system prompt.}
+{\small\begin{verbatim}
+You are an anonymous peer reviewer evaluating neural
+operator architectures proposed by other virtual labs in a research swarm.
+
+You must rank the candidates on overall scientific merit for solving 2D
+Navier-Stokes operator learning. Reward: high accuracy, good generalization
+under noise, parameter efficiency, architectural novelty (unusual block
+combinations), and theoretical soundness (e.g. fourier blocks for periodic
+domains, attention for nonlocal coupling). Penalize: groupthink (identical to
+global best), pathological setups (too few or too many blocks, mismatched
+modes), or poor measured fitness.
+
+Output STRICT JSON ONLY:
+{
+  "scores":   { "<lab_id>": <float in [0,1]>, ... },
+  "rationale": "<1-2 sentences total, not per lab>"
+}
+Scores must sum to roughly 1.0 across the candidates (soft-vote distribution).
+\end{verbatim}}
+
+\section{Per-seed Results}\label{app:perseed}
+Table~\ref{tab:perseed} lists the discovered block sequence, screening relative
+$L_2$, and parameter count for every run of the campaign (5 PDEs $\times$ 2
+conditions $\times$ 3 seeds). Machine-readable versions are generated into
+\texttt{results/aggregate\_v2.json} in the repository.
+
+\begin{table}[h]\centering
+\caption{Per-seed discovered architectures, all 30 runs. Blocks abbreviated
+F=fourier, A=attention, W=wavelet, R=residual\_conv, T=branch\_trunk.}
+\label{tab:perseed}
+{\small
+\inputif{tables/tab_perseed.tex}{(per-seed table is generated by the build pipeline.)}
+}
+\end{table}
+
+\section{Experimental Details}\label{app:details}
+Table~\ref{tab:expdetails} lists the screening-phase configuration per PDE
+(from each run's released \texttt{config.json}). Both conditions share these
+budgets exactly; only the planner/reviewer policy differs. Every candidate is
+trained from scratch for the stated epochs each iteration; robustness
+(noisy relative $L_2$) is measured under additive input noise
+$\varepsilon\sim\mathcal{N}(0,\,0.1^2)$. The swarm uses $N=16$ labs for $T=20$
+iterations in all runs. The LLM backend is \texttt{gemma3:12b} served by Ollama
+with an 8192-token context window; all timings are on a single RTX~4080.
+Converged-baseline budgets (Table~\ref{tab:baselines}) are per-family---FNO
+variants 50 epochs, hybrids and POD-DeepONet and the pure transformer 80,
+DeepONet-faithful 600 with input/output normalization---as encoded in the
+released \texttt{validate\_baselines\_v3.py}.
+
+\begin{table}[h]\centering
+\caption{Screening-phase configuration per PDE (identical across conditions and
+seeds).}
+\label{tab:expdetails}
+\begin{tabular}{lccccc}
+\toprule
+PDE & Dim & Resolution & Train / test & Epochs per candidate \\
+\midrule
+Piecewise Reg. & 1D & 128 & 256 / 64 & 40 \\
+Advection & 1D & 128 & 256 / 64 & 40 \\
+Burgers & 1D & 128 & 256 / 64 & 40 \\
+Navier--Stokes & 2D & $32\times32$ & 512 / 128 & 50 \\
+Darcy & 2D & $32\times32$ & 512 / 128 & 50 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

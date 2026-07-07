@@ -1,0 +1,4932 @@
+{
+  "preset": "paper-grade-1d",
+  "seed": 137,
+  "pde": "burgers",
+  "spatial_dim": 1,
+  "global_best_fitness": 0.5407580900642849,
+  "global_best_lab_id": 12,
+  "global_best_genome": {
+    "block_sequence": [
+      "fourier",
+      "fourier",
+      "fourier",
+      "branch_trunk",
+      "attention"
+    ],
+    "hidden_channels": 64,
+    "fourier_modes": 14,
+    "activation": "gelu",
+    "use_gating": false,
+    "use_skip_connections": false,
+    "dropout_rate": 0.063,
+    "num_blocks": 5,
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001
+  },
+  "iteration_history": [
+    {
+      "iteration": 0,
+      "global_best_fitness": 0.5174,
+      "global_best_lab_id": 8,
+      "global_best_blocks": [
+        "branch_trunk",
+        "branch_trunk",
+        "fourier",
+        "wavelet",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "residual_conv",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.269,
+          "rel_l2_clean": 0.16416,
+          "rel_l2_noisy": 0.16872,
+          "trust": 0.275
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3906,
+          "rel_l2_clean": 0.09169,
+          "rel_l2_noisy": 0.09649,
+          "trust": 0.555
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1068,
+          "rel_l2_clean": 0.77999,
+          "rel_l2_noisy": 0.78097,
+          "trust": 0.093
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1649,
+          "rel_l2_clean": 0.78539,
+          "rel_l2_noisy": 0.78724,
+          "trust": 0.284
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2142,
+          "rel_l2_clean": 0.7763,
+          "rel_l2_noisy": 0.77752,
+          "trust": 0.447
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1047,
+          "rel_l2_clean": 0.66809,
+          "rel_l2_noisy": 0.88058,
+          "trust": 0.063
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.2235,
+          "rel_l2_clean": 0.44883,
+          "rel_l2_noisy": 0.96419,
+          "trust": 0.382
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3623,
+          "rel_l2_clean": 0.11819,
+          "rel_l2_noisy": 0.13287,
+          "trust": 0.526
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.5174,
+          "rel_l2_clean": 0.11338,
+          "rel_l2_noisy": 0.11202,
+          "trust": 1.0
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.5093,
+          "rel_l2_clean": 0.09616,
+          "rel_l2_noisy": 0.09901,
+          "trust": 0.944
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "attention"
+          ],
+          "composite": 0.2763,
+          "rel_l2_clean": 0.57654,
+          "rel_l2_noisy": 0.91421,
+          "trust": 0.597
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "residual_conv",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3507,
+          "rel_l2_clean": 0.19204,
+          "rel_l2_noisy": 0.19899,
+          "trust": 0.585
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4415,
+          "rel_l2_clean": 0.11269,
+          "rel_l2_noisy": 0.11936,
+          "trust": 0.771
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.102,
+          "rel_l2_clean": 0.78368,
+          "rel_l2_noisy": 0.78515,
+          "trust": 0.074
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.2005,
+          "rel_l2_clean": 0.39684,
+          "rel_l2_noisy": 0.97428,
+          "trust": 0.271
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1149,
+          "rel_l2_clean": 0.77642,
+          "rel_l2_noisy": 0.77765,
+          "trust": 0.127
+        }
+      ]
+    },
+    {
+      "iteration": 1,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "residual_conv",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2536,
+          "rel_l2_clean": 0.22513,
+          "rel_l2_noisy": 0.23229,
+          "trust": 0.287
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2341,
+          "rel_l2_clean": 0.08295,
+          "rel_l2_noisy": 0.088,
+          "trust": 0.229
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1715,
+          "rel_l2_clean": 0.77854,
+          "rel_l2_noisy": 0.78013,
+          "trust": 0.216
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1013,
+          "rel_l2_clean": 0.76154,
+          "rel_l2_noisy": 0.76783,
+          "trust": 0.145
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.0875,
+          "rel_l2_clean": 0.77934,
+          "rel_l2_noisy": 0.78197,
+          "trust": 0.195
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1067,
+          "rel_l2_clean": 0.77369,
+          "rel_l2_noisy": 0.77564,
+          "trust": 0.072
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "fourier",
+            "residual_conv",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.3146,
+          "rel_l2_clean": 0.103,
+          "rel_l2_noisy": 0.11616,
+          "trust": 0.347
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3876,
+          "rel_l2_clean": 0.15143,
+          "rel_l2_noisy": 0.16213,
+          "trust": 0.602
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.383,
+          "rel_l2_clean": 0.12235,
+          "rel_l2_noisy": 0.12329,
+          "trust": 0.746
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4105,
+          "rel_l2_clean": 0.07969,
+          "rel_l2_noisy": 0.08198,
+          "trust": 0.724
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "attention"
+          ],
+          "composite": 0.1429,
+          "rel_l2_clean": 0.64164,
+          "rel_l2_noisy": 0.79149,
+          "trust": 0.339
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3702,
+          "rel_l2_clean": 0.17201,
+          "rel_l2_noisy": 0.2928,
+          "trust": 0.624
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.5317,
+          "rel_l2_clean": 0.0898,
+          "rel_l2_noisy": 0.0933,
+          "trust": 0.906
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1538,
+          "rel_l2_clean": 0.60259,
+          "rel_l2_noisy": 0.74822,
+          "trust": 0.145
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "wavelet",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.2169,
+          "rel_l2_clean": 0.44039,
+          "rel_l2_noisy": 0.72867,
+          "trust": 0.306
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2152,
+          "rel_l2_clean": 0.67028,
+          "rel_l2_noisy": 0.84469,
+          "trust": 0.302
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "residual_conv",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2303,
+          "rel_l2_clean": 0.17729,
+          "rel_l2_noisy": 0.18598,
+          "trust": 0.234
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3399,
+          "rel_l2_clean": 0.10982,
+          "rel_l2_noisy": 0.11465,
+          "trust": 0.318
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1531,
+          "rel_l2_clean": 0.77782,
+          "rel_l2_noisy": 0.78098,
+          "trust": 0.228
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.1457,
+          "rel_l2_clean": 0.758,
+          "rel_l2_noisy": 0.76054,
+          "trust": 0.171
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.128,
+          "rel_l2_clean": 0.77648,
+          "rel_l2_noisy": 0.77922,
+          "trust": 0.177
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "residual_conv"
+          ],
+          "composite": 0.2816,
+          "rel_l2_clean": 0.65393,
+          "rel_l2_noisy": 1.02144,
+          "trust": 0.332
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.4154,
+          "rel_l2_clean": 0.41739,
+          "rel_l2_noisy": 0.89528,
+          "trust": 0.645
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.4087,
+          "rel_l2_clean": 0.23298,
+          "rel_l2_noisy": 0.24876,
+          "trust": 0.702
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4844,
+          "rel_l2_clean": 0.10777,
+          "rel_l2_noisy": 0.11311,
+          "trust": 0.811
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.5039,
+          "rel_l2_clean": 0.08331,
+          "rel_l2_noisy": 0.09165,
+          "trust": 0.805
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "attention"
+          ],
+          "composite": 0.1769,
+          "rel_l2_clean": 0.59326,
+          "rel_l2_noisy": 0.86912,
+          "trust": 0.304
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3102,
+          "rel_l2_clean": 0.12177,
+          "rel_l2_noisy": 0.16043,
+          "trust": 0.504
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3502,
+          "rel_l2_clean": 0.08704,
+          "rel_l2_noisy": 0.0888,
+          "trust": 0.675
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.2381,
+          "rel_l2_clean": 0.59814,
+          "rel_l2_noisy": 0.75293,
+          "trust": 0.299
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "wavelet",
+          "blocks": [
+            "attention",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.309,
+          "rel_l2_clean": 0.43695,
+          "rel_l2_noisy": 0.92328,
+          "trust": 0.467
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2725,
+          "rel_l2_clean": 0.60448,
+          "rel_l2_noisy": 0.83901,
+          "trust": 0.428
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "residual_conv",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.1909,
+          "rel_l2_clean": 0.24237,
+          "rel_l2_noisy": 0.25347,
+          "trust": 0.189
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2215,
+          "rel_l2_clean": 0.1517,
+          "rel_l2_noisy": 0.15425,
+          "trust": 0.231
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.313,
+          "rel_l2_clean": 0.12261,
+          "rel_l2_noisy": 0.13524,
+          "trust": 0.283
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv"
+          ],
+          "composite": 0.1497,
+          "rel_l2_clean": 0.69216,
+          "rel_l2_noisy": 0.7441,
+          "trust": 0.186
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1073,
+          "rel_l2_clean": 0.73991,
+          "rel_l2_noisy": 0.75042,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "residual_conv"
+          ],
+          "composite": 0.1433,
+          "rel_l2_clean": 0.68257,
+          "rel_l2_noisy": 0.96924,
+          "trust": 0.279
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.1989,
+          "rel_l2_clean": 0.38605,
+          "rel_l2_noisy": 0.95135,
+          "trust": 0.498
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.3695,
+          "rel_l2_clean": 0.19438,
+          "rel_l2_noisy": 0.20856,
+          "trust": 0.676
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3334,
+          "rel_l2_clean": 0.09577,
+          "rel_l2_noisy": 0.10102,
+          "trust": 0.632
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.522,
+          "rel_l2_clean": 0.09954,
+          "rel_l2_noisy": 0.09951,
+          "trust": 0.882
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet"
+          ],
+          "composite": 0.1093,
+          "rel_l2_clean": 0.60119,
+          "rel_l2_noisy": 0.87623,
+          "trust": 0.198
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "wavelet",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3657,
+          "rel_l2_clean": 0.15987,
+          "rel_l2_noisy": 0.20536,
+          "trust": 0.543
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3098,
+          "rel_l2_clean": 0.12005,
+          "rel_l2_noisy": 0.12682,
+          "trust": 0.545
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.0944,
+          "rel_l2_clean": 0.59804,
+          "rel_l2_noisy": 0.75404,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "wavelet",
+          "blocks": [
+            "attention",
+            "wavelet",
+            "wavelet",
+            "attention"
+          ],
+          "composite": 0.1591,
+          "rel_l2_clean": 0.43997,
+          "rel_l2_noisy": 0.8165,
+          "trust": 0.345
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1174,
+          "rel_l2_clean": 0.77484,
+          "rel_l2_noisy": 0.77684,
+          "trust": 0.302
+        }
+      ]
+    },
+    {
+      "iteration": 4,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "branch_trunk",
+            "residual_conv",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.2057,
+          "rel_l2_clean": 0.67681,
+          "rel_l2_noisy": 0.86139,
+          "trust": 0.269
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.3077,
+          "rel_l2_clean": 0.1002,
+          "rel_l2_noisy": 0.1077,
+          "trust": 0.255
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk"
+          ],
+          "composite": 0.2508,
+          "rel_l2_clean": 0.10407,
+          "rel_l2_noisy": 0.11406,
+          "trust": 0.225
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv"
+          ],
+          "composite": 0.1342,
+          "rel_l2_clean": 0.69894,
+          "rel_l2_noisy": 0.81145,
+          "trust": 0.18
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3892,
+          "rel_l2_clean": 0.09992,
+          "rel_l2_noisy": 0.10267,
+          "trust": 0.29
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1144,
+          "rel_l2_clean": 0.75728,
+          "rel_l2_noisy": 0.76206,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "wavelet",
+            "wavelet",
+            "wavelet"
+          ],
+          "composite": 0.1524,
+          "rel_l2_clean": 0.37528,
+          "rel_l2_noisy": 0.86437,
+          "trust": 0.36
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.3681,
+          "rel_l2_clean": 0.15154,
+          "rel_l2_noisy": 0.16866,
+          "trust": 0.643
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4801,
+          "rel_l2_clean": 0.11061,
+          "rel_l2_noisy": 0.11671,
+          "trust": 0.725
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.5077,
+          "rel_l2_clean": 0.12328,
+          "rel_l2_noisy": 0.12195,
+          "trust": 0.925
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.0958,
+          "rel_l2_clean": 0.628,
+          "rel_l2_noisy": 0.79226,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "wavelet",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2225,
+          "rel_l2_clean": 0.14388,
+          "rel_l2_noisy": 0.17437,
+          "trust": 0.389
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "wavelet"
+          ],
+          "composite": 0.3484,
+          "rel_l2_clean": 0.09858,
+          "rel_l2_noisy": 0.1101,
+          "trust": 0.505
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3388,
+          "rel_l2_clean": 0.09959,
+          "rel_l2_noisy": 0.11025,
+          "trust": 0.264
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "wavelet",
+          "blocks": [
+            "attention",
+            "wavelet",
+            "attention"
+          ],
+          "composite": 0.1552,
+          "rel_l2_clean": 0.51633,
+          "rel_l2_noisy": 1.49488,
+          "trust": 0.281
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "wavelet",
+            "attention"
+          ],
+          "composite": 0.1934,
+          "rel_l2_clean": 0.61867,
+          "rel_l2_noisy": 0.9267,
+          "trust": 0.313
+        }
+      ]
+    },
+    {
+      "iteration": 5,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "branch_trunk",
+            "residual_conv",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.2067,
+          "rel_l2_clean": 0.65569,
+          "rel_l2_noisy": 0.79466,
+          "trust": 0.314
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.3208,
+          "rel_l2_clean": 0.07904,
+          "rel_l2_noisy": 0.08587,
+          "trust": 0.266
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.4222,
+          "rel_l2_clean": 0.08467,
+          "rel_l2_noisy": 0.08791,
+          "trust": 0.369
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "deeponet",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv"
+          ],
+          "composite": 0.1838,
+          "rel_l2_clean": 0.68895,
+          "rel_l2_noisy": 0.83444,
+          "trust": 0.233
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3487,
+          "rel_l2_clean": 0.11185,
+          "rel_l2_noisy": 0.11547,
+          "trust": 0.343
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3805,
+          "rel_l2_clean": 0.13139,
+          "rel_l2_noisy": 0.1369,
+          "trust": 0.343
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "wavelet",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.3305,
+          "rel_l2_clean": 0.42525,
+          "rel_l2_noisy": 0.96071,
+          "trust": 0.482
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "attention",
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.2374,
+          "rel_l2_clean": 0.48309,
+          "rel_l2_noisy": 0.48983,
+          "trust": 0.566
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4291,
+          "rel_l2_clean": 0.11416,
+          "rel_l2_noisy": 0.11624,
+          "trust": 0.727
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3782,
+          "rel_l2_clean": 0.12387,
+          "rel_l2_noisy": 0.1323,
+          "trust": 0.804
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.429,
+          "rel_l2_clean": 0.09422,
+          "rel_l2_noisy": 0.10206,
+          "trust": 0.31
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.394,
+          "rel_l2_clean": 0.14671,
+          "rel_l2_noisy": 0.16679,
+          "trust": 0.491
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "wavelet"
+          ],
+          "composite": 0.5212,
+          "rel_l2_clean": 0.09808,
+          "rel_l2_noisy": 0.10522,
+          "trust": 0.674
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.169,
+          "rel_l2_clean": 0.19433,
+          "rel_l2_noisy": 0.22342,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.1743,
+          "rel_l2_clean": 0.4697,
+          "rel_l2_noisy": 0.95371,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4055,
+          "rel_l2_clean": 0.10803,
+          "rel_l2_noisy": 0.11968,
+          "trust": 0.427
+        }
+      ]
+    },
+    {
+      "iteration": 6,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.444,
+          "rel_l2_clean": 0.11579,
+          "rel_l2_noisy": 0.12076,
+          "trust": 0.471
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.2325,
+          "rel_l2_clean": 0.08281,
+          "rel_l2_noisy": 0.08901,
+          "trust": 0.179
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.2204,
+          "rel_l2_clean": 0.09282,
+          "rel_l2_noisy": 0.09814,
+          "trust": 0.248
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.1841,
+          "rel_l2_clean": 0.70136,
+          "rel_l2_noisy": 0.80274,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3335,
+          "rel_l2_clean": 0.10745,
+          "rel_l2_noisy": 0.11544,
+          "trust": 0.361
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.5049,
+          "rel_l2_clean": 0.13048,
+          "rel_l2_noisy": 0.13355,
+          "trust": 0.558
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "wavelet",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.1832,
+          "rel_l2_clean": 0.48283,
+          "rel_l2_noisy": 1.03287,
+          "trust": 0.408
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "attention",
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.2853,
+          "rel_l2_clean": 0.2593,
+          "rel_l2_noisy": 0.26592,
+          "trust": 0.523
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3207,
+          "rel_l2_clean": 0.11564,
+          "rel_l2_noisy": 0.11294,
+          "trust": 0.61
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.434,
+          "rel_l2_clean": 0.11868,
+          "rel_l2_noisy": 0.12823,
+          "trust": 0.781
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4826,
+          "rel_l2_clean": 0.09081,
+          "rel_l2_noisy": 0.09505,
+          "trust": 0.486
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2872,
+          "rel_l2_clean": 0.143,
+          "rel_l2_noisy": 0.1504,
+          "trust": 0.434
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "wavelet"
+          ],
+          "composite": 0.4258,
+          "rel_l2_clean": 0.09121,
+          "rel_l2_noisy": 0.09416,
+          "trust": 0.669
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "wavelet"
+          ],
+          "composite": 0.3143,
+          "rel_l2_clean": 0.10458,
+          "rel_l2_noisy": 0.10613,
+          "trust": 0.224
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3857,
+          "rel_l2_clean": 0.0906,
+          "rel_l2_noisy": 0.09738,
+          "trust": 0.351
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3923,
+          "rel_l2_clean": 0.10771,
+          "rel_l2_noisy": 0.11994,
+          "trust": 0.481
+        }
+      ]
+    },
+    {
+      "iteration": 7,
+      "global_best_fitness": 0.5317,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.2078,
+          "rel_l2_clean": 0.11491,
+          "rel_l2_noisy": 0.11941,
+          "trust": 0.321
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.4513,
+          "rel_l2_clean": 0.08825,
+          "rel_l2_noisy": 0.08999,
+          "trust": 0.361
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.2708,
+          "rel_l2_clean": 0.11405,
+          "rel_l2_noisy": 0.12176,
+          "trust": 0.238
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3666,
+          "rel_l2_clean": 0.1359,
+          "rel_l2_noisy": 0.14071,
+          "trust": 0.357
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2632,
+          "rel_l2_clean": 0.12436,
+          "rel_l2_noisy": 0.12608,
+          "trust": 0.303
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3733,
+          "rel_l2_clean": 0.1186,
+          "rel_l2_noisy": 0.1243,
+          "trust": 0.555
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "wavelet",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.324,
+          "rel_l2_clean": 0.42549,
+          "rel_l2_noisy": 0.81015,
+          "trust": 0.497
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "branch_trunk",
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.1241,
+          "rel_l2_clean": 0.4111,
+          "rel_l2_noisy": 0.41691,
+          "trust": 0.357
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4997,
+          "rel_l2_clean": 0.1175,
+          "rel_l2_noisy": 0.11389,
+          "trust": 0.724
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4516,
+          "rel_l2_clean": 0.10451,
+          "rel_l2_noisy": 0.1102,
+          "trust": 0.783
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.5081,
+          "rel_l2_clean": 0.10616,
+          "rel_l2_noisy": 0.10741,
+          "trust": 0.641
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.4951,
+          "rel_l2_clean": 0.1365,
+          "rel_l2_noisy": 0.14614,
+          "trust": 0.614
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "wavelet"
+          ],
+          "composite": 0.3976,
+          "rel_l2_clean": 0.08996,
+          "rel_l2_noisy": 0.09552,
+          "trust": 0.64
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3938,
+          "rel_l2_clean": 0.094,
+          "rel_l2_noisy": 0.09709,
+          "trust": 0.333
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4794,
+          "rel_l2_clean": 0.07956,
+          "rel_l2_noisy": 0.08654,
+          "trust": 0.501
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3343,
+          "rel_l2_clean": 0.09746,
+          "rel_l2_noisy": 0.11123,
+          "trust": 0.447
+        }
+      ]
+    },
+    {
+      "iteration": 8,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.3466,
+          "rel_l2_clean": 0.09718,
+          "rel_l2_noisy": 0.10173,
+          "trust": 0.351
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.3781,
+          "rel_l2_clean": 0.11347,
+          "rel_l2_noisy": 0.12022,
+          "trust": 0.422
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.2486,
+          "rel_l2_clean": 0.11222,
+          "rel_l2_noisy": 0.12156,
+          "trust": 0.204
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.2229,
+          "rel_l2_clean": 0.15721,
+          "rel_l2_noisy": 0.16807,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2609,
+          "rel_l2_clean": 0.10133,
+          "rel_l2_noisy": 0.10324,
+          "trust": 0.256
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2541,
+          "rel_l2_clean": 0.1199,
+          "rel_l2_noisy": 0.12312,
+          "trust": 0.428
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk",
+            "wavelet",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.2401,
+          "rel_l2_clean": 0.48045,
+          "rel_l2_noisy": 0.80892,
+          "trust": 0.477
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.2676,
+          "rel_l2_clean": 0.27069,
+          "rel_l2_noisy": 0.27431,
+          "trust": 0.36
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv",
+            "wavelet",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3248,
+          "rel_l2_clean": 0.12972,
+          "rel_l2_noisy": 0.12893,
+          "trust": 0.622
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3476,
+          "rel_l2_clean": 0.1037,
+          "rel_l2_noisy": 0.10582,
+          "trust": 0.67
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3529,
+          "rel_l2_clean": 0.10429,
+          "rel_l2_noisy": 0.10265,
+          "trust": 0.584
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.3247,
+          "rel_l2_clean": 0.12185,
+          "rel_l2_noisy": 0.16976,
+          "trust": 0.544
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.5408,
+          "rel_l2_clean": 0.07336,
+          "rel_l2_noisy": 0.08194,
+          "trust": 0.752
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3449,
+          "rel_l2_clean": 0.09746,
+          "rel_l2_noisy": 0.09937,
+          "trust": 0.358
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3882,
+          "rel_l2_clean": 0.09068,
+          "rel_l2_noisy": 0.09735,
+          "trust": 0.511
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3461,
+          "rel_l2_clean": 0.09515,
+          "rel_l2_noisy": 0.11189,
+          "trust": 0.432
+        }
+      ]
+    },
+    {
+      "iteration": 9,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.415,
+          "rel_l2_clean": 0.09066,
+          "rel_l2_noisy": 0.09705,
+          "trust": 0.438
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.3794,
+          "rel_l2_clean": 0.1184,
+          "rel_l2_noisy": 0.12249,
+          "trust": 0.467
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.466,
+          "rel_l2_clean": 0.1068,
+          "rel_l2_noisy": 0.12092,
+          "trust": 0.403
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.3508,
+          "rel_l2_clean": 0.08887,
+          "rel_l2_noisy": 0.09393,
+          "trust": 0.319
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1879,
+          "rel_l2_clean": 0.6132,
+          "rel_l2_noisy": 0.86738,
+          "trust": 0.278
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3176,
+          "rel_l2_clean": 0.21458,
+          "rel_l2_noisy": 0.21642,
+          "trust": 0.444
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.1685,
+          "rel_l2_clean": 0.51259,
+          "rel_l2_noisy": 1.03146,
+          "trust": 0.401
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "attention",
+            "wavelet",
+            "residual_conv"
+          ],
+          "composite": 0.2086,
+          "rel_l2_clean": 0.65356,
+          "rel_l2_noisy": 0.80798,
+          "trust": 0.365
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv",
+            "wavelet",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4163,
+          "rel_l2_clean": 0.12837,
+          "rel_l2_noisy": 0.12715,
+          "trust": 0.648
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.2495,
+          "rel_l2_clean": 0.13498,
+          "rel_l2_noisy": 0.13959,
+          "trust": 0.514
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "residual_conv",
+            "branch_trunk"
+          ],
+          "composite": 0.164,
+          "rel_l2_clean": 0.62759,
+          "rel_l2_noisy": 0.69666,
+          "trust": 0.476
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2914,
+          "rel_l2_clean": 0.18896,
+          "rel_l2_noisy": 0.23656,
+          "trust": 0.493
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "residual_conv",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.5329,
+          "rel_l2_clean": 0.0785,
+          "rel_l2_noisy": 0.08079,
+          "trust": 0.829
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4415,
+          "rel_l2_clean": 0.10078,
+          "rel_l2_noisy": 0.10762,
+          "trust": 0.475
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3593,
+          "rel_l2_clean": 0.10674,
+          "rel_l2_noisy": 0.11618,
+          "trust": 0.499
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3929,
+          "rel_l2_clean": 0.09699,
+          "rel_l2_noisy": 0.11078,
+          "trust": 0.471
+        }
+      ]
+    },
+    {
+      "iteration": 10,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.3693,
+          "rel_l2_clean": 0.09107,
+          "rel_l2_noisy": 0.09767,
+          "trust": 0.453
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.323,
+          "rel_l2_clean": 0.12017,
+          "rel_l2_noisy": 0.12623,
+          "trust": 0.442
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.2656,
+          "rel_l2_clean": 0.12269,
+          "rel_l2_noisy": 0.13344,
+          "trust": 0.346
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.4856,
+          "rel_l2_clean": 0.09448,
+          "rel_l2_noisy": 0.10143,
+          "trust": 0.489
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.1644,
+          "rel_l2_clean": 0.7065,
+          "rel_l2_noisy": 0.82137,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4866,
+          "rel_l2_clean": 0.1565,
+          "rel_l2_noisy": 0.16557,
+          "trust": 0.614
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "wavelet",
+          "blocks": [
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.1543,
+          "rel_l2_clean": 0.54429,
+          "rel_l2_noisy": 0.9002,
+          "trust": 0.337
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "attention",
+            "wavelet",
+            "residual_conv"
+          ],
+          "composite": 0.1968,
+          "rel_l2_clean": 0.59643,
+          "rel_l2_noisy": 0.75516,
+          "trust": 0.351
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3581,
+          "rel_l2_clean": 0.11917,
+          "rel_l2_noisy": 0.12243,
+          "trust": 0.606
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.2508,
+          "rel_l2_clean": 0.11614,
+          "rel_l2_noisy": 0.12156,
+          "trust": 0.403
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "residual_conv",
+            "branch_trunk"
+          ],
+          "composite": 0.3277,
+          "rel_l2_clean": 0.61596,
+          "rel_l2_noisy": 0.83024,
+          "trust": 0.573
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "fourier"
+          ],
+          "composite": 0.2525,
+          "rel_l2_clean": 0.13034,
+          "rel_l2_noisy": 0.13919,
+          "trust": 0.39
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "residual_conv",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.3994,
+          "rel_l2_clean": 0.08086,
+          "rel_l2_noisy": 0.08448,
+          "trust": 0.75
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4471,
+          "rel_l2_clean": 0.08255,
+          "rel_l2_noisy": 0.08856,
+          "trust": 0.544
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.2886,
+          "rel_l2_clean": 0.08363,
+          "rel_l2_noisy": 0.09171,
+          "trust": 0.408
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4665,
+          "rel_l2_clean": 0.08637,
+          "rel_l2_noisy": 0.10097,
+          "trust": 0.571
+        }
+      ]
+    },
+    {
+      "iteration": 11,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.4301,
+          "rel_l2_clean": 0.09085,
+          "rel_l2_noisy": 0.09763,
+          "trust": 0.523
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.3488,
+          "rel_l2_clean": 0.11064,
+          "rel_l2_noisy": 0.11426,
+          "trust": 0.442
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4304,
+          "rel_l2_clean": 0.08319,
+          "rel_l2_noisy": 0.09553,
+          "trust": 0.449
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier",
+            "branch_trunk"
+          ],
+          "composite": 0.4178,
+          "rel_l2_clean": 0.10062,
+          "rel_l2_noisy": 0.10298,
+          "trust": 0.544
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3806,
+          "rel_l2_clean": 0.0839,
+          "rel_l2_noisy": 0.09877,
+          "trust": 0.35
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2621,
+          "rel_l2_clean": 0.17952,
+          "rel_l2_noisy": 0.18763,
+          "trust": 0.514
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1116,
+          "rel_l2_clean": 0.6628,
+          "rel_l2_noisy": 0.86918,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "wavelet",
+            "residual_conv"
+          ],
+          "composite": 0.3899,
+          "rel_l2_clean": 0.11901,
+          "rel_l2_noisy": 0.13246,
+          "trust": 0.425
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "branch_trunk",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.5085,
+          "rel_l2_clean": 0.11152,
+          "rel_l2_noisy": 0.11357,
+          "trust": 0.726
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.2366,
+          "rel_l2_clean": 0.13835,
+          "rel_l2_noisy": 0.14413,
+          "trust": 0.322
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.1212,
+          "rel_l2_clean": 0.6857,
+          "rel_l2_noisy": 0.94576,
+          "trust": 0.439
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet"
+          ],
+          "composite": 0.1705,
+          "rel_l2_clean": 0.57937,
+          "rel_l2_noisy": 1.0056,
+          "trust": 0.349
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "residual_conv",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.3171,
+          "rel_l2_clean": 0.0894,
+          "rel_l2_noisy": 0.09191,
+          "trust": 0.616
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4836,
+          "rel_l2_clean": 0.08676,
+          "rel_l2_noisy": 0.09046,
+          "trust": 0.63
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3238,
+          "rel_l2_clean": 0.07899,
+          "rel_l2_noisy": 0.08363,
+          "trust": 0.376
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3207,
+          "rel_l2_clean": 0.08405,
+          "rel_l2_noisy": 0.09488,
+          "trust": 0.491
+        }
+      ]
+    },
+    {
+      "iteration": 12,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.4772,
+          "rel_l2_clean": 0.09445,
+          "rel_l2_noisy": 0.1004,
+          "trust": 0.62
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.3463,
+          "rel_l2_clean": 0.10369,
+          "rel_l2_noisy": 0.11228,
+          "trust": 0.433
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3082,
+          "rel_l2_clean": 0.12193,
+          "rel_l2_noisy": 0.13585,
+          "trust": 0.417
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4008,
+          "rel_l2_clean": 0.092,
+          "rel_l2_noisy": 0.09826,
+          "trust": 0.554
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.5353,
+          "rel_l2_clean": 0.07956,
+          "rel_l2_noisy": 0.08579,
+          "trust": 0.547
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3726,
+          "rel_l2_clean": 0.19919,
+          "rel_l2_noisy": 0.20716,
+          "trust": 0.558
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3401,
+          "rel_l2_clean": 0.12562,
+          "rel_l2_noisy": 0.12222,
+          "trust": 0.312
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "wavelet",
+            "residual_conv"
+          ],
+          "composite": 0.4498,
+          "rel_l2_clean": 0.10525,
+          "rel_l2_noisy": 0.11521,
+          "trust": 0.527
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "branch_trunk",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3879,
+          "rel_l2_clean": 0.11543,
+          "rel_l2_noisy": 0.11638,
+          "trust": 0.686
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3712,
+          "rel_l2_clean": 0.13461,
+          "rel_l2_noisy": 0.13999,
+          "trust": 0.397
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.202,
+          "rel_l2_clean": 0.68008,
+          "rel_l2_noisy": 0.91304,
+          "trust": 0.42
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.2041,
+          "rel_l2_clean": 0.56929,
+          "rel_l2_noisy": 0.81711,
+          "trust": 0.348
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.4079,
+          "rel_l2_clean": 0.10527,
+          "rel_l2_noisy": 0.10882,
+          "trust": 0.622
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3666,
+          "rel_l2_clean": 0.11381,
+          "rel_l2_noisy": 0.12259,
+          "trust": 0.591
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.2043,
+          "rel_l2_clean": 0.13581,
+          "rel_l2_noisy": 0.14107,
+          "trust": 0.262
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.1528,
+          "rel_l2_clean": 0.77568,
+          "rel_l2_noisy": 0.7775,
+          "trust": 0.412
+        }
+      ]
+    },
+    {
+      "iteration": 13,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.2726,
+          "rel_l2_clean": 0.09343,
+          "rel_l2_noisy": 0.09548,
+          "trust": 0.483
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "wavelet",
+            "fourier"
+          ],
+          "composite": 0.4048,
+          "rel_l2_clean": 0.07712,
+          "rel_l2_noisy": 0.07883,
+          "trust": 0.47
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3162,
+          "rel_l2_clean": 0.15231,
+          "rel_l2_noisy": 0.16141,
+          "trust": 0.418
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4777,
+          "rel_l2_clean": 0.09125,
+          "rel_l2_noisy": 0.09365,
+          "trust": 0.641
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3319,
+          "rel_l2_clean": 0.08431,
+          "rel_l2_noisy": 0.09039,
+          "trust": 0.489
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4044,
+          "rel_l2_clean": 0.16926,
+          "rel_l2_noisy": 0.17656,
+          "trust": 0.612
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3863,
+          "rel_l2_clean": 0.13665,
+          "rel_l2_noisy": 0.14421,
+          "trust": 0.406
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "wavelet",
+            "residual_conv"
+          ],
+          "composite": 0.1848,
+          "rel_l2_clean": 0.55353,
+          "rel_l2_noisy": 0.8886,
+          "trust": 0.45
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.317,
+          "rel_l2_clean": 0.0992,
+          "rel_l2_noisy": 0.09618,
+          "trust": 0.58
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.5106,
+          "rel_l2_clean": 0.11569,
+          "rel_l2_noisy": 0.12297,
+          "trust": 0.579
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.1667,
+          "rel_l2_clean": 0.66013,
+          "rel_l2_noisy": 1.0262,
+          "trust": 0.377
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.2026,
+          "rel_l2_clean": 0.62987,
+          "rel_l2_noisy": 0.77105,
+          "trust": 0.355
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.1572,
+          "rel_l2_clean": 0.6438,
+          "rel_l2_noisy": 0.73485,
+          "trust": 0.5
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4198,
+          "rel_l2_clean": 0.10129,
+          "rel_l2_noisy": 0.10803,
+          "trust": 0.616
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.4333,
+          "rel_l2_clean": 0.22197,
+          "rel_l2_noisy": 0.22655,
+          "trust": 0.456
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.1355,
+          "rel_l2_clean": 0.7773,
+          "rel_l2_noisy": 0.78024,
+          "trust": 0.346
+        }
+      ]
+    },
+    {
+      "iteration": 14,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "residual_conv"
+          ],
+          "composite": 0.4601,
+          "rel_l2_clean": 0.0877,
+          "rel_l2_noisy": 0.09747,
+          "trust": 0.569
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.4461,
+          "rel_l2_clean": 0.08201,
+          "rel_l2_noisy": 0.08911,
+          "trust": 0.541
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3894,
+          "rel_l2_clean": 0.13094,
+          "rel_l2_noisy": 0.14002,
+          "trust": 0.48
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4238,
+          "rel_l2_clean": 0.09812,
+          "rel_l2_noisy": 0.10053,
+          "trust": 0.655
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.2857,
+          "rel_l2_clean": 0.08332,
+          "rel_l2_noisy": 0.09205,
+          "trust": 0.401
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.3304,
+          "rel_l2_clean": 0.18113,
+          "rel_l2_noisy": 0.18456,
+          "trust": 0.577
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2631,
+          "rel_l2_clean": 0.1308,
+          "rel_l2_noisy": 0.13318,
+          "trust": 0.342
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "wavelet",
+            "residual_conv"
+          ],
+          "composite": 0.2034,
+          "rel_l2_clean": 0.55523,
+          "rel_l2_noisy": 0.98402,
+          "trust": 0.417
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.5176,
+          "rel_l2_clean": 0.09605,
+          "rel_l2_noisy": 0.09736,
+          "trust": 0.707
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3149,
+          "rel_l2_clean": 0.12096,
+          "rel_l2_noisy": 0.12714,
+          "trust": 0.513
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.1576,
+          "rel_l2_clean": 0.6653,
+          "rel_l2_noisy": 1.05422,
+          "trust": 0.337
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random",
+          "blocks": [
+            "residual_conv",
+            "wavelet",
+            "branch_trunk"
+          ],
+          "composite": 0.2123,
+          "rel_l2_clean": 0.61659,
+          "rel_l2_noisy": 0.70401,
+          "trust": 0.363
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.2096,
+          "rel_l2_clean": 0.10862,
+          "rel_l2_noisy": 0.11277,
+          "trust": 0.349
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3468,
+          "rel_l2_clean": 0.11507,
+          "rel_l2_noisy": 0.1148,
+          "trust": 0.565
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3365,
+          "rel_l2_clean": 0.14852,
+          "rel_l2_noisy": 0.15092,
+          "trust": 0.464
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "transformer",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.1544,
+          "rel_l2_clean": 0.77744,
+          "rel_l2_noisy": 0.77833,
+          "trust": 0.319
+        }
+      ]
+    },
+    {
+      "iteration": 15,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.5048,
+          "rel_l2_clean": 0.08199,
+          "rel_l2_noisy": 0.08523,
+          "trust": 0.668
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3878,
+          "rel_l2_clean": 0.07874,
+          "rel_l2_noisy": 0.08009,
+          "trust": 0.527
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4627,
+          "rel_l2_clean": 0.13358,
+          "rel_l2_noisy": 0.14049,
+          "trust": 0.597
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4332,
+          "rel_l2_clean": 0.09514,
+          "rel_l2_noisy": 0.09833,
+          "trust": 0.67
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4075,
+          "rel_l2_clean": 0.0845,
+          "rel_l2_noisy": 0.08827,
+          "trust": 0.459
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.2265,
+          "rel_l2_clean": 0.2016,
+          "rel_l2_noisy": 0.21118,
+          "trust": 0.461
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.2987,
+          "rel_l2_clean": 0.1984,
+          "rel_l2_noisy": 0.20214,
+          "trust": 0.361
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "branch_trunk"
+          ],
+          "composite": 0.404,
+          "rel_l2_clean": 0.52757,
+          "rel_l2_noisy": 0.90845,
+          "trust": 0.593
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4679,
+          "rel_l2_clean": 0.09287,
+          "rel_l2_noisy": 0.09298,
+          "trust": 0.74
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.5373,
+          "rel_l2_clean": 0.07835,
+          "rel_l2_noisy": 0.08102,
+          "trust": 0.66
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "branch_trunk"
+          ],
+          "composite": 0.1793,
+          "rel_l2_clean": 0.66834,
+          "rel_l2_noisy": 1.09767,
+          "trust": 0.324
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.1208,
+          "rel_l2_clean": 0.6971,
+          "rel_l2_noisy": 0.7418,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.3306,
+          "rel_l2_clean": 0.51765,
+          "rel_l2_noisy": 0.82207,
+          "trust": 0.476
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "residual_conv",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4073,
+          "rel_l2_clean": 0.11742,
+          "rel_l2_noisy": 0.12352,
+          "trust": 0.591
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4953,
+          "rel_l2_clean": 0.09925,
+          "rel_l2_noisy": 0.10197,
+          "trust": 0.603
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.1389,
+          "rel_l2_clean": 0.77307,
+          "rel_l2_noisy": 0.77673,
+          "trust": 0.4
+        }
+      ]
+    },
+    {
+      "iteration": 16,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.5259,
+          "rel_l2_clean": 0.08615,
+          "rel_l2_noisy": 0.09132,
+          "trust": 0.768
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.2914,
+          "rel_l2_clean": 0.0824,
+          "rel_l2_noisy": 0.08964,
+          "trust": 0.429
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4545,
+          "rel_l2_clean": 0.10053,
+          "rel_l2_noisy": 0.10842,
+          "trust": 0.66
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3873,
+          "rel_l2_clean": 0.09848,
+          "rel_l2_noisy": 0.098,
+          "trust": 0.64
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.2825,
+          "rel_l2_clean": 0.0807,
+          "rel_l2_noisy": 0.08661,
+          "trust": 0.377
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3171,
+          "rel_l2_clean": 0.20505,
+          "rel_l2_noisy": 0.21193,
+          "trust": 0.475
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.373,
+          "rel_l2_clean": 0.13815,
+          "rel_l2_noisy": 0.14117,
+          "trust": 0.434
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.2822,
+          "rel_l2_clean": 0.50869,
+          "rel_l2_noisy": 0.84696,
+          "trust": 0.593
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4701,
+          "rel_l2_clean": 0.08495,
+          "rel_l2_noisy": 0.0909,
+          "trust": 0.766
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3555,
+          "rel_l2_clean": 0.07861,
+          "rel_l2_noisy": 0.0875,
+          "trust": 0.589
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.1382,
+          "rel_l2_clean": 0.68957,
+          "rel_l2_noisy": 1.01016,
+          "trust": 0.4
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3626,
+          "rel_l2_clean": 0.07314,
+          "rel_l2_noisy": 0.07846,
+          "trust": 0.321
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "fourier",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.5026,
+          "rel_l2_clean": 0.10713,
+          "rel_l2_noisy": 0.11161,
+          "trust": 0.626
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3983,
+          "rel_l2_clean": 0.10017,
+          "rel_l2_noisy": 0.10742,
+          "trust": 0.592
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3276,
+          "rel_l2_clean": 0.09501,
+          "rel_l2_noisy": 0.09843,
+          "trust": 0.534
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.3848,
+          "rel_l2_clean": 0.11551,
+          "rel_l2_noisy": 0.12105,
+          "trust": 0.376
+        }
+      ]
+    },
+    {
+      "iteration": 17,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.2852,
+          "rel_l2_clean": 0.08974,
+          "rel_l2_noisy": 0.09372,
+          "trust": 0.598
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.2933,
+          "rel_l2_clean": 0.08325,
+          "rel_l2_noisy": 0.08828,
+          "trust": 0.358
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.4446,
+          "rel_l2_clean": 0.20195,
+          "rel_l2_noisy": 0.21129,
+          "trust": 0.737
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4572,
+          "rel_l2_clean": 0.0979,
+          "rel_l2_noisy": 0.10176,
+          "trust": 0.685
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.5292,
+          "rel_l2_clean": 0.08419,
+          "rel_l2_noisy": 0.09178,
+          "trust": 0.564
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3334,
+          "rel_l2_clean": 0.20555,
+          "rel_l2_noisy": 0.21209,
+          "trust": 0.499
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "wavelet",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.3829,
+          "rel_l2_clean": 0.11507,
+          "rel_l2_noisy": 0.11934,
+          "trust": 0.478
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "wavelet",
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.1868,
+          "rel_l2_clean": 0.50025,
+          "rel_l2_noisy": 0.77069,
+          "trust": 0.496
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.426,
+          "rel_l2_clean": 0.07836,
+          "rel_l2_noisy": 0.08083,
+          "trust": 0.726
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.462,
+          "rel_l2_clean": 0.08261,
+          "rel_l2_noisy": 0.08729,
+          "trust": 0.647
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3896,
+          "rel_l2_clean": 0.11041,
+          "rel_l2_noisy": 0.11427,
+          "trust": 0.368
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.3433,
+          "rel_l2_clean": 0.09467,
+          "rel_l2_noisy": 0.09462,
+          "trust": 0.341
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "fourier",
+            "branch_trunk",
+            "branch_trunk"
+          ],
+          "composite": 0.2638,
+          "rel_l2_clean": 0.11088,
+          "rel_l2_noisy": 0.1192,
+          "trust": 0.494
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.458,
+          "rel_l2_clean": 0.1019,
+          "rel_l2_noisy": 0.10863,
+          "trust": 0.648
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3927,
+          "rel_l2_clean": 0.20478,
+          "rel_l2_noisy": 0.20641,
+          "trust": 0.598
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.3941,
+          "rel_l2_clean": 0.10067,
+          "rel_l2_noisy": 0.10684,
+          "trust": 0.436
+        }
+      ]
+    },
+    {
+      "iteration": 18,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.378,
+          "rel_l2_clean": 0.08213,
+          "rel_l2_noisy": 0.08801,
+          "trust": 0.569
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.5346,
+          "rel_l2_clean": 0.07869,
+          "rel_l2_noisy": 0.08158,
+          "trust": 0.551
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3556,
+          "rel_l2_clean": 0.21221,
+          "rel_l2_noisy": 0.21701,
+          "trust": 0.706
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "branch_trunk"
+          ],
+          "composite": 0.4716,
+          "rel_l2_clean": 0.10472,
+          "rel_l2_noisy": 0.10875,
+          "trust": 0.736
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.2874,
+          "rel_l2_clean": 0.07064,
+          "rel_l2_noisy": 0.07427,
+          "trust": 0.444
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4169,
+          "rel_l2_clean": 0.16727,
+          "rel_l2_noisy": 0.16698,
+          "trust": 0.584
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "wavelet",
+            "branch_trunk",
+            "attention"
+          ],
+          "composite": 0.1583,
+          "rel_l2_clean": 0.56969,
+          "rel_l2_noisy": 0.74213,
+          "trust": 0.396
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.4245,
+          "rel_l2_clean": 0.11402,
+          "rel_l2_noisy": 0.11985,
+          "trust": 0.565
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4,
+          "rel_l2_clean": 0.06863,
+          "rel_l2_noisy": 0.07584,
+          "trust": 0.661
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4707,
+          "rel_l2_clean": 0.08565,
+          "rel_l2_noisy": 0.08879,
+          "trust": 0.7
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3565,
+          "rel_l2_clean": 0.1163,
+          "rel_l2_noisy": 0.11611,
+          "trust": 0.405
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.2593,
+          "rel_l2_clean": 0.11335,
+          "rel_l2_noisy": 0.12481,
+          "trust": 0.286
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.2156,
+          "rel_l2_clean": 0.096,
+          "rel_l2_noisy": 0.09805,
+          "trust": 0.345
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.421,
+          "rel_l2_clean": 0.09462,
+          "rel_l2_noisy": 0.09935,
+          "trust": 0.645
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.1838,
+          "rel_l2_clean": 0.15382,
+          "rel_l2_noisy": 0.15856,
+          "trust": 0.419
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.3239,
+          "rel_l2_clean": 0.08673,
+          "rel_l2_noisy": 0.091,
+          "trust": 0.404
+        }
+      ]
+    },
+    {
+      "iteration": 19,
+      "global_best_fitness": 0.5408,
+      "global_best_lab_id": 12,
+      "global_best_blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "num_active_labs": 16,
+      "lab_summaries": [
+        {
+          "lab_id": 0,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.373,
+          "rel_l2_clean": 0.08501,
+          "rel_l2_noisy": 0.09179,
+          "trust": 0.542
+        },
+        {
+          "lab_id": 1,
+          "paradigm": "fno",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.2318,
+          "rel_l2_clean": 0.08814,
+          "rel_l2_noisy": 0.08851,
+          "trust": 0.386
+        },
+        {
+          "lab_id": 2,
+          "paradigm": "deeponet",
+          "blocks": [
+            "attention",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.127,
+          "rel_l2_clean": 0.78529,
+          "rel_l2_noisy": 0.78705,
+          "trust": 0.538
+        },
+        {
+          "lab_id": 3,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "wavelet",
+            "fourier",
+            "fourier",
+            "branch_trunk"
+          ],
+          "composite": 0.3296,
+          "rel_l2_clean": 0.10606,
+          "rel_l2_noisy": 0.1151,
+          "trust": 0.631
+        },
+        {
+          "lab_id": 4,
+          "paradigm": "transformer_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention"
+          ],
+          "composite": 0.3827,
+          "rel_l2_clean": 0.07361,
+          "rel_l2_noisy": 0.07813,
+          "trust": 0.456
+        },
+        {
+          "lab_id": 5,
+          "paradigm": "random_spawn_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.2707,
+          "rel_l2_clean": 0.09498,
+          "rel_l2_noisy": 0.1057,
+          "trust": 0.455
+        },
+        {
+          "lab_id": 6,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "branch_trunk",
+            "branch_trunk",
+            "branch_trunk",
+            "fourier",
+            "branch_trunk"
+          ],
+          "composite": 0.2413,
+          "rel_l2_clean": 0.14641,
+          "rel_l2_noisy": 0.15426,
+          "trust": 0.323
+        },
+        {
+          "lab_id": 7,
+          "paradigm": "hybrid_fno_attn",
+          "blocks": [
+            "fourier",
+            "residual_conv",
+            "attention",
+            "branch_trunk"
+          ],
+          "composite": 0.3456,
+          "rel_l2_clean": 0.117,
+          "rel_l2_noisy": 0.12204,
+          "trust": 0.534
+        },
+        {
+          "lab_id": 8,
+          "paradigm": "random",
+          "blocks": [
+            "attention",
+            "fourier",
+            "fourier",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "attention"
+          ],
+          "composite": 0.4014,
+          "rel_l2_clean": 0.0724,
+          "rel_l2_noisy": 0.07976,
+          "trust": 0.625
+        },
+        {
+          "lab_id": 9,
+          "paradigm": "random",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "fourier"
+          ],
+          "composite": 0.4633,
+          "rel_l2_clean": 0.09353,
+          "rel_l2_noisy": 0.09634,
+          "trust": 0.734
+        },
+        {
+          "lab_id": 10,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "attention",
+            "residual_conv",
+            "fourier",
+            "attention",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.3393,
+          "rel_l2_clean": 0.14853,
+          "rel_l2_noisy": 0.14877,
+          "trust": 0.423
+        },
+        {
+          "lab_id": 11,
+          "paradigm": "random_spawn",
+          "blocks": [
+            "fourier",
+            "branch_trunk",
+            "attention",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.3701,
+          "rel_l2_clean": 0.0864,
+          "rel_l2_noisy": 0.09099,
+          "trust": 0.344
+        },
+        {
+          "lab_id": 12,
+          "paradigm": "fno",
+          "blocks": [
+            "residual_conv",
+            "attention",
+            "fourier",
+            "branch_trunk",
+            "fourier"
+          ],
+          "composite": 0.4197,
+          "rel_l2_clean": 0.09741,
+          "rel_l2_noisy": 0.10402,
+          "trust": 0.447
+        },
+        {
+          "lab_id": 13,
+          "paradigm": "random_spawn_spawn_spawn",
+          "blocks": [
+            "branch_trunk",
+            "fourier",
+            "fourier",
+            "fourier",
+            "fourier"
+          ],
+          "composite": 0.4996,
+          "rel_l2_clean": 0.07548,
+          "rel_l2_noisy": 0.08045,
+          "trust": 0.707
+        },
+        {
+          "lab_id": 14,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "attention",
+            "fourier",
+            "fourier",
+            "residual_conv"
+          ],
+          "composite": 0.3652,
+          "rel_l2_clean": 0.11112,
+          "rel_l2_noisy": 0.11118,
+          "trust": 0.451
+        },
+        {
+          "lab_id": 15,
+          "paradigm": "fno_spawn",
+          "blocks": [
+            "fourier",
+            "fourier",
+            "fourier",
+            "attention",
+            "wavelet",
+            "attention",
+            "residual_conv",
+            "attention"
+          ],
+          "composite": 0.5164,
+          "rel_l2_clean": 0.10134,
+          "rel_l2_noisy": 0.10727,
+          "trust": 0.583
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-06-23 15:22:57"
+}

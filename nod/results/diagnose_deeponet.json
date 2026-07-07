@@ -1,0 +1,80 @@
+{
+  "seed": 42,
+  "train_n": 512,
+  "test_n": 64,
+  "res": 32,
+  "rows": [
+    {
+      "rel_l2": 0.9242514371871948,
+      "params": 323201,
+      "train_time_s": 2.9,
+      "first_loss": 20.31193,
+      "last_loss": 17.73341,
+      "label": "baseline (current)",
+      "epochs": 15,
+      "normalize": false,
+      "latent": 128,
+      "trunk_act": "tanh"
+    },
+    {
+      "rel_l2": 0.924945056438446,
+      "params": 323201,
+      "train_time_s": 2.1,
+      "first_loss": 0.99446,
+      "last_loss": 0.85591,
+      "label": "+norm",
+      "epochs": 15,
+      "normalize": true,
+      "latent": 128,
+      "trunk_act": "tanh"
+    },
+    {
+      "rel_l2": 0.778711199760437,
+      "params": 323201,
+      "train_time_s": 2.1,
+      "first_loss": 0.98526,
+      "last_loss": 0.60809,
+      "label": "+norm +gelu",
+      "epochs": 15,
+      "normalize": true,
+      "latent": 128,
+      "trunk_act": "gelu"
+    },
+    {
+      "rel_l2": 0.4735663831233978,
+      "params": 323201,
+      "train_time_s": 14.2,
+      "first_loss": 0.98526,
+      "last_loss": 0.22432,
+      "label": "+norm +gelu +100ep",
+      "epochs": 100,
+      "normalize": true,
+      "latent": 128,
+      "trunk_act": "gelu"
+    },
+    {
+      "rel_l2": 0.22588564455509186,
+      "params": 537217,
+      "train_time_s": 14.3,
+      "first_loss": 0.99069,
+      "last_loss": 0.05103,
+      "label": "+norm +gelu +256lat",
+      "epochs": 100,
+      "normalize": true,
+      "latent": 256,
+      "trunk_act": "gelu"
+    },
+    {
+      "rel_l2": 0.07370846718549728,
+      "params": 537217,
+      "train_time_s": 57.4,
+      "first_loss": 0.99069,
+      "last_loss": 0.00543,
+      "label": "+norm +gelu +400ep",
+      "epochs": 400,
+      "normalize": true,
+      "latent": 256,
+      "trunk_act": "gelu"
+    }
+  ]
+}

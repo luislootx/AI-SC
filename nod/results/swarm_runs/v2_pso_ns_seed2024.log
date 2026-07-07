@@ -1,0 +1,1192 @@
+
+
+===== launch 2026-06-23 18:23:36 (model=gemma4:e4b) =====
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              PAPER-GRADE SWARM (resume-safe)  preset=paper-grade             ║
+║                   pde=ns  tag=v2_pso_ns_seed2024  seed=2024                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+  Config: 16 labs × 20 iter, res=32, train=512, epochs/iter=50, device=cuda
+  Agentic: OFF (planner=False, reviewer=False, backend=ollama)
+  Run dir: C:\Users\luisl\repos\AI-SC\nod\results\swarm_runs\v2_pso_ns_seed2024
+  Generating Navier-Stokes data...
+  Train: (512, 1, 32, 32), Test: (128, 1, 32, 32)
+
+  Cached data to C:\Users\luisl\repos\AI-SC\nod\results\swarm_runs\v2_pso_ns_seed2024\data.pt
+  No checkpoint found — initializing fresh swarm
+
+================================================================================
+  INITIALIZING AI SCIENTIFIC COMMUNITY
+================================================================================
+  Lab 0 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 1 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 2 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 3 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 4 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 5 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 6 (wavelet): blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet'], ch=48, modes=8
+  Lab 7 (hybrid_fno_attn): blocks=['fourier', 'attention', 'fourier', 'attention'], ch=64, modes=10
+  Lab 8 (random): blocks=['residual_conv', 'attention', 'wavelet'], ch=32, modes=8
+  Lab 9 (random): blocks=['branch_trunk', 'branch_trunk', 'attention', 'branch_trunk', 'wavelet'], ch=96, modes=8
+  Lab 10 (random): blocks=['branch_trunk', 'residual_conv'], ch=64, modes=12
+  Lab 11 (random): blocks=['wavelet', 'branch_trunk', 'attention'], ch=48, modes=8
+  Lab 12 (wavelet): blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet'], ch=48, modes=8
+  Lab 13 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 14 (random): blocks=['branch_trunk', 'attention', 'residual_conv'], ch=32, modes=4
+  Lab 15 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+
+  Initialized 16 virtual labs across 6 paradigms
+
+================================================================================
+  BEGINNING SWARM ITERATIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 1/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,739,585 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 4,739,585 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 133,809 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 3: 300,225 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 104,769 params, blocks=['attention', 'attention', 'attention']
+    Lab 5: 104,769 params, blocks=['attention', 'attention', 'attention']
+    Lab 6: 256,801 params, blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet']
+    Lab 7: 1,841,281 params, blocks=['fourier', 'attention', 'fourier', 'attention']
+    Lab 8: 48,769 params, blocks=['residual_conv', 'attention', 'wavelet']
+    Lab 9: 370,705 params, blocks=['branch_trunk', 'branch_trunk', 'attention', 'branch_trunk']
+    Lab 10: 1,272,401 params, blocks=['branch_trunk', 'fourier']
+    Lab 11: 69,281 params, blocks=['branch_trunk', 'attention']
+    Lab 12: 229,537 params, blocks=['wavelet', 'attention', 'wavelet', 'wavelet']
+    Lab 13: 215,921 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'branch_trunk']
+    Lab 14: 39,537 params, blocks=['branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 104,769 params, blocks=['attention', 'attention', 'attention']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 0 (composite=0.7751)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  0 (fno               ) | composite=0.7751 | trust=1.000 | [fourier+fourier+fourier+fourier]
+  #2  Lab  6 (wavelet           ) | composite=0.6409 | trust=0.645 | [wavelet+wavelet+wavelet+wavelet]
+  #3  Lab 13 (deeponet          ) | composite=0.6095 | trust=0.821 | [branch_trunk+wavelet+branch_trunk+branch_trunk]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.5148 | trust=0.328 | [fourier+attention+fourier+attention]
+  #5  Lab  1 (fno               ) | composite=0.5134 | trust=0.349 | [fourier+fourier+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: branch_trunk=30% attention=30% fourier=20% wavelet=17% residual_conv=4% 
+  Architectural diversity index: 0.3713 (0=homogeneous, 1=maximally diverse)
+  Detected 5 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1], avg composite=0.6442
+    Camp 'branch_trunk-dominant': Labs [2, 3, 9, 13], avg composite=0.1761
+    Camp 'attention-dominant': Labs [4, 5, 15], avg composite=0.0244
+    Camp 'wavelet-dominant': Labs [6, 12], avg composite=0.5514
+    Camp 'hybrid-mixed': Labs [7, 8, 10, 11, 14], avg composite=0.1406
+  ✓ checkpoint saved (iteration 1/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 2/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,862,849 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 4,739,585 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 133,809 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 3: 300,225 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 186,945 params, blocks=['attention', 'attention', 'attention']
+    Lab 5: 104,769 params, blocks=['attention', 'attention', 'attention']
+    Lab 6: 256,801 params, blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet']
+    Lab 7: 1,128,193 params, blocks=['fourier', 'attention', 'fourier', 'attention']
+    Lab 8: 193,793 params, blocks=['residual_conv', 'attention', 'wavelet']
+    Lab 9: 370,705 params, blocks=['branch_trunk', 'branch_trunk', 'attention', 'branch_trunk']
+    Lab 10: 1,272,401 params, blocks=['branch_trunk', 'fourier']
+    Lab 11: 69,281 params, blocks=['branch_trunk', 'attention']
+    Lab 12: 813,505 params, blocks=['wavelet', 'attention', 'fourier', 'wavelet']
+    Lab 12: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 14]' is invalid for input of size 2801664
+    Lab 13: 122,785 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'branch_trunk']
+    Lab 14: 144,502 params, blocks=['branch_trunk', 'residual_conv', 'residual_conv']
+    Lab 15: 45,281 params, blocks=['attention', 'attention', 'residual_conv', 'attention']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 10 (random            ) | composite=0.6996 | trust=0.653 | [branch_trunk+fourier]
+  #2  Lab  1 (fno               ) | composite=0.6290 | trust=0.596 | [fourier+fourier+fourier+fourier]
+  #3  Lab  8 (random            ) | composite=0.6218 | trust=0.768 | [residual_conv+attention+wavelet]
+  #4  Lab  6 (wavelet           ) | composite=0.5717 | trust=0.514 | [wavelet+wavelet+wavelet+wavelet]
+  #5  Lab 13 (deeponet          ) | composite=0.0613 | trust=0.837 | [branch_trunk+wavelet+branch_trunk+branch_trunk]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: branch_trunk=29% attention=27% fourier=22% wavelet=15% residual_conv=7% 
+  Architectural diversity index: 0.3915 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1], avg composite=0.3344
+    Camp 'branch_trunk-dominant': Labs [2, 3, 9, 13], avg composite=0.0428
+    Camp 'attention-dominant': Labs [4, 5, 15], avg composite=0.0444
+    Camp 'hybrid-mixed': Labs [7, 8, 10, 11, 12], avg composite=0.2833
+  ✓ checkpoint saved (iteration 2/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 3/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,862,849 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 2,666,113 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 90,657 params, blocks=['branch_trunk', 'branch_trunk']
+    Lab 3: 300,225 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 403,841 params, blocks=['attention', 'attention', 'attention', 'fourier']
+    Lab 5: 104,769 params, blocks=['attention', 'attention', 'attention']
+    Lab 6: 256,801 params, blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet']
+    Lab 7: 673,601 params, blocks=['fourier', 'attention', 'residual_conv', 'attention']
+    Lab 8: 227,265 params, blocks=['residual_conv', 'attention', 'attention', 'wavelet']
+    Lab 9: 370,705 params, blocks=['branch_trunk', 'branch_trunk', 'attention', 'branch_trunk']
+    Lab 10: 4,248,065 params, blocks=['fourier', 'fourier']
+    Lab 11: 69,281 params, blocks=['branch_trunk', 'attention']
+    Lab 12: 218,995 params, blocks=['wavelet', 'attention', 'residual_conv', 'wavelet']
+    Lab 12: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 14]' is invalid for input of size 2801664
+    Lab 13: 122,785 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'branch_trunk']
+    Lab 14: 195,217 params, blocks=['branch_trunk', 'residual_conv', 'residual_conv']
+    Lab 15: 45,281 params, blocks=['attention', 'attention', 'residual_conv', 'attention']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  0 (fno               ) | composite=0.6626 | trust=0.701 | [fourier+fourier+fourier+fourier]
+  #2  Lab 10 (random            ) | composite=0.5271 | trust=0.514 | [fourier+fourier]
+  #3  Lab  1 (fno               ) | composite=0.5149 | trust=0.484 | [fourier+fourier+fourier+fourier]
+  #4  Lab  6 (wavelet           ) | composite=0.0645 | trust=0.736 | [wavelet+wavelet+wavelet+wavelet]
+  #5  Lab 13 (deeponet          ) | composite=0.0554 | trust=0.779 | [branch_trunk+wavelet+branch_trunk+branch_trunk]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: attention=29% branch_trunk=25% fourier=21% wavelet=14% residual_conv=11% 
+  Architectural diversity index: 0.4049 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 10], avg composite=0.5682
+    Camp 'branch_trunk-dominant': Labs [2, 3, 9, 13], avg composite=0.0397
+    Camp 'attention-dominant': Labs [4, 5, 15], avg composite=0.0419
+    Camp 'hybrid-mixed': Labs [7, 8, 11, 12], avg composite=0.0278
+  ✓ checkpoint saved (iteration 3/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 4/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,862,849 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 2,666,113 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 90,657 params, blocks=['branch_trunk', 'branch_trunk']
+    Lab 3: 300,225 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 1,288,577 params, blocks=['attention', 'attention', 'attention', 'fourier']
+    Lab 5: 1,255,105 params, blocks=['fourier', 'attention', 'attention']
+    Lab 6: 235,265 params, blocks=['wavelet', 'branch_trunk', 'wavelet', 'wavelet']
+    Lab 7: 673,601 params, blocks=['residual_conv', 'fourier', 'attention', 'attention']
+    Lab 8: 236,945 params, blocks=['residual_conv', 'branch_trunk', 'attention', 'wavelet']
+    Lab 9: 370,705 params, blocks=['branch_trunk', 'branch_trunk', 'attention', 'branch_trunk']
+    Lab 10: 2,781,569 params, blocks=['fourier', 'fourier']
+    Lab 11: 69,281 params, blocks=['branch_trunk', 'attention']
+    Lab 12: 155,473 params, blocks=['wavelet', 'attention', 'residual_conv', 'wavelet']
+    Lab 13: 139,665 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 14: 253,546 params, blocks=['branch_trunk', 'residual_conv', 'residual_conv']
+    Lab 15: 26,785 params, blocks=['attention', 'attention', 'attention']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  1 (fno               ) | composite=0.6246 | trust=0.644 | [fourier+fourier+fourier+fourier]
+  #2  Lab 10 (random            ) | composite=0.5204 | trust=0.458 | [fourier+fourier]
+  #3  Lab  0 (fno               ) | composite=0.3792 | trust=0.424 | [fourier+fourier+fourier+fourier]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.0548 | trust=0.632 | [residual_conv+fourier+attention+attention]
+  #5  Lab 11 (random            ) | composite=0.0534 | trust=0.735 | [branch_trunk+attention]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: branch_trunk=27% attention=25% fourier=24% wavelet=13% residual_conv=11% 
+  Architectural diversity index: 0.3990 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 10], avg composite=0.5080
+    Camp 'branch_trunk-dominant': Labs [2, 3, 9], avg composite=0.0321
+    Camp 'attention-dominant': Labs [4, 5, 15], avg composite=0.0414
+    Camp 'hybrid-mixed': Labs [7, 8, 11, 12, 13], avg composite=0.0465
+  ✓ checkpoint saved (iteration 4/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 5/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,862,849 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 2,041,777 params, blocks=['fourier', 'fourier', 'fourier', 'residual_conv']
+    Lab 2: 90,657 params, blocks=['branch_trunk', 'branch_trunk']
+    Lab 3: 176,961 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 138,241 params, blocks=['attention', 'attention', 'attention', 'attention']
+    Lab 5: 1,337,281 params, blocks=['fourier', 'attention', 'attention']
+    Lab 6: 165,857 params, blocks=['wavelet', 'branch_trunk', 'wavelet', 'wavelet']
+    Lab 7: 145,153 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 8: 227,265 params, blocks=['residual_conv', 'attention', 'attention', 'wavelet']
+    Lab 9: 295,921 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 10: 1,995,137 params, blocks=['fourier', 'fourier']
+    Lab 11: 31,345 params, blocks=['branch_trunk', 'attention']
+    Lab 12: 1,016,683 params, blocks=['wavelet', 'fourier', 'residual_conv', 'wavelet']
+    Lab 13: 320,065 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 14: 1,471,418 params, blocks=['branch_trunk', 'residual_conv', 'fourier']
+    Lab 15: 613,794 params, blocks=['fourier', 'attention', 'attention']
+    Lab 15: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 13]' is invalid for input of size 2605056
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  0 (fno               ) | composite=0.7318 | trust=0.574 | [fourier+fourier+fourier+fourier]
+  #2  Lab 10 (random            ) | composite=0.6028 | trust=0.521 | [fourier+fourier]
+  #3  Lab 14 (random            ) | composite=0.5546 | trust=0.400 | [branch_trunk+residual_conv+fourier]
+  #4  Lab  6 (wavelet           ) | composite=0.5011 | trust=0.545 | [wavelet+branch_trunk+wavelet+wavelet]
+  #5  Lab 13 (deeponet          ) | composite=0.0536 | trust=0.611 | [branch_trunk+wavelet+branch_trunk+residual_conv]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: branch_trunk=26% fourier=25% attention=25% wavelet=13% residual_conv=11% 
+  Architectural diversity index: 0.3742 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 10], avg composite=0.4595
+    Camp 'branch_trunk-dominant': Labs [2, 3, 9], avg composite=0.0294
+    Camp 'attention-dominant': Labs [4, 5, 7, 15], avg composite=0.0269
+    Camp 'hybrid-mixed': Labs [8, 11, 12, 13, 14], avg composite=0.1476
+  ✓ checkpoint saved (iteration 5/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 6/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 10,940,737 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 4,739,585 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 90,657 params, blocks=['branch_trunk', 'branch_trunk']
+    Lab 3: 391,361 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 186,945 params, blocks=['attention', 'attention', 'attention']
+    Lab 5: 1,763,265 params, blocks=['fourier', 'attention', 'attention']
+    Lab 6: 209,591 params, blocks=['wavelet', 'branch_trunk', 'wavelet', 'wavelet']
+    Lab 7: 577,025 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 8: 227,265 params, blocks=['residual_conv', 'attention', 'attention', 'wavelet']
+    Lab 9: 9,656,289 params, blocks=['fourier', 'branch_trunk', 'branch_trunk', 'fourier']
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 247,505 params, blocks=['fourier', 'branch_trunk', 'attention']
+    Lab 12: 1,070,565 params, blocks=['residual_conv', 'fourier', 'residual_conv', 'residual_conv', 'wavelet']
+    Lab 13: 257,579 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'branch_trunk']
+    Lab 14: 103,326 params, blocks=['branch_trunk', 'residual_conv']
+    Lab 15: 1,155,401 params, blocks=['fourier', 'attention', 'fourier']
+    Lab 15: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 13]' is invalid for input of size 2605056
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 15 respawned from Lab 6 (paradigm: wavelet_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  0 (fno               ) | composite=0.6790 | trust=0.719 | [fourier+fourier+fourier+fourier]
+  #2  Lab  6 (wavelet           ) | composite=0.6429 | trust=0.660 | [wavelet+branch_trunk+wavelet+wavelet]
+  #3  Lab 10 (random            ) | composite=0.5623 | trust=0.548 | [fourier+fourier]
+  #4  Lab  1 (fno               ) | composite=0.4969 | trust=0.467 | [fourier+fourier+fourier+fourier]
+  #5  Lab 14 (random            ) | composite=0.4917 | trust=0.407 | [branch_trunk+residual_conv]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=27% branch_trunk=25% attention=18% wavelet=18% residual_conv=11% 
+  Architectural diversity index: 0.4258 (0=homogeneous, 1=maximally diverse)
+  Detected 5 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 10], avg composite=0.5794
+    Camp 'branch_trunk-dominant': Labs [2, 3, 13], avg composite=0.0339
+    Camp 'attention-dominant': Labs [4, 5, 7], avg composite=0.0361
+    Camp 'wavelet-dominant': Labs [6, 15], avg composite=0.3228
+    Camp 'hybrid-mixed': Labs [8, 9, 11, 14], avg composite=0.2587
+  ✓ checkpoint saved (iteration 6/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 7/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 931,001 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 3,598,929 params, blocks=['fourier', 'fourier', 'fourier', 'branch_trunk']
+    Lab 2: 131,745 params, blocks=['branch_trunk', 'branch_trunk']
+    Lab 3: 486,801 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 186,945 params, blocks=['attention', 'attention', 'attention']
+    Lab 5: 358,785 params, blocks=['wavelet', 'attention', 'wavelet', 'attention']
+    Lab 6: 244,497 params, blocks=['wavelet', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 577,025 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 8: 227,265 params, blocks=['residual_conv', 'attention', 'attention', 'wavelet']
+    Lab 9: 3,730,406 params, blocks=['fourier', 'branch_trunk', 'branch_trunk', 'fourier']
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 1,839,592 params, blocks=['fourier', 'attention', 'attention']
+    Lab 11: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 20]' is invalid for input of size 3981312
+    Lab 12: 313,723 params, blocks=['residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'wavelet']
+    Lab 13: 154,651 params, blocks=['branch_trunk', 'wavelet', 'branch_trunk', 'branch_trunk']
+    Lab 14: 96,646 params, blocks=['residual_conv', 'residual_conv']
+    Lab 15: 182,737 params, blocks=['wavelet', 'wavelet', 'wavelet', 'residual_conv']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  6 (wavelet           ) | composite=0.6957 | trust=0.771 | [wavelet+fourier+wavelet+wavelet]
+  #2  Lab 10 (random            ) | composite=0.6303 | trust=0.628 | [fourier+fourier]
+  #3  Lab 15 (wavelet_spawn     ) | composite=0.5371 | trust=0.269 | [wavelet+wavelet+wavelet+residual_conv]
+  #4  Lab  1 (fno               ) | composite=0.5175 | trust=0.417 | [fourier+fourier+fourier+branch_trunk]
+  #5  Lab  9 (random            ) | composite=0.4884 | trust=0.357 | [fourier+branch_trunk+branch_trunk+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=23% branch_trunk=23% attention=19% wavelet=19% residual_conv=16% 
+  Architectural diversity index: 0.4378 (0=homogeneous, 1=maximally diverse)
+  Detected 6 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 10], avg composite=0.5272
+    Camp 'branch_trunk-dominant': Labs [2, 3, 13], avg composite=0.0352
+    Camp 'attention-dominant': Labs [4, 7, 11], avg composite=0.0265
+    Camp 'hybrid-mixed': Labs [5, 8, 9], avg composite=0.1915
+    Camp 'wavelet-dominant': Labs [6, 15], avg composite=0.6164
+    Camp 'residual_conv-dominant': Labs [12, 14], avg composite=0.0470
+  ✓ checkpoint saved (iteration 7/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 8/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 696,501 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 1: 6,508,726 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 162,449 params, blocks=['branch_trunk', 'residual_conv']
+    Lab 3: 284,562 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 186,945 params, blocks=['attention', 'attention', 'attention']
+    Lab 5: 1,811,841 params, blocks=['wavelet', 'fourier', 'wavelet', 'attention']
+    Lab 6: 642,732 params, blocks=['wavelet', 'fourier', 'fourier', 'wavelet']
+    Lab 7: 905,217 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 8: 1,411,073 params, blocks=['residual_conv', 'attention', 'attention', 'fourier', 'wavelet']
+    Lab 9: 1,792,655 params, blocks=['fourier', 'branch_trunk', 'fourier', 'fourier']
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 179,416 params, blocks=['attention', 'attention']
+    Lab 11: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 20]' is invalid for input of size 3981312
+    Lab 12: 95,713 params, blocks=['residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'wavelet']
+    Lab 13: 123,807 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'branch_trunk']
+    Lab 14: 96,646 params, blocks=['residual_conv', 'residual_conv']
+    Lab 15: 275,651 params, blocks=['wavelet', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 11 respawned from Lab 14 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 14 (random            ) | composite=0.7057 | trust=0.676 | [residual_conv+residual_conv]
+  #2  Lab 10 (random            ) | composite=0.5955 | trust=0.642 | [fourier+fourier]
+  #3  Lab 15 (wavelet_spawn     ) | composite=0.5950 | trust=0.344 | [wavelet+wavelet+residual_conv+fourier]
+  #4  Lab  9 (random            ) | composite=0.5835 | trust=0.430 | [fourier+branch_trunk+fourier+fourier]
+  #5  Lab  0 (fno               ) | composite=0.5822 | trust=0.529 | [fourier+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(4) random_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=33% residual_conv=19% branch_trunk=18% wavelet=16% attention=14% 
+  Architectural diversity index: 0.4212 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 9, 10], avg composite=0.5710
+    Camp 'hybrid-mixed': Labs [2, 5, 6, 8, 11, 13, 15], avg composite=0.2553
+    Camp 'attention-dominant': Labs [4, 7], avg composite=0.3125
+    Camp 'residual_conv-dominant': Labs [12, 14], avg composite=0.3731
+  ✓ checkpoint saved (iteration 8/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 9/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 2,132,628 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 1: 7,039,813 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 162,449 params, blocks=['branch_trunk', 'residual_conv']
+    Lab 3: 141,606 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 4: 227,329 params, blocks=['attention', 'attention', 'residual_conv']
+    Lab 5: 869,761 params, blocks=['wavelet', 'fourier', 'wavelet', 'attention']
+    Lab 6: 1,367,936 params, blocks=['wavelet', 'fourier', 'fourier', 'wavelet']
+    Lab 7: 57,345 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 8: 309,377 params, blocks=['residual_conv', 'attention', 'attention', 'wavelet', 'wavelet']
+    Lab 9: 1,206,485 params, blocks=['fourier', 'branch_trunk', 'fourier']
+    Lab 10: 3,699,073 params, blocks=['fourier', 'fourier']
+    Lab 11: 8,588,626 params, blocks=['fourier', 'residual_conv', 'fourier']
+    Lab 12: 95,713 params, blocks=['residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'wavelet']
+    Lab 13: 123,807 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'branch_trunk']
+    Lab 14: 89,230 params, blocks=['residual_conv', 'residual_conv']
+    Lab 15: 898,807 params, blocks=['residual_conv', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.7082 | trust=0.608 | [fourier+branch_trunk+fourier]
+  #2  Lab  0 (fno               ) | composite=0.6793 | trust=0.575 | [fourier+fourier+fourier]
+  #3  Lab  1 (fno               ) | composite=0.5777 | trust=0.430 | [fourier+fourier+fourier+fourier]
+  #4  Lab 14 (random            ) | composite=0.5717 | trust=0.620 | [residual_conv+residual_conv]
+  #5  Lab  4 (transformer       ) | composite=0.5590 | trust=0.473 | [attention+attention+residual_conv]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(4) random_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=32% residual_conv=23% branch_trunk=16% wavelet=16% attention=12% 
+  Architectural diversity index: 0.3903 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 9, 10, 11], avg composite=0.5991
+    Camp 'hybrid-mixed': Labs [2, 5, 6, 8, 13, 15], avg composite=0.1920
+    Camp 'attention-dominant': Labs [4, 7], avg composite=0.2974
+    Camp 'residual_conv-dominant': Labs [12, 14], avg composite=0.3079
+  ✓ checkpoint saved (iteration 9/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 10/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 6,420,331 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 1: 5,281,459 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 2: 162,449 params, blocks=['branch_trunk', 'residual_conv']
+    Lab 3: 182,135 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 3: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 12]' is invalid for input of size 2506752
+    Lab 4: 1,582,465 params, blocks=['attention', 'fourier', 'residual_conv']
+    Lab 5: 17,615,745 params, blocks=['wavelet', 'fourier', 'wavelet', 'attention', 'fourier']
+    Lab 6: 2,957,921 params, blocks=['wavelet', 'fourier', 'fourier', 'wavelet']
+    Lab 7: 14,593 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 8: 383,233 params, blocks=['residual_conv', 'attention', 'attention', 'residual_conv', 'wavelet', 'wavelet']
+    Lab 9: 6,603,521 params, blocks=['fourier', 'fourier']
+    Lab 10: 3,699,073 params, blocks=['fourier', 'fourier']
+    Lab 11: 784,129 params, blocks=['fourier', 'residual_conv', 'fourier']
+    Lab 12: 1,024,609 params, blocks=['residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'wavelet']
+    Lab 13: 282,513 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'branch_trunk']
+    Lab 14: 124,933 params, blocks=['residual_conv', 'residual_conv']
+    Lab 15: 1,271,215 params, blocks=['residual_conv', 'wavelet', 'fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 15 (wavelet_spawn     ) | composite=0.6540 | trust=0.391 | [residual_conv+wavelet+fourier+fourier]
+  #2  Lab 10 (random            ) | composite=0.6466 | trust=0.677 | [fourier+fourier]
+  #3  Lab  9 (random            ) | composite=0.6235 | trust=0.635 | [fourier+fourier]
+  #4  Lab  4 (transformer       ) | composite=0.5655 | trust=0.542 | [attention+fourier+residual_conv]
+  #5  Lab 11 (random_spawn      ) | composite=0.5504 | trust=0.309 | [fourier+residual_conv+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(4) random_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=34% residual_conv=26% wavelet=16% branch_trunk=12% attention=12% 
+  Architectural diversity index: 0.4070 (0=homogeneous, 1=maximally diverse)
+  Detected 3 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 9, 10, 11], avg composite=0.5697
+    Camp 'hybrid-mixed': Labs [2, 4, 5, 6, 8, 13, 15], avg composite=0.3393
+    Camp 'residual_conv-dominant': Labs [12, 14], avg composite=0.2540
+  ✓ checkpoint saved (iteration 10/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 11/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 6,553,631 params, blocks=['fourier', 'fourier', 'residual_conv', 'fourier']
+    Lab 1: 4,500,217 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 2: 154,833 params, blocks=['attention', 'branch_trunk', 'residual_conv']
+    Lab 3: 319,257 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'attention', 'branch_trunk', 'branch_trunk']
+    Lab 4: 517,249 params, blocks=['attention', 'fourier', 'residual_conv']
+    Lab 5: 17,521 params, blocks=['wavelet', 'fourier', 'wavelet', 'attention', 'fourier']
+    Lab 6: 872,533 params, blocks=['wavelet', 'fourier', 'fourier', 'wavelet']
+    Lab 7: 234,456 params, blocks=['residual_conv', 'attention', 'attention']
+    Lab 7: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 16]' is invalid for input of size 3194880
+    Lab 8: 431,873 params, blocks=['residual_conv', 'attention', 'wavelet', 'residual_conv', 'wavelet', 'wavelet']
+    Lab 9: 711,145 params, blocks=['fourier', 'fourier']
+    Lab 10: 2,371,969 params, blocks=['fourier', 'fourier']
+    Lab 11: 5,413,477 params, blocks=['fourier', 'residual_conv', 'fourier']
+    Lab 12: 625,651 params, blocks=['residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'residual_conv', 'wavelet']
+    Lab 13: 436,843 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'fourier', 'branch_trunk']
+    Lab 14: 2,303,491 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 703,753 params, blocks=['residual_conv', 'wavelet', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 3 respawned from Lab 14 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.7393 | trust=0.747 | [fourier+fourier]
+  #2  Lab 11 (random_spawn      ) | composite=0.7283 | trust=0.495 | [fourier+residual_conv+fourier]
+  #3  Lab 14 (random            ) | composite=0.7021 | trust=0.560 | [residual_conv+fourier]
+  #4  Lab 15 (wavelet_spawn     ) | composite=0.6417 | trust=0.476 | [residual_conv+wavelet+fourier]
+  #5  Lab  1 (fno               ) | composite=0.6227 | trust=0.483 | [fourier+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) hybrid_fno_attn(1) random(4) random_spawn(2) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=37% residual_conv=27% wavelet=18% attention=12% branch_trunk=5% 
+  Architectural diversity index: 0.3445 (0=homogeneous, 1=maximally diverse)
+  Detected 2 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 9, 10, 11], avg composite=0.5998
+    Camp 'hybrid-mixed': Labs [2, 3, 4, 5, 6, 8, 13, 14, 15], avg composite=0.2974
+  ✓ checkpoint saved (iteration 11/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 12/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 7,997,006 params, blocks=['fourier', 'fourier', 'residual_conv', 'fourier']
+    Lab 1: 3,667,756 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 2: 154,833 params, blocks=['attention', 'branch_trunk', 'residual_conv']
+    Lab 3: 96,547 params, blocks=['branch_trunk', 'attention']
+    Lab 3: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 17]' is invalid for input of size 3440640
+    Lab 4: 517,249 params, blocks=['attention', 'fourier', 'residual_conv']
+    Lab 5: 35,649 params, blocks=['wavelet', 'wavelet', 'fourier', 'wavelet', 'attention', 'fourier']
+    Lab 6: 449,121 params, blocks=['wavelet', 'fourier', 'fourier', 'wavelet']
+    Lab 7: 157,561 params, blocks=['residual_conv', 'attention']
+    Lab 7: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 16]' is invalid for input of size 3194880
+    Lab 8: 431,873 params, blocks=['residual_conv', 'attention', 'wavelet', 'residual_conv', 'wavelet', 'wavelet']
+    Lab 9: 148,321 params, blocks=['fourier', 'fourier']
+    Lab 10: 3,699,073 params, blocks=['fourier', 'fourier']
+    Lab 11: 6,915,201 params, blocks=['residual_conv', 'fourier']
+    Lab 12: 283,401 params, blocks=['residual_conv', 'residual_conv', 'residual_conv', 'wavelet', 'residual_conv', 'wavelet']
+    Lab 13: 337,073 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'residual_conv', 'branch_trunk']
+    Lab 14: 2,303,491 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 390,463 params, blocks=['residual_conv', 'wavelet', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 3 respawned from Lab 10 (paradigm: random_spawn)
+    Lab 7 respawned from Lab 1 (paradigm: fno_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.7080 | trust=0.824 | [fourier+fourier]
+  #2  Lab  1 (fno               ) | composite=0.6290 | trust=0.553 | [fourier+fourier+fourier]
+  #3  Lab 10 (random            ) | composite=0.6289 | trust=0.567 | [fourier+fourier]
+  #4  Lab 15 (wavelet_spawn     ) | composite=0.6010 | trust=0.529 | [residual_conv+wavelet+fourier]
+  #5  Lab 14 (random            ) | composite=0.5714 | trust=0.498 | [residual_conv+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) fno_spawn(1) random(4) random_spawn(2) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=44% residual_conv=23% wavelet=21% attention=7% branch_trunk=5% 
+  Architectural diversity index: 0.3872 (0=homogeneous, 1=maximally diverse)
+  Detected 2 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 3, 7, 9, 10], avg composite=0.3964
+    Camp 'hybrid-mixed': Labs [2, 4, 5, 6, 8, 11, 13, 14, 15], avg composite=0.3022
+  ✓ checkpoint saved (iteration 12/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 13/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 2,645,086 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 4,500,217 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 2: 2,041,217 params, blocks=['attention', 'fourier', 'residual_conv']
+    Lab 3: 119,297 params, blocks=['fourier', 'fourier']
+    Lab 4: 819,777 params, blocks=['residual_conv', 'fourier', 'residual_conv']
+    Lab 5: 35,649 params, blocks=['wavelet', 'wavelet', 'fourier', 'wavelet', 'attention', 'fourier']
+    Lab 6: 1,300,399 params, blocks=['wavelet', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 2,801,905 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 8: 1,345,153 params, blocks=['fourier', 'attention', 'residual_conv', 'residual_conv', 'wavelet', 'wavelet']
+    Lab 9: 613,198 params, blocks=['fourier', 'fourier']
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 395,362 params, blocks=['residual_conv', 'fourier']
+    Lab 12: 232,711 params, blocks=['residual_conv', 'fourier', 'residual_conv', 'wavelet', 'residual_conv', 'wavelet']
+    Lab 13: 337,073 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'residual_conv', 'branch_trunk']
+    Lab 14: 1,127,631 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 574,838 params, blocks=['residual_conv', 'fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.6985 | trust=0.828 | [fourier+fourier]
+  #2  Lab  5 (transformer       ) | composite=0.6968 | trust=0.485 | [wavelet+wavelet+fourier+wavelet+attention+fourier]
+  #3  Lab  0 (fno               ) | composite=0.6737 | trust=0.444 | [fourier+fourier+fourier+fourier]
+  #4  Lab 11 (random_spawn      ) | composite=0.6073 | trust=0.548 | [residual_conv+fourier]
+  #5  Lab 14 (random            ) | composite=0.5778 | trust=0.449 | [residual_conv+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) fno_spawn(1) random(4) random_spawn(2) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=51% residual_conv=21% wavelet=19% attention=5% branch_trunk=4% 
+  Architectural diversity index: 0.3471 (0=homogeneous, 1=maximally diverse)
+  Detected 2 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 3, 7, 9, 10, 15], avg composite=0.4813
+    Camp 'hybrid-mixed': Labs [2, 5, 8, 11, 12, 13, 14], avg composite=0.2964
+  ✓ checkpoint saved (iteration 13/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 14/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 5,551,729 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 2,666,113 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 1,469,585 params, blocks=['attention', 'branch_trunk', 'fourier']
+    Lab 3: 156,225 params, blocks=['fourier', 'residual_conv']
+    Lab 4: 234,177 params, blocks=['residual_conv', 'wavelet', 'residual_conv']
+    Lab 5: 3,195,545 params, blocks=['wavelet', 'wavelet', 'fourier', 'wavelet', 'fourier', 'fourier']
+    Lab 6: 3,064,492 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 2,103,277 params, blocks=['fourier', 'fourier', 'fourier']
+    Lab 8: 1,388,305 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'residual_conv', 'wavelet', 'wavelet']
+    Lab 9: 3,686,626 params, blocks=['fourier', 'fourier']
+    Lab 10: 1,995,137 params, blocks=['fourier', 'fourier']
+    Lab 11: 138,897 params, blocks=['residual_conv', 'fourier']
+    Lab 12: 85,981 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'residual_conv', 'wavelet']
+    Lab 13: 251,489 params, blocks=['attention', 'wavelet', 'fourier', 'residual_conv', 'branch_trunk']
+    Lab 14: 1,127,631 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 4,415,646 params, blocks=['residual_conv', 'fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  5 (transformer       ) | composite=0.7212 | trust=0.641 | [wavelet+wavelet+fourier+wavelet+fourier+fourier]
+  #2  Lab 14 (random            ) | composite=0.6278 | trust=0.463 | [residual_conv+fourier]
+  #3  Lab 10 (random            ) | composite=0.6042 | trust=0.580 | [fourier+fourier]
+  #4  Lab  0 (fno               ) | composite=0.5859 | trust=0.461 | [fourier+fourier+fourier+fourier]
+  #5  Lab  1 (fno               ) | composite=0.5850 | trust=0.490 | [fourier+fourier+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) fno_spawn(1) random(4) random_spawn(2) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=49% residual_conv=21% wavelet=19% attention=5% branch_trunk=5% 
+  Architectural diversity index: 0.3590 (0=homogeneous, 1=maximally diverse)
+  Detected 3 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 7, 9, 10, 15], avg composite=0.4858
+    Camp 'hybrid-mixed': Labs [2, 3, 5, 6, 8, 11, 13, 14], avg composite=0.3142
+    Camp 'residual_conv-dominant': Labs [4, 12], avg composite=0.0432
+  ✓ checkpoint saved (iteration 14/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 15/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,213,301 params, blocks=['fourier', 'fourier', 'residual_conv', 'fourier']
+    Lab 1: 5,833,006 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 163,089 params, blocks=['attention', 'branch_trunk', 'wavelet']
+    Lab 3: 201,409 params, blocks=['wavelet', 'residual_conv']
+    Lab 4: 1,344,129 params, blocks=['fourier', 'wavelet', 'residual_conv']
+    Lab 5: 9,037,325 params, blocks=['wavelet', 'wavelet', 'fourier', 'wavelet', 'fourier', 'fourier']
+    Lab 6: 433,236 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 1,659,001 params, blocks=['residual_conv', 'fourier', 'fourier', 'residual_conv']
+    Lab 8: 2,678,417 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'residual_conv', 'fourier', 'wavelet']
+    Lab 9: 2,739,826 params, blocks=['fourier', 'fourier']
+    Lab 10: 1,061,249 params, blocks=['fourier', 'fourier']
+    Lab 11: 136,481 params, blocks=['attention', 'fourier']
+    Lab 12: 152,641 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'residual_conv', 'wavelet']
+    Lab 13: 133,937 params, blocks=['attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 2,123,122 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 1,879,594 params, blocks=['residual_conv', 'fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 3 respawned from Lab 14 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.6745 | trust=0.764 | [fourier+fourier]
+  #2  Lab  5 (transformer       ) | composite=0.6365 | trust=0.652 | [wavelet+wavelet+fourier+wavelet+fourier+fourier]
+  #3  Lab 14 (random            ) | composite=0.6226 | trust=0.478 | [residual_conv+fourier]
+  #4  Lab 11 (random_spawn      ) | composite=0.5479 | trust=0.490 | [attention+fourier]
+  #5  Lab 15 (wavelet_spawn     ) | composite=0.5477 | trust=0.368 | [residual_conv+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) fno_spawn(1) random(4) random_spawn(2) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=47% residual_conv=22% wavelet=19% attention=7% branch_trunk=5% 
+  Architectural diversity index: 0.3493 (0=homogeneous, 1=maximally diverse)
+  Detected 2 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 3, 9, 10, 15], avg composite=0.3914
+    Camp 'hybrid-mixed': Labs [2, 4, 5, 6, 7, 8, 11, 13, 14], avg composite=0.2764
+  ✓ checkpoint saved (iteration 15/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 16/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,186,729 params, blocks=['fourier', 'fourier', 'attention', 'fourier']
+    Lab 1: 5,833,006 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 163,089 params, blocks=['attention', 'branch_trunk', 'wavelet']
+    Lab 3: 4,513,461 params, blocks=['residual_conv', 'fourier', 'fourier']
+    Lab 4: 1,313,425 params, blocks=['fourier', 'wavelet', 'branch_trunk']
+    Lab 5: 3,719,907 params, blocks=['wavelet', 'wavelet', 'fourier', 'wavelet', 'fourier']
+    Lab 6: 608,248 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 1,487,806 params, blocks=['residual_conv', 'fourier', 'fourier', 'residual_conv']
+    Lab 8: 3,088,017 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'residual_conv', 'fourier', 'wavelet']
+    Lab 9: 631,369 params, blocks=['fourier', 'fourier']
+    Lab 10: 1,651,073 params, blocks=['fourier', 'fourier']
+    Lab 11: 4,255,361 params, blocks=['attention', 'fourier']
+    Lab 11: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 27]' is invalid for input of size 5357568
+    Lab 12: 1,442,233 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'fourier', 'wavelet']
+    Lab 13: 203,345 params, blocks=['attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 1,749,298 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 1,995,137 params, blocks=['fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 10 (random            ) | composite=0.7108 | trust=0.656 | [fourier+fourier]
+  #2  Lab 14 (random            ) | composite=0.7103 | trust=0.575 | [residual_conv+fourier]
+  #3  Lab  5 (transformer       ) | composite=0.5807 | trust=0.616 | [wavelet+wavelet+fourier+wavelet+fourier]
+  #4  Lab  3 (random_spawn      ) | composite=0.5409 | trust=0.223 | [residual_conv+fourier+fourier]
+  #5  Lab  1 (fno               ) | composite=0.5409 | trust=0.452 | [fourier+fourier+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) fno_spawn(1) random(4) random_spawn(2) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=48% wavelet=20% residual_conv=16% attention=9% branch_trunk=7% 
+  Architectural diversity index: 0.3402 (0=homogeneous, 1=maximally diverse)
+  Detected 2 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 3, 9, 10, 15], avg composite=0.5259
+    Camp 'hybrid-mixed': Labs [2, 4, 6, 7, 8, 11, 12, 13, 14], avg composite=0.2069
+  ✓ checkpoint saved (iteration 16/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 17/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 7,804,747 params, blocks=['fourier', 'fourier', 'attention', 'fourier']
+    Lab 0: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 17]' is invalid for input of size 3489792
+    Lab 1: 7,039,813 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 1,959,041 params, blocks=['attention', 'fourier', 'residual_conv']
+    Lab 3: 138,166 params, blocks=['residual_conv', 'fourier', 'fourier']
+    Lab 4: 3,267,089 params, blocks=['fourier', 'fourier', 'branch_trunk']
+    Lab 5: 1,543,985 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'wavelet', 'fourier']
+    Lab 6: 4,102,293 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 837,446 params, blocks=['residual_conv', 'fourier', 'residual_conv']
+    Lab 8: 2,678,417 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'residual_conv', 'fourier', 'wavelet']
+    Lab 9: 327,169 params, blocks=['fourier', 'attention']
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 6,200,081 params, blocks=['branch_trunk', 'attention', 'fourier']
+    Lab 12: 1,139,649 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'fourier', 'wavelet']
+    Lab 13: 119,825 params, blocks=['attention', 'wavelet', 'residual_conv', 'residual_conv', 'branch_trunk']
+    Lab 14: 1,749,298 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 1,995,137 params, blocks=['fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 0 respawned from Lab 3 (paradigm: random_spawn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 15 (wavelet_spawn     ) | composite=0.6957 | trust=0.523 | [fourier+fourier]
+  #2  Lab 14 (random            ) | composite=0.6839 | trust=0.629 | [residual_conv+fourier]
+  #3  Lab  3 (random_spawn      ) | composite=0.6550 | trust=0.382 | [residual_conv+fourier+fourier]
+  #4  Lab  4 (transformer       ) | composite=0.6065 | trust=0.424 | [fourier+fourier+branch_trunk]
+  #5  Lab  6 (wavelet           ) | composite=0.5949 | trust=0.364 | [fourier+fourier+wavelet+wavelet]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) random(4) random_spawn(2) random_spawn_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=46% residual_conv=21% wavelet=14% attention=9% branch_trunk=9% 
+  Architectural diversity index: 0.3606 (0=homogeneous, 1=maximally diverse)
+  Detected 2 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 3, 4, 10, 15], avg composite=0.5051
+    Camp 'hybrid-mixed': Labs [2, 5, 6, 8, 9, 11, 12, 13, 14], avg composite=0.3311
+  ✓ checkpoint saved (iteration 17/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 18/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 6,679,546 params, blocks=['residual_conv', 'fourier', 'fourier']
+    Lab 1: 10,663,681 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 185,537 params, blocks=['attention', 'residual_conv', 'residual_conv']
+    Lab 3: 195,217 params, blocks=['branch_trunk', 'fourier', 'fourier', 'residual_conv']
+    Lab 4: 3,267,089 params, blocks=['fourier', 'fourier', 'branch_trunk']
+    Lab 5: 1,543,985 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'wavelet', 'fourier']
+    Lab 6: 4,102,293 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 837,446 params, blocks=['residual_conv', 'fourier', 'residual_conv']
+    Lab 8: 2,301,585 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'residual_conv', 'fourier', 'wavelet']
+    Lab 9: 551,691 params, blocks=['fourier', 'attention']
+    Lab 9: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 10]' is invalid for input of size 2113536
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 7,099,921 params, blocks=['branch_trunk', 'fourier', 'fourier']
+    Lab 12: 1,352,976 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'fourier', 'wavelet']
+    Lab 13: 850,867 params, blocks=['attention', 'wavelet', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 13: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 21]' is invalid for input of size 4177920
+    Lab 14: 1,856,377 params, blocks=['residual_conv', 'fourier']
+    Lab 15: 901,934 params, blocks=['fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  6 (wavelet           ) | composite=0.6603 | trust=0.493 | [fourier+fourier+wavelet+wavelet]
+  #2  Lab 11 (random_spawn      ) | composite=0.6439 | trust=0.464 | [branch_trunk+fourier+fourier]
+  #3  Lab 14 (random            ) | composite=0.6134 | trust=0.584 | [residual_conv+fourier]
+  #4  Lab  0 (random_spawn_spawn) | composite=0.5782 | trust=0.295 | [residual_conv+fourier+fourier]
+  #5  Lab  3 (random_spawn      ) | composite=0.5757 | trust=0.386 | [branch_trunk+fourier+fourier+residual_conv]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) random(4) random_spawn(2) random_spawn_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=46% residual_conv=21% wavelet=16% branch_trunk=11% attention=7% 
+  Architectural diversity index: 0.3667 (0=homogeneous, 1=maximally diverse)
+  Detected 3 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 4, 10, 11, 15], avg composite=0.4673
+    Camp 'residual_conv-dominant': Labs [2, 7], avg composite=0.0385
+    Camp 'hybrid-mixed': Labs [3, 5, 6, 8, 9, 12, 13, 14], avg composite=0.2513
+  ✓ checkpoint saved (iteration 18/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 19/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 4,539,393 params, blocks=['residual_conv', 'fourier', 'fourier']
+    Lab 1: 4,592,638 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 2: 739,713 params, blocks=['attention', 'residual_conv', 'residual_conv']
+    Lab 3: 195,217 params, blocks=['branch_trunk', 'fourier', 'fourier', 'residual_conv']
+    Lab 4: 1,813,537 params, blocks=['fourier', 'fourier']
+    Lab 5: 14,522,705 params, blocks=['branch_trunk', 'wavelet', 'fourier', 'wavelet', 'fourier']
+    Lab 6: 897,616 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 837,446 params, blocks=['residual_conv', 'fourier', 'residual_conv']
+    Lab 8: 2,678,417 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'residual_conv', 'fourier', 'wavelet']
+    Lab 9: 551,691 params, blocks=['fourier', 'attention']
+    Lab 9: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 10]' is invalid for input of size 2113536
+    Lab 10: 4,206,977 params, blocks=['fourier', 'fourier']
+    Lab 11: 7,064,193 params, blocks=['attention', 'fourier', 'fourier']
+    Lab 12: 1,652,050 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'fourier', 'wavelet']
+    Lab 13: 1,604,839 params, blocks=['fourier', 'wavelet', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 14: 181,861 params, blocks=['residual_conv', 'residual_conv']
+    Lab 15: 901,934 params, blocks=['fourier', 'fourier']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+    Lab 9 respawned from Lab 10 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  1 (fno               ) | composite=0.7262 | trust=0.541 | [fourier+fourier+fourier+fourier]
+  #2  Lab 10 (random            ) | composite=0.7067 | trust=0.642 | [fourier+fourier]
+  #3  Lab  0 (random_spawn_spawn) | composite=0.6951 | trust=0.416 | [residual_conv+fourier+fourier]
+  #4  Lab 13 (deeponet          ) | composite=0.6437 | trust=0.452 | [fourier+wavelet+residual_conv+wavelet+branch_trunk]
+  #5  Lab  4 (transformer       ) | composite=0.5997 | trust=0.504 | [fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=46% residual_conv=23% wavelet=16% attention=7% branch_trunk=7% 
+  Architectural diversity index: 0.3886 (0=homogeneous, 1=maximally diverse)
+  Detected 3 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 4, 10, 11, 15], avg composite=0.5606
+    Camp 'residual_conv-dominant': Labs [2, 7, 14], avg composite=0.1958
+    Camp 'hybrid-mixed': Labs [3, 5, 6, 8, 9, 12, 13], avg composite=0.2769
+  ✓ checkpoint saved (iteration 19/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 20/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+
+  Phase 2: Building and Training...
+    Lab 0: 5,050,801 params, blocks=['residual_conv', 'fourier', 'fourier']
+    Lab 1: 2,477,287 params, blocks=['fourier', 'wavelet', 'fourier', 'fourier']
+    Lab 2: 11,825 params, blocks=['attention', 'residual_conv', 'residual_conv']
+    Lab 3: 719,505 params, blocks=['branch_trunk', 'fourier', 'fourier', 'residual_conv']
+    Lab 4: 2,363,954 params, blocks=['fourier', 'fourier']
+    Lab 5: 7,960,865 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'wavelet']
+    Lab 5: BUILD/TRAIN FAILED - RuntimeError: shape '[16, 1024, 3, 4, 28]' is invalid for input of size 5603328
+    Lab 6: 528,516 params, blocks=['fourier', 'fourier', 'wavelet', 'wavelet']
+    Lab 7: 1,567,030 params, blocks=['residual_conv', 'fourier', 'fourier']
+    Lab 8: 4,354,129 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv', 'attention', 'fourier', 'fourier']
+    Lab 9: 2,179,521 params, blocks=['fourier', 'residual_conv']
+    Lab 10: 2,366,497 params, blocks=['fourier', 'fourier']
+    Lab 11: 181,329 params, blocks=['attention', 'fourier', 'fourier']
+    Lab 12: 1,691,929 params, blocks=['residual_conv', 'residual_conv', 'wavelet', 'fourier']
+    Lab 13: 1,402,709 params, blocks=['fourier', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 14: 181,861 params, blocks=['residual_conv', 'residual_conv']
+    Lab 15: 376,769 params, blocks=['fourier', 'wavelet']
+
+  Phase 3: Peer Review...
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  6 (wavelet           ) | composite=0.7015 | trust=0.668 | [fourier+fourier+wavelet+wavelet]
+  #2  Lab 13 (deeponet          ) | composite=0.6292 | trust=0.528 | [fourier+residual_conv+wavelet+branch_trunk]
+  #3  Lab  1 (fno               ) | composite=0.5815 | trust=0.520 | [fourier+wavelet+fourier+fourier]
+  #4  Lab  7 (fno_spawn         ) | composite=0.5620 | trust=0.557 | [residual_conv+fourier+fourier]
+  #5  Lab  0 (random_spawn_spawn) | composite=0.5480 | trust=0.362 | [residual_conv+fourier+fourier]
+
+  Global best: Lab 0 (fitness=0.7751)
+  Best architecture: fourier+fourier+fourier+fourier | ch=64 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(2) wavelet(2) wavelet_spawn(1) 
+  Block usage: fourier=46% residual_conv=22% wavelet=15% attention=9% branch_trunk=7% 
+  Architectural diversity index: 0.3501 (0=homogeneous, 1=maximally diverse)
+  Detected 3 rival camp(s):
+    Camp 'fourier-dominant': Labs [0, 1, 4, 7, 10, 11], avg composite=0.5326
+    Camp 'residual_conv-dominant': Labs [2, 14], avg composite=0.2805
+    Camp 'hybrid-mixed': Labs [3, 5, 6, 8, 9, 12, 13, 15], avg composite=0.2870
+  ✓ checkpoint saved (iteration 20/20)
+
+================================================================================
+  FINAL REPORT: AI SCIENTIFIC COMMUNITY RESULTS
+================================================================================
+
+  ★ GLOBAL BEST ARCHITECTURE ★
+  Discovered by: Lab 0
+  Composite fitness: 0.7751
+  Block sequence: fourier → fourier → fourier → fourier
+  Hidden channels: 64
+  Fourier modes: 12
+  Activation: gelu
+  Gating: False | Skip: True | Dropout: 0.03
+  LR: 0.002 | WD: 1e-05
+
+  ── Architecture Classification ──
+  Type: PURE FOURIER
+
+  ── All Labs Final State ──
+  [ACTIVE] Lab 6 (wavelet): [fourier+fourier+wavelet+wavelet] ch=47 modes=7 | acc=0.5938, gen=0.3891, eff=0.9454, nov=0.6543, comp=0.7015 | trust=0.668
+  [ACTIVE] Lab 13 (deeponet): [fourier+residual_conv+wavelet+branch_trunk] ch=82 modes=8 | acc=0.6284, gen=0.3687, eff=0.8585, nov=0.8027, comp=0.6292 | trust=0.528
+  [ACTIVE] Lab 1 (fno): [fourier+wavelet+fourier+fourier] ch=63 modes=10 | acc=0.6881, gen=0.4018, eff=0.7506, nov=0.5783, comp=0.5815 | trust=0.520
+  [ACTIVE] Lab 7 (fno_spawn): [residual_conv+fourier+fourier] ch=61 modes=10 | acc=0.5865, gen=0.4636, eff=0.8426, nov=0.6212, comp=0.5620 | trust=0.557
+  [ACTIVE] Lab 0 (random_spawn_spawn): [residual_conv+fourier+fourier] ch=100 modes=11 | acc=0.7851, gen=0.3775, eff=0.4983, nov=0.6277, comp=0.5480 | trust=0.362
+  [ACTIVE] Lab 14 (random): [residual_conv+residual_conv] ch=70 modes=10 | acc=0.6284, gen=0.3622, eff=0.9811, nov=0.7027, comp=0.5246 | trust=0.436
+  [ACTIVE] Lab 10 (random): [fourier+fourier] ch=48 modes=16 | acc=0.6462, gen=0.3695, eff=0.7622, nov=0.6683, comp=0.5240 | trust=0.555
+  [ACTIVE] Lab 11 (random_spawn): [attention+fourier+fourier] ch=16 modes=13 | acc=0.5927, gen=0.4680, eff=0.9810, nov=0.9600, comp=0.4941 | trust=0.443
+  [ACTIVE] Lab 4 (transformer): [fourier+fourier] ch=59 modes=13 | acc=0.6457, gen=0.3689, eff=0.7630, nov=0.6028, comp=0.4861 | trust=0.423
+  [ACTIVE] Lab 15 (wavelet_spawn): [fourier+wavelet] ch=56 modes=7 | acc=0.5067, gen=0.3463, eff=0.9618, nov=0.7732, comp=0.4274 | trust=0.487
+  [ACTIVE] Lab 12 (wavelet): [residual_conv+residual_conv+wavelet+fourier] ch=63 modes=13 | acc=0.5401, gen=0.3972, eff=0.8288, nov=0.6412, comp=0.4243 | trust=0.365
+  [ACTIVE] Lab 9 (random_spawn): [fourier+residual_conv] ch=64 modes=16 | acc=0.4875, gen=0.3594, eff=0.7811, nov=0.6000, comp=0.0442 | trust=0.291
+  [ACTIVE] Lab 3 (random_spawn): [branch_trunk+fourier+fourier+residual_conv] ch=64 modes=6 | acc=0.4348, gen=0.3531, eff=0.9270, nov=0.6348, comp=0.0387 | trust=0.363
+  [ACTIVE] Lab 2 (deeponet): [attention+residual_conv+residual_conv] ch=16 modes=13 | acc=0.2895, gen=0.2749, eff=0.9977, nov=0.8834, comp=0.0364 | trust=0.461
+  [ACTIVE] Lab 8 (random): [branch_trunk+fourier+attention+residual_conv+attention+fourier+fourier] ch=64 modes=13 | acc=0.3145, gen=0.3043, eff=0.5627, nov=0.7158, comp=0.0275 | trust=0.473
+  [ACTIVE] Lab 5 (transformer): [branch_trunk+wavelet+attention+fourier+wavelet] ch=114 modes=16 | acc=0.0000, gen=0.0000, eff=0.0000, nov=1.0000, comp=0.0035 | trust=0.446
+
+  ── Global Best Evolution ──
+  Iter  1: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  2: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  3: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  4: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  5: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  6: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  7: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  8: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter  9: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 10: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 11: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 12: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 13: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 14: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 15: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 16: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 17: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 18: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 19: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+  Iter 20: fitness=0.7751 | lab=0 | blocks=fourier+fourier+fourier+fourier | active=16
+
+  ✓ FINAL.json written. Done.

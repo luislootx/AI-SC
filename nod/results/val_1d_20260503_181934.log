@@ -1,0 +1,138 @@
+==== START val 18:19:34 ====
+==== validate pwreg ====
+==============================================================================
+  HONEST 1D BASELINE VALIDATION  pde=pwreg
+==============================================================================
+  Device: cuda
+  Train/test/epochs: 256/64/40
+  Resolution: 128
+  Seed: 42
+
+  Generating pwreg data...
+  Done in 0.0s. Train: (256, 1, 128), Test: (64, 1, 128)
+
+──── Pure FNO (4xfourier) ────
+  Blocks: fourier → fourier → fourier → fourier  (ch=64, modes=12)
+  Params: 217,601
+  Train+eval time: 3.8 s
+  rel L2 (clean): 0.0622
+  rel L2 (noisy): 0.0663
+  Efficiency:     0.9774
+
+──── Pure DeepONet (4xbranch_trunk) ────
+  Blocks: branch_trunk → branch_trunk → branch_trunk → branch_trunk  (ch=64, modes=8)
+  Params: 78,657
+  Train+eval time: 2.7 s
+  rel L2 (clean): 0.2238
+  rel L2 (noisy): 0.2257
+  Efficiency:     0.9914
+
+──── Pure Transformer (3xattention) ────
+  Blocks: attention → attention → attention  (ch=64, modes=8)
+  Params: 104,769
+  Train+eval time: 3.0 s
+  rel L2 (clean): 0.0778
+  rel L2 (noisy): 0.0922
+  Efficiency:     0.9890
+
+──── Pure Wavelet (4xwavelet) ────
+  Blocks: wavelet → wavelet → wavelet → wavelet  (ch=48, modes=8)
+  Params: 104,737
+  Train+eval time: 3.1 s
+  rel L2 (clean): 0.0428
+  rel L2 (noisy): 0.0496
+  Efficiency:     0.9886
+
+──── Discovered Hybrid (paper_pwreg_seed42) ────
+  Blocks: residual_conv → residual_conv → residual_conv  (ch=79, modes=8)
+  Params: 169,614
+  Train+eval time: 2.7 s
+  rel L2 (clean): 0.0430
+  rel L2 (noisy): 0.0498
+  Efficiency:     0.9823
+
+==============================================================================
+  VERDICT
+==============================================================================
+
+  Architecture                                                params     rel L2      noisy
+  --------------------------------------------------------------------------------------
+  Pure Wavelet (4xwavelet)                                   104,737     0.0428     0.0496
+  Discovered Hybrid (paper_pwreg_seed42)                     169,614     0.0430     0.0498
+  Pure FNO (4xfourier)                                       217,601     0.0622     0.0663
+  Pure Transformer (3xattention)                             104,769     0.0778     0.0922
+  Pure DeepONet (4xbranch_trunk)                              78,657     0.2238     0.2257
+
+  -> Best: Pure Wavelet (4xwavelet)
+
+  Saved: C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\validation_baselines_1d_pwreg.json
+
+==== validate advec ====
+==============================================================================
+  HONEST 1D BASELINE VALIDATION  pde=advec
+==============================================================================
+  Device: cuda
+  Train/test/epochs: 256/64/40
+  Resolution: 128
+  Seed: 42
+
+  Generating advec data...
+  Done in 0.0s. Train: (256, 1, 128), Test: (64, 1, 128)
+
+──── Pure FNO (4xfourier) ────
+  Blocks: fourier → fourier → fourier → fourier  (ch=64, modes=12)
+  Params: 217,601
+  Train+eval time: 3.6 s
+  rel L2 (clean): 0.0331
+  rel L2 (noisy): 0.0418
+  Efficiency:     0.9774
+
+──── Pure DeepONet (4xbranch_trunk) ────
+  Blocks: branch_trunk → branch_trunk → branch_trunk → branch_trunk  (ch=64, modes=8)
+  Params: 78,657
+  Train+eval time: 2.7 s
+  rel L2 (clean): 0.8660
+  rel L2 (noisy): 0.8663
+  Efficiency:     0.9914
+
+──── Pure Transformer (3xattention) ────
+  Blocks: attention → attention → attention  (ch=64, modes=8)
+  Params: 104,769
+  Train+eval time: 2.9 s
+  rel L2 (clean): 0.8618
+  rel L2 (noisy): 0.8649
+  Efficiency:     0.9889
+
+──── Pure Wavelet (4xwavelet) ────
+  Blocks: wavelet → wavelet → wavelet → wavelet  (ch=48, modes=8)
+  Params: 104,737
+  Train+eval time: 3.2 s
+  rel L2 (clean): 0.5458
+  rel L2 (noisy): 1.0308
+  Efficiency:     0.9878
+
+──── Discovered Hybrid (paper_advec_seed42) ────
+  Blocks: attention → fourier → fourier → branch_trunk → attention  (ch=96, modes=16)
+  Params: 661,073
+  Train+eval time: 8.7 s
+  rel L2 (clean): 0.0199
+  rel L2 (noisy): 0.0332
+  Efficiency:     0.9325
+
+==============================================================================
+  VERDICT
+==============================================================================
+
+  Architecture                                                params     rel L2      noisy
+  --------------------------------------------------------------------------------------
+  Discovered Hybrid (paper_advec_seed42)                     661,073     0.0199     0.0332
+  Pure FNO (4xfourier)                                       217,601     0.0331     0.0418
+  Pure Wavelet (4xwavelet)                                   104,737     0.5458     1.0308
+  Pure Transformer (3xattention)                             104,769     0.8618     0.8649
+  Pure DeepONet (4xbranch_trunk)                              78,657     0.8660     0.8663
+
+  -> Best: Discovered Hybrid (paper_advec_seed42)
+
+  Saved: C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\validation_baselines_1d_advec.json
+
+==== validate burgers ====

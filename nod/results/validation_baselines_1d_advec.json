@@ -1,0 +1,82 @@
+{
+  "pde": "advec",
+  "config": {
+    "epochs": 40,
+    "samples": 256,
+    "resolution": 128,
+    "seed": 42,
+    "hybrid_tag": "paper_advec_seed42"
+  },
+  "results": [
+    {
+      "name": "Discovered Hybrid (paper_advec_seed42)",
+      "blocks": [
+        "attention",
+        "fourier",
+        "fourier",
+        "branch_trunk",
+        "attention"
+      ],
+      "params": 661073,
+      "rel_l2_clean": 0.01990400068461895,
+      "rel_l2_noisy": 0.03317246586084366,
+      "efficiency": 0.9325155346824646,
+      "time_seconds": 8.723672866821289
+    },
+    {
+      "name": "Pure FNO (4xfourier)",
+      "blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "params": 217601,
+      "rel_l2_clean": 0.03311648219823837,
+      "rel_l2_noisy": 0.04178445041179657,
+      "efficiency": 0.9774277867149352,
+      "time_seconds": 3.6293654441833496
+    },
+    {
+      "name": "Pure Wavelet (4xwavelet)",
+      "blocks": [
+        "wavelet",
+        "wavelet",
+        "wavelet",
+        "wavelet"
+      ],
+      "params": 104737,
+      "rel_l2_clean": 0.5458224415779114,
+      "rel_l2_noisy": 1.0308253765106201,
+      "efficiency": 0.9878045602310181,
+      "time_seconds": 3.1562552452087402
+    },
+    {
+      "name": "Pure Transformer (3xattention)",
+      "blocks": [
+        "attention",
+        "attention",
+        "attention"
+      ],
+      "params": 104769,
+      "rel_l2_clean": 0.8617659211158752,
+      "rel_l2_noisy": 0.8649324774742126,
+      "efficiency": 0.9889369956069947,
+      "time_seconds": 2.9495270252227783
+    },
+    {
+      "name": "Pure DeepONet (4xbranch_trunk)",
+      "blocks": [
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk"
+      ],
+      "params": 78657,
+      "rel_l2_clean": 0.8660405874252319,
+      "rel_l2_noisy": 0.8663015961647034,
+      "efficiency": 0.9913629682128906,
+      "time_seconds": 2.7023229598999023
+    }
+  ]
+}

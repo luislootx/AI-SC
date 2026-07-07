@@ -1,0 +1,88 @@
+{
+  "config": {
+    "epochs": 15,
+    "samples": 256,
+    "resolution": 32,
+    "seed": 42
+  },
+  "results": [
+    {
+      "name": "Pure FNO (4\u00d7fourier)",
+      "blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "params": 4739585,
+      "rel_l2_clean": 0.0003519543679431081,
+      "rel_l2_noisy": 0.028398359194397926,
+      "accuracy": 0.9996480456320569,
+      "generalization": 0.9716016408056021,
+      "efficiency": 0.5242401284255982,
+      "time_seconds": 6.841529130935669
+    },
+    {
+      "name": "Demo Hybrid (fourier\u2192attention\u2192wavelet\u2192attention)",
+      "blocks": [
+        "fourier",
+        "attention",
+        "wavelet",
+        "attention"
+      ],
+      "params": 976769,
+      "rel_l2_clean": 0.002248232252895832,
+      "rel_l2_noisy": 0.03159236162900925,
+      "accuracy": 0.9977517677471042,
+      "generalization": 0.9684076383709908,
+      "efficiency": 0.9010974616104126,
+      "time_seconds": 6.051363945007324
+    },
+    {
+      "name": "Smoke Hybrid (wavelet\u2192attention\u2192residual_conv)",
+      "blocks": [
+        "wavelet",
+        "attention",
+        "residual_conv"
+      ],
+      "params": 193793,
+      "rel_l2_clean": 0.028203122317790985,
+      "rel_l2_noisy": 0.044115401804447174,
+      "accuracy": 0.971796877682209,
+      "generalization": 0.9558845981955528,
+      "efficiency": 0.979344528792572,
+      "time_seconds": 3.8313887119293213
+    },
+    {
+      "name": "Pure Transformer (3\u00d7attention)",
+      "blocks": [
+        "attention",
+        "attention",
+        "attention"
+      ],
+      "params": 104769,
+      "rel_l2_clean": 0.282246470451355,
+      "rel_l2_noisy": 0.3466716408729553,
+      "accuracy": 0.717753529548645,
+      "generalization": 0.6533283591270447,
+      "efficiency": 0.9881720892005921,
+      "time_seconds": 7.641507387161255
+    },
+    {
+      "name": "Pure DeepONet (4\u00d7branch_trunk)",
+      "blocks": [
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk"
+      ],
+      "params": 176961,
+      "rel_l2_clean": 0.33041882514953613,
+      "rel_l2_noisy": 0.33687281608581543,
+      "accuracy": 0.6695811748504639,
+      "generalization": 0.6631271839141846,
+      "efficiency": 0.9808280651535034,
+      "time_seconds": 3.7302792072296143
+    }
+  ]
+}

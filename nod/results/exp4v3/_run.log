@@ -1,0 +1,471 @@
+[18:55:39] ====================================================================================
+[18:55:39] EXP-4 v3 (resume-safe)  device=cuda  seeds=[42, 137, 2024]  pdes=['ns2d', 'darcy2d']
+[18:55:39] ====================================================================================
+[18:55:39]   resumed: 0 slots already complete
+[18:55:39]     generating ns2d data (res=32, n_train=256, n_test=64)...
+[18:56:17]     data ready in 37.6s; x.std=3.131 y.std=4.553
+[18:56:17]   -> ns2d | FNO h64 m12 | seed 42 (epochs=50, norm_io=False)
+[18:56:20]       ep  10/50  loss=0.00000
+[18:56:22]       ep  20/50  loss=0.00000
+[18:56:25]       ep  30/50  loss=0.00000
+[18:56:27]       ep  40/50  loss=0.00000
+[18:56:29]       ep  50/50  loss=0.00000
+[18:56:29]      saved ns2d__FNO_h64_m12__seed42.json  rel L2 clean=0.0002 noisy=0.0265  (10.5s)
+[18:56:29]   -> ns2d | FNO h32 m12 | seed 42 (epochs=50, norm_io=False)
+[18:56:30]       ep  10/50  loss=0.00001
+[18:56:32]       ep  20/50  loss=0.00000
+[18:56:34]       ep  30/50  loss=0.00000
+[18:56:36]       ep  40/50  loss=0.00000
+[18:56:38]       ep  50/50  loss=0.00000
+[18:56:38]      saved ns2d__FNO_h32_m12__seed42.json  rel L2 clean=0.0002 noisy=0.0264  (9.5s)
+[18:56:38]   -> ns2d | FNO h128 m16 | seed 42 (epochs=50, norm_io=False)
+[18:56:42]       ep  10/50  loss=0.00000
+[18:56:45]       ep  20/50  loss=0.00000
+[18:56:49]       ep  30/50  loss=0.00000
+[18:56:52]       ep  40/50  loss=0.00000
+[18:56:56]       ep  50/50  loss=0.00000
+[18:56:56]      saved ns2d__FNO_h128_m16__seed42.json  rel L2 clean=0.0002 noisy=0.0272  (17.0s)
+[18:56:56]   -> ns2d | DeepONet faithful | seed 42 (epochs=600, norm_io=True)
+[18:57:05]       ep 120/600  loss=0.23180
+[18:57:15]       ep 240/600  loss=0.07373
+[18:57:24]       ep 360/600  loss=0.03733
+[18:57:34]       ep 480/600  loss=0.02465
+[18:57:43]       ep 600/600  loss=0.02130
+[18:57:43]      saved ns2d__DeepONet_faithful__seed42.json  rel L2 clean=0.1460 noisy=0.1460  (47.5s)
+[18:57:43]   -> ns2d | POD-DeepONet | seed 42 (epochs=80, norm_io=False)
+[18:57:44]       ep  16/80  loss=0.00023
+[18:57:45]       ep  32/80  loss=0.00023
+[18:57:46]       ep  48/80  loss=0.00023
+[18:57:47]       ep  64/80  loss=0.00023
+[18:57:47]       ep  80/80  loss=0.00023
+[18:57:47]      saved ns2d__POD-DeepONet__seed42.json  rel L2 clean=0.0033 noisy=0.0033  (4.1s)
+[18:57:47]   -> ns2d | Pure Transformer | seed 42 (epochs=80, norm_io=False)
+[18:57:55]       ep  16/80  loss=1.79963
+[18:58:03]       ep  32/80  loss=1.64467
+[18:58:10]       ep  48/80  loss=1.52369
+[18:58:17]       ep  64/80  loss=1.46124
+[18:58:25]       ep  80/80  loss=1.43853
+[18:58:25]      saved ns2d__Pure_Transformer__seed42.json  rel L2 clean=0.2628 noisy=0.3639  (37.3s)
+[18:58:25]   -> ns2d | Discovered Hybrid | seed 42 (epochs=80, norm_io=False)
+[18:58:31]       ep  16/80  loss=0.01140
+[18:58:36]       ep  32/80  loss=0.00004
+[18:58:42]       ep  48/80  loss=0.00002
+[18:58:48]       ep  64/80  loss=0.00001
+[18:58:53]       ep  80/80  loss=0.00001
+[18:58:53]      saved ns2d__Discovered_Hybrid__seed42.json  rel L2 clean=0.0007 noisy=0.0313  (28.2s)
+[18:58:53]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[18:59:20] ====================================================================================
+[18:59:20] EXP-4 v3 (resume-safe)  device=cuda  seeds=[42, 137, 2024]  pdes=['ns2d']
+[18:59:20] ====================================================================================
+[18:59:20]   resumed: 7 slots already complete
+[18:59:20]   (ns2d, seed 42) all done, skipping
+[18:59:20]     generating ns2d data (res=32, n_train=256, n_test=64)...
+[18:59:38]     data ready in 17.3s; x.std=3.131 y.std=4.553
+[18:59:38]   -> ns2d | FNO h64 m12 | seed 137 (epochs=50, norm_io=False)
+[18:59:41]       ep  10/50  loss=0.00000
+[18:59:43]       ep  20/50  loss=0.00000
+[18:59:45]       ep  30/50  loss=0.00000
+[18:59:48]       ep  40/50  loss=0.00000
+[18:59:50]       ep  50/50  loss=0.00000
+[18:59:50]      saved ns2d__FNO_h64_m12__seed137.json  rel L2 clean=0.0002 noisy=0.0286  (11.1s)
+[18:59:50]   -> ns2d | FNO h32 m12 | seed 137 (epochs=50, norm_io=False)
+[18:59:52]       ep  10/50  loss=0.00001
+[18:59:54]       ep  20/50  loss=0.00000
+[18:59:56]       ep  30/50  loss=0.00000
+[18:59:58]       ep  40/50  loss=0.00000
+[19:00:00]       ep  50/50  loss=0.00000
+[19:00:00]      saved ns2d__FNO_h32_m12__seed137.json  rel L2 clean=0.0002 noisy=0.0296  (10.3s)
+[19:00:00]   -> ns2d | FNO h128 m16 | seed 137 (epochs=50, norm_io=False)
+[19:00:04]       ep  10/50  loss=0.00001
+[19:00:08]       ep  20/50  loss=0.00000
+[19:00:11]       ep  30/50  loss=0.00000
+[19:00:14]       ep  40/50  loss=0.00000
+[19:00:18]       ep  50/50  loss=0.00000
+[19:00:18]      saved ns2d__FNO_h128_m16__seed137.json  rel L2 clean=0.0002 noisy=0.0289  (17.0s)
+[19:00:18]   -> ns2d | DeepONet faithful | seed 137 (epochs=600, norm_io=True)
+[19:00:27]       ep 120/600  loss=0.28072
+[19:00:37]       ep 240/600  loss=0.10920
+[19:00:47]       ep 360/600  loss=0.05364
+[19:00:57]       ep 480/600  loss=0.03045
+[19:01:06]       ep 600/600  loss=0.02629
+[19:01:06]      saved ns2d__DeepONet_faithful__seed137.json  rel L2 clean=0.1621 noisy=0.1621  (48.4s)
+[19:01:06]   -> ns2d | POD-DeepONet | seed 137 (epochs=80, norm_io=False)
+[19:01:07]       ep  16/80  loss=0.00026
+[19:01:08]       ep  32/80  loss=0.00026
+[19:01:09]       ep  48/80  loss=0.00026
+[19:01:10]       ep  64/80  loss=0.00026
+[19:01:10]       ep  80/80  loss=0.00026
+[19:01:10]      saved ns2d__POD-DeepONet__seed137.json  rel L2 clean=0.0034 noisy=0.0034  (4.1s)
+[19:01:10]   -> ns2d | Pure Transformer | seed 137 (epochs=80, norm_io=False)
+[19:01:18]       ep  16/80  loss=1.87901
+[19:01:26]       ep  32/80  loss=1.71662
+[19:01:33]       ep  48/80  loss=1.55695
+[19:01:40]       ep  64/80  loss=1.50123
+[19:01:48]       ep  80/80  loss=1.47953
+[19:01:48]      saved ns2d__Pure_Transformer__seed137.json  rel L2 clean=0.2669 noisy=0.3641  (37.5s)
+[19:01:48]   -> ns2d | Discovered Hybrid | seed 137 (epochs=80, norm_io=False)
+[19:01:54]       ep  16/80  loss=0.00335
+[19:01:59]       ep  32/80  loss=0.00108
+[19:02:05]       ep  48/80  loss=0.00003
+[19:02:11]       ep  64/80  loss=0.00002
+[19:02:16]       ep  80/80  loss=0.00002
+[19:02:16]      saved ns2d__Discovered_Hybrid__seed137.json  rel L2 clean=0.0008 noisy=0.0319  (27.9s)
+[19:02:16]     generating ns2d data (res=32, n_train=256, n_test=64)...
+[19:02:38]     data ready in 21.5s; x.std=3.131 y.std=4.553
+[19:02:38]   -> ns2d | FNO h64 m12 | seed 2024 (epochs=50, norm_io=False)
+[19:02:40]       ep  10/50  loss=0.00000
+[19:02:42]       ep  20/50  loss=0.00000
+[19:02:44]       ep  30/50  loss=0.00000
+[19:02:46]       ep  40/50  loss=0.00000
+[19:02:48]       ep  50/50  loss=0.00000
+[19:02:48]      saved ns2d__FNO_h64_m12__seed2024.json  rel L2 clean=0.0002 noisy=0.0273  (10.0s)
+[19:02:48]   -> ns2d | FNO h32 m12 | seed 2024 (epochs=50, norm_io=False)
+[19:02:50]       ep  10/50  loss=0.00001
+[19:02:52]       ep  20/50  loss=0.00000
+[19:02:54]       ep  30/50  loss=0.00000
+[19:02:55]       ep  40/50  loss=0.00000
+[19:02:57]       ep  50/50  loss=0.00000
+[19:02:57]      saved ns2d__FNO_h32_m12__seed2024.json  rel L2 clean=0.0002 noisy=0.0295  (9.4s)
+[19:02:57]   -> ns2d | FNO h128 m16 | seed 2024 (epochs=50, norm_io=False)
+[19:03:02]       ep  10/50  loss=0.00001
+[19:03:05]       ep  20/50  loss=0.00000
+[19:03:08]       ep  30/50  loss=0.00000
+[19:03:12]       ep  40/50  loss=0.00000
+[19:03:15]       ep  50/50  loss=0.00000
+[19:03:15]      saved ns2d__FNO_h128_m16__seed2024.json  rel L2 clean=0.0002 noisy=0.0259  (17.3s)
+[19:03:15]   -> ns2d | DeepONet faithful | seed 2024 (epochs=600, norm_io=True)
+[19:03:25]       ep 120/600  loss=0.24036
+[19:03:35]       ep 240/600  loss=0.10124
+[19:03:45]       ep 360/600  loss=0.05718
+[19:03:55]       ep 480/600  loss=0.03720
+[19:04:04]       ep 600/600  loss=0.03095
+[19:04:04]      saved ns2d__DeepONet_faithful__seed2024.json  rel L2 clean=0.1759 noisy=0.1759  (49.2s)
+[19:04:05]   -> ns2d | POD-DeepONet | seed 2024 (epochs=80, norm_io=False)
+[19:04:05]       ep  16/80  loss=0.00024
+[19:04:06]       ep  32/80  loss=0.00024
+[19:04:07]       ep  48/80  loss=0.00024
+[19:04:08]       ep  64/80  loss=0.00024
+[19:04:09]       ep  80/80  loss=0.00024
+[19:04:09]      saved ns2d__POD-DeepONet__seed2024.json  rel L2 clean=0.0032 noisy=0.0032  (4.1s)
+[19:04:09]   -> ns2d | Pure Transformer | seed 2024 (epochs=80, norm_io=False)
+[19:04:16]       ep  16/80  loss=2.00138
+[19:04:24]       ep  32/80  loss=1.68900
+[19:04:31]       ep  48/80  loss=1.46809
+[19:04:39]       ep  64/80  loss=1.40693
+[19:04:46]       ep  80/80  loss=1.38507
+[19:04:46]      saved ns2d__Pure_Transformer__seed2024.json  rel L2 clean=0.2575 noisy=0.3675  (37.5s)
+[19:04:47]   -> ns2d | Discovered Hybrid | seed 2024 (epochs=80, norm_io=False)
+[19:04:52]       ep  16/80  loss=0.00672
+[19:04:58]       ep  32/80  loss=0.00026
+[19:05:03]       ep  48/80  loss=0.00002
+[19:05:09]       ep  64/80  loss=0.00001
+[19:05:15]       ep  80/80  loss=0.00001
+[19:05:15]      saved ns2d__Discovered_Hybrid__seed2024.json  rel L2 clean=0.0007 noisy=0.0303  (28.2s)
+[19:05:15] 
+  wrote C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\exp4v3\AGGREGATE.json
+[19:05:15]   wrote C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\exp4v3\AGGREGATE.md
+[19:05:38] ====================================================================================
+[19:05:38] EXP-4 v3 (resume-safe)  device=cuda  seeds=[42, 137, 2024]  pdes=['darcy2d']
+[19:05:38] ====================================================================================
+[19:05:38]   resumed: 21 slots already complete
+[19:05:38]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[19:05:54]     data ready in 15.4s; x.std=0.450 y.std=0.024
+[19:05:54]   -> darcy2d | FNO h64 m12 | seed 42 (epochs=50, norm_io=False)
+[19:05:57]       ep  10/50  loss=0.00007
+[19:05:59]       ep  20/50  loss=0.00002
+[19:06:01]       ep  30/50  loss=0.00001
+[19:06:03]       ep  40/50  loss=0.00001
+[19:06:05]       ep  50/50  loss=0.00001
+[19:06:05]      saved darcy2d__FNO_h64_m12__seed42.json  rel L2 clean=0.3375 noisy=0.3689  (10.3s)
+[19:06:05]   -> darcy2d | FNO h32 m12 | seed 42 (epochs=50, norm_io=False)
+[19:06:07]       ep  10/50  loss=0.00012
+[19:06:09]       ep  20/50  loss=0.00006
+[19:06:11]       ep  30/50  loss=0.00004
+[19:06:12]       ep  40/50  loss=0.00003
+[19:06:14]       ep  50/50  loss=0.00003
+[19:06:14]      saved darcy2d__FNO_h32_m12__seed42.json  rel L2 clean=0.3362 noisy=0.3717  (9.2s)
+[19:06:15]   -> darcy2d | FNO h128 m16 | seed 42 (epochs=50, norm_io=False)
+[19:06:19]       ep  10/50  loss=0.00004
+[19:06:22]       ep  20/50  loss=0.00001
+[19:06:25]       ep  30/50  loss=0.00000
+[19:06:29]       ep  40/50  loss=0.00000
+[19:06:32]       ep  50/50  loss=0.00000
+[19:06:32]      saved darcy2d__FNO_h128_m16__seed42.json  rel L2 clean=0.3291 noisy=0.3603  (17.1s)
+[19:06:32]   -> darcy2d | DeepONet faithful | seed 42 (epochs=600, norm_io=True)
+[19:06:42]       ep 120/600  loss=0.00681
+[19:06:51]       ep 240/600  loss=0.00804
+[19:07:00]       ep 360/600  loss=0.00137
+[19:07:10]       ep 480/600  loss=0.00096
+[19:07:19]       ep 600/600  loss=0.00088
+[19:07:19]      saved darcy2d__DeepONet_faithful__seed42.json  rel L2 clean=0.0692 noisy=0.0706  (46.9s)
+[19:07:19]   -> darcy2d | POD-DeepONet | seed 42 (epochs=80, norm_io=False)
+[19:07:20]       ep  16/80  loss=0.00002
+[19:07:21]       ep  32/80  loss=0.00001
+[19:07:22]       ep  48/80  loss=0.00001
+[19:07:22]       ep  64/80  loss=0.00001
+[19:07:23]       ep  80/80  loss=0.00001
+[19:07:23]      saved darcy2d__POD-DeepONet__seed42.json  rel L2 clean=0.0855 noisy=0.0855  (4.1s)
+[19:07:23]   -> darcy2d | Pure Transformer | seed 42 (epochs=80, norm_io=False)
+[19:07:31]       ep  16/80  loss=0.00047
+[19:07:38]       ep  32/80  loss=0.00046
+[19:07:46]       ep  48/80  loss=0.00046
+[19:07:53]       ep  64/80  loss=0.00045
+[19:08:00]       ep  80/80  loss=0.00045
+[19:08:00]      saved darcy2d__Pure_Transformer__seed42.json  rel L2 clean=0.5084 noisy=0.5131  (36.9s)
+[19:08:00]   -> darcy2d | Discovered Hybrid | seed 42 (epochs=80, norm_io=False)
+[19:08:06]       ep  16/80  loss=0.00017
+[19:08:12]       ep  32/80  loss=0.00013
+[19:08:17]       ep  48/80  loss=0.00008
+[19:08:23]       ep  64/80  loss=0.00006
+[19:08:28]       ep  80/80  loss=0.00006
+[19:08:28]      saved darcy2d__Discovered_Hybrid__seed42.json  rel L2 clean=0.2694 noisy=0.4750  (27.8s)
+[19:08:28]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[19:08:41]     data ready in 12.4s; x.std=0.451 y.std=0.024
+[19:08:41]   -> darcy2d | FNO h64 m12 | seed 137 (epochs=50, norm_io=False)
+[19:08:43]       ep  10/50  loss=0.00008
+[19:08:45]       ep  20/50  loss=0.00003
+[19:08:47]       ep  30/50  loss=0.00001
+[19:08:49]       ep  40/50  loss=0.00001
+[19:08:51]       ep  50/50  loss=0.00001
+[19:08:51]      saved darcy2d__FNO_h64_m12__seed137.json  rel L2 clean=0.3728 noisy=0.4039  (10.2s)
+[19:08:51]   -> darcy2d | FNO h32 m12 | seed 137 (epochs=50, norm_io=False)
+[19:08:53]       ep  10/50  loss=0.00007
+[19:08:55]       ep  20/50  loss=0.00003
+[19:08:57]       ep  30/50  loss=0.00002
+[19:08:58]       ep  40/50  loss=0.00001
+[19:09:00]       ep  50/50  loss=0.00001
+[19:09:01]      saved darcy2d__FNO_h32_m12__seed137.json  rel L2 clean=0.2499 noisy=0.3021  (9.3s)
+[19:09:01]   -> darcy2d | FNO h128 m16 | seed 137 (epochs=50, norm_io=False)
+[19:09:05]       ep  10/50  loss=0.00004
+[19:09:08]       ep  20/50  loss=0.00001
+[19:09:11]       ep  30/50  loss=0.00000
+[19:09:15]       ep  40/50  loss=0.00000
+[19:09:18]       ep  50/50  loss=0.00000
+[19:09:18]      saved darcy2d__FNO_h128_m16__seed137.json  rel L2 clean=0.3273 noisy=0.3707  (17.0s)
+[19:09:18]   -> darcy2d | DeepONet faithful | seed 137 (epochs=600, norm_io=True)
+[19:09:28]       ep 120/600  loss=0.00620
+[19:09:37]       ep 240/600  loss=0.00259
+[19:09:47]       ep 360/600  loss=0.00127
+[19:09:56]       ep 480/600  loss=0.00089
+[19:10:06]       ep 600/600  loss=0.00082
+[19:10:06]      saved darcy2d__DeepONet_faithful__seed137.json  rel L2 clean=0.0602 noisy=0.0610  (47.7s)
+[19:10:06]   -> darcy2d | POD-DeepONet | seed 137 (epochs=80, norm_io=False)
+[19:10:07]       ep  16/80  loss=0.00002
+[19:10:07]       ep  32/80  loss=0.00001
+[19:10:08]       ep  48/80  loss=0.00001
+[19:10:09]       ep  64/80  loss=0.00001
+[19:10:10]       ep  80/80  loss=0.00001
+[19:10:10]      saved darcy2d__POD-DeepONet__seed137.json  rel L2 clean=0.0816 noisy=0.0818  (3.9s)
+[19:10:10]   -> darcy2d | Pure Transformer | seed 137 (epochs=80, norm_io=False)
+[19:10:17]       ep  16/80  loss=0.00062
+[19:10:25]       ep  32/80  loss=0.00053
+[19:10:32]       ep  48/80  loss=0.00045
+[19:10:40]       ep  64/80  loss=0.00045
+[19:10:47]       ep  80/80  loss=0.00044
+[19:10:47]      saved darcy2d__Pure_Transformer__seed137.json  rel L2 clean=0.5205 noisy=0.5247  (37.2s)
+[19:10:47]   -> darcy2d | Discovered Hybrid | seed 137 (epochs=80, norm_io=False)
+[19:10:53]       ep  16/80  loss=0.00017
+[19:10:59]       ep  32/80  loss=0.00012
+[19:11:04]       ep  48/80  loss=0.00008
+[19:11:10]       ep  64/80  loss=0.00007
+[19:11:15]       ep  80/80  loss=0.00006
+[19:11:15]      saved darcy2d__Discovered_Hybrid__seed137.json  rel L2 clean=0.2466 noisy=0.3970  (28.1s)
+[19:11:16]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[19:11:29]     data ready in 13.2s; x.std=0.438 y.std=0.024
+[19:11:29]   -> darcy2d | FNO h64 m12 | seed 2024 (epochs=50, norm_io=False)
+[19:11:31]       ep  10/50  loss=0.00007
+[19:11:33]       ep  20/50  loss=0.00002
+[19:11:35]       ep  30/50  loss=0.00001
+[19:11:37]       ep  40/50  loss=0.00001
+[19:11:39]       ep  50/50  loss=0.00001
+[19:11:39]      saved darcy2d__FNO_h64_m12__seed2024.json  rel L2 clean=0.3646 noisy=0.4009  (9.8s)
+[19:11:39]   -> darcy2d | FNO h32 m12 | seed 2024 (epochs=50, norm_io=False)
+[19:11:41]       ep  10/50  loss=0.00015
+[19:11:43]       ep  20/50  loss=0.00007
+[19:11:44]       ep  30/50  loss=0.00004
+[19:11:46]       ep  40/50  loss=0.00003
+[19:11:48]       ep  50/50  loss=0.00003
+[19:11:48]      saved darcy2d__FNO_h32_m12__seed2024.json  rel L2 clean=0.3350 noisy=0.3936  (9.4s)
+[19:11:48]   -> darcy2d | FNO h128 m16 | seed 2024 (epochs=50, norm_io=False)
+[19:11:52]       ep  10/50  loss=0.00006
+[19:11:56]       ep  20/50  loss=0.00001
+[19:11:59]       ep  30/50  loss=0.00000
+[19:12:02]       ep  40/50  loss=0.00000
+[19:12:05]       ep  50/50  loss=0.00000
+[19:12:05]      saved darcy2d__FNO_h128_m16__seed2024.json  rel L2 clean=0.3381 noisy=0.3770  (16.7s)
+[19:12:05]   -> darcy2d | DeepONet faithful | seed 2024 (epochs=600, norm_io=True)
+[19:12:14]       ep 120/600  loss=0.00644
+[19:12:23]       ep 240/600  loss=0.00284
+[19:12:32]       ep 360/600  loss=0.00114
+[19:12:41]       ep 480/600  loss=0.00084
+[19:12:50]       ep 600/600  loss=0.00078
+[19:12:50]      saved darcy2d__DeepONet_faithful__seed2024.json  rel L2 clean=0.0654 noisy=0.0659  (44.9s)
+[19:12:50]   -> darcy2d | POD-DeepONet | seed 2024 (epochs=80, norm_io=False)
+[19:12:51]       ep  16/80  loss=0.00002
+[19:12:52]       ep  32/80  loss=0.00001
+[19:12:53]       ep  48/80  loss=0.00001
+[19:12:53]       ep  64/80  loss=0.00001
+[19:12:54]       ep  80/80  loss=0.00001
+[19:12:54]      saved darcy2d__POD-DeepONet__seed2024.json  rel L2 clean=0.0785 noisy=0.0787  (3.8s)
+[19:12:54]   -> darcy2d | Pure Transformer | seed 2024 (epochs=80, norm_io=False)
+[19:13:02]       ep  16/80  loss=0.00048
+[19:13:09]       ep  32/80  loss=0.00049
+[19:13:17]       ep  48/80  loss=0.00047
+[19:13:24]       ep  64/80  loss=0.00046
+[19:13:31]       ep  80/80  loss=0.00046
+[19:13:31]      saved darcy2d__Pure_Transformer__seed2024.json  rel L2 clean=0.5333 noisy=0.5415  (36.9s)
+[19:13:31]   -> darcy2d | Discovered Hybrid | seed 2024 (epochs=80, norm_io=False)
+[19:13:37]       ep  16/80  loss=0.00014
+[19:13:43]       ep  32/80  loss=0.00009
+[19:13:48]       ep  48/80  loss=0.00007
+[19:13:54]       ep  64/80  loss=0.00006
+[19:13:59]       ep  80/80  loss=0.00006
+[19:13:59]      saved darcy2d__Discovered_Hybrid__seed2024.json  rel L2 clean=0.2514 noisy=0.4058  (27.7s)
+[19:13:59] 
+  wrote C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\exp4v3\AGGREGATE.json
+[19:13:59]   wrote C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\exp4v3\AGGREGATE.md
+[23:57:18] ====================================================================================
+[23:57:18] EXP-4 v3 (resume-safe)  device=cuda  seeds=[42, 137, 2024]  pdes=['ns2d', 'darcy2d']
+[23:57:18] ====================================================================================
+[23:57:18]   resumed: 42 slots already complete
+[23:57:18]     generating ns2d data (res=32, n_train=256, n_test=64)...
+[23:57:59]     data ready in 40.6s; x.std=3.131 y.std=4.553
+[23:57:59]   skip ns2d | FNO h64 m12 | seed 42 (already done)
+[23:57:59]   skip ns2d | FNO h32 m12 | seed 42 (already done)
+[23:57:59]   skip ns2d | FNO h128 m16 | seed 42 (already done)
+[23:57:59]   skip ns2d | DeepONet faithful | seed 42 (already done)
+[23:57:59]   skip ns2d | POD-DeepONet | seed 42 (already done)
+[23:57:59]   skip ns2d | Pure Transformer | seed 42 (already done)
+[23:57:59]   skip ns2d | Discovered Hybrid | seed 42 (already done)
+[23:57:59]   -> ns2d | Hybrid v3 (NS) | seed 42 (epochs=80, norm_io=False)
+[23:58:05]       ep  16/80  loss=0.00009
+[23:58:09]       ep  32/80  loss=0.00001
+[23:58:13]       ep  48/80  loss=0.00001
+[23:58:17]       ep  64/80  loss=0.00001
+[23:58:21]       ep  80/80  loss=0.00001
+[23:58:21]      saved ns2d__Hybrid_v3_(NS)__seed42.json  rel L2 clean=0.0005 noisy=0.0356  (21.0s)
+[23:58:22]   -> ns2d | Hybrid v3 (Darcy) | seed 42 (epochs=80, norm_io=False)
+[23:58:26]       ep  16/80  loss=0.01997
+[23:58:31]       ep  32/80  loss=0.00775
+[23:58:35]       ep  48/80  loss=0.00504
+[23:58:40]       ep  64/80  loss=0.00227
+[23:58:44]       ep  80/80  loss=0.00206
+[23:58:44]      saved ns2d__Hybrid_v3_(Darcy)__seed42.json  rel L2 clean=0.0021 noisy=0.0251  (22.7s)
+[23:58:44]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[23:59:00]     data ready in 15.5s; x.std=0.450 y.std=0.024
+[23:59:00]   skip darcy2d | FNO h64 m12 | seed 42 (already done)
+[23:59:00]   skip darcy2d | FNO h32 m12 | seed 42 (already done)
+[23:59:00]   skip darcy2d | FNO h128 m16 | seed 42 (already done)
+[23:59:00]   skip darcy2d | DeepONet faithful | seed 42 (already done)
+[23:59:00]   skip darcy2d | POD-DeepONet | seed 42 (already done)
+[23:59:00]   skip darcy2d | Pure Transformer | seed 42 (already done)
+[23:59:00]   skip darcy2d | Discovered Hybrid | seed 42 (already done)
+[23:59:00]   -> darcy2d | Hybrid v3 (NS) | seed 42 (epochs=80, norm_io=False)
+[23:59:04]       ep  16/80  loss=0.00105
+[23:59:08]       ep  32/80  loss=0.00049
+[23:59:12]       ep  48/80  loss=0.00035
+[23:59:16]       ep  64/80  loss=0.00030
+[23:59:20]       ep  80/80  loss=0.00029
+[23:59:20]      saved darcy2d__Hybrid_v3_(NS)__seed42.json  rel L2 clean=0.6091 noisy=1.8244  (20.2s)
+[23:59:20]   -> darcy2d | Hybrid v3 (Darcy) | seed 42 (epochs=80, norm_io=False)
+[23:59:25]       ep  16/80  loss=0.00004
+[23:59:29]       ep  32/80  loss=0.00002
+[23:59:34]       ep  48/80  loss=0.00002
+[23:59:38]       ep  64/80  loss=0.00001
+[23:59:43]       ep  80/80  loss=0.00001
+[23:59:43]      saved darcy2d__Hybrid_v3_(Darcy)__seed42.json  rel L2 clean=0.0555 noisy=0.0657  (22.5s)
+[23:59:43]     generating ns2d data (res=32, n_train=256, n_test=64)...
+[00:00:08]     data ready in 24.4s; x.std=3.131 y.std=4.553
+[00:00:08]   skip ns2d | FNO h64 m12 | seed 137 (already done)
+[00:00:08]   skip ns2d | FNO h32 m12 | seed 137 (already done)
+[00:00:08]   skip ns2d | FNO h128 m16 | seed 137 (already done)
+[00:00:08]   skip ns2d | DeepONet faithful | seed 137 (already done)
+[00:00:08]   skip ns2d | POD-DeepONet | seed 137 (already done)
+[00:00:08]   skip ns2d | Pure Transformer | seed 137 (already done)
+[00:00:08]   skip ns2d | Discovered Hybrid | seed 137 (already done)
+[00:00:08]   -> ns2d | Hybrid v3 (NS) | seed 137 (epochs=80, norm_io=False)
+[00:00:12]       ep  16/80  loss=0.00002
+[00:00:16]       ep  32/80  loss=0.00001
+[00:00:20]       ep  48/80  loss=0.00001
+[00:00:24]       ep  64/80  loss=0.00001
+[00:00:28]       ep  80/80  loss=0.00001
+[00:00:28]      saved ns2d__Hybrid_v3_(NS)__seed137.json  rel L2 clean=0.0005 noisy=0.0334  (20.0s)
+[00:00:28]   -> ns2d | Hybrid v3 (Darcy) | seed 137 (epochs=80, norm_io=False)
+[00:00:32]       ep  16/80  loss=0.01943
+[00:00:37]       ep  32/80  loss=0.00799
+[00:00:41]       ep  48/80  loss=0.00319
+[00:00:46]       ep  64/80  loss=0.00202
+[00:00:50]       ep  80/80  loss=0.00180
+[00:00:50]      saved ns2d__Hybrid_v3_(Darcy)__seed137.json  rel L2 clean=0.0017 noisy=0.0282  (22.3s)
+[00:00:50]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[00:01:13]     data ready in 22.8s; x.std=0.451 y.std=0.024
+[00:01:13]   skip darcy2d | FNO h64 m12 | seed 137 (already done)
+[00:01:13]   skip darcy2d | FNO h32 m12 | seed 137 (already done)
+[00:01:13]   skip darcy2d | FNO h128 m16 | seed 137 (already done)
+[00:01:13]   skip darcy2d | DeepONet faithful | seed 137 (already done)
+[00:01:13]   skip darcy2d | POD-DeepONet | seed 137 (already done)
+[00:01:13]   skip darcy2d | Pure Transformer | seed 137 (already done)
+[00:01:13]   skip darcy2d | Discovered Hybrid | seed 137 (already done)
+[00:01:13]   -> darcy2d | Hybrid v3 (NS) | seed 137 (epochs=80, norm_io=False)
+[00:01:17]       ep  16/80  loss=0.00150
+[00:01:21]       ep  32/80  loss=0.00074
+[00:01:25]       ep  48/80  loss=0.00052
+[00:01:29]       ep  64/80  loss=0.00044
+[00:01:33]       ep  80/80  loss=0.00043
+[00:01:33]      saved darcy2d__Hybrid_v3_(NS)__seed137.json  rel L2 clean=0.7558 noisy=2.0856  (20.1s)
+[00:01:33]   -> darcy2d | Hybrid v3 (Darcy) | seed 137 (epochs=80, norm_io=False)
+[00:01:38]       ep  16/80  loss=0.00009
+[00:01:42]       ep  32/80  loss=0.00004
+[00:01:47]       ep  48/80  loss=0.00003
+[00:01:51]       ep  64/80  loss=0.00002
+[00:01:56]       ep  80/80  loss=0.00002
+[00:01:56]      saved darcy2d__Hybrid_v3_(Darcy)__seed137.json  rel L2 clean=0.0746 noisy=0.1253  (22.5s)
+[00:01:56]     generating ns2d data (res=32, n_train=256, n_test=64)...
+[00:02:13]     data ready in 17.4s; x.std=3.131 y.std=4.553
+[00:02:13]   skip ns2d | FNO h64 m12 | seed 2024 (already done)
+[00:02:13]   skip ns2d | FNO h32 m12 | seed 2024 (already done)
+[00:02:13]   skip ns2d | FNO h128 m16 | seed 2024 (already done)
+[00:02:13]   skip ns2d | DeepONet faithful | seed 2024 (already done)
+[00:02:13]   skip ns2d | POD-DeepONet | seed 2024 (already done)
+[00:02:13]   skip ns2d | Pure Transformer | seed 2024 (already done)
+[00:02:13]   skip ns2d | Discovered Hybrid | seed 2024 (already done)
+[00:02:13]   -> ns2d | Hybrid v3 (NS) | seed 2024 (epochs=80, norm_io=False)
+[00:02:17]       ep  16/80  loss=0.00002
+[00:02:21]       ep  32/80  loss=0.00001
+[00:02:25]       ep  48/80  loss=0.00001
+[00:02:29]       ep  64/80  loss=0.00000
+[00:02:33]       ep  80/80  loss=0.00000
+[00:02:33]      saved ns2d__Hybrid_v3_(NS)__seed2024.json  rel L2 clean=0.0005 noisy=0.0294  (19.9s)
+[00:02:33]   -> ns2d | Hybrid v3 (Darcy) | seed 2024 (epochs=80, norm_io=False)
+[00:02:38]       ep  16/80  loss=0.02101
+[00:02:43]       ep  32/80  loss=0.01383
+[00:02:47]       ep  48/80  loss=0.00350
+[00:02:52]       ep  64/80  loss=0.00212
+[00:02:56]       ep  80/80  loss=0.00173
+[00:02:56]      saved ns2d__Hybrid_v3_(Darcy)__seed2024.json  rel L2 clean=0.0016 noisy=0.0265  (22.6s)
+[00:02:56]     generating darcy2d data (res=32, n_train=256, n_test=64)...
+[00:03:12]     data ready in 15.7s; x.std=0.438 y.std=0.024
+[00:03:12]   skip darcy2d | FNO h64 m12 | seed 2024 (already done)
+[00:03:12]   skip darcy2d | FNO h32 m12 | seed 2024 (already done)
+[00:03:12]   skip darcy2d | FNO h128 m16 | seed 2024 (already done)
+[00:03:12]   skip darcy2d | DeepONet faithful | seed 2024 (already done)
+[00:03:12]   skip darcy2d | POD-DeepONet | seed 2024 (already done)
+[00:03:12]   skip darcy2d | Pure Transformer | seed 2024 (already done)
+[00:03:12]   skip darcy2d | Discovered Hybrid | seed 2024 (already done)
+[00:03:12]   -> darcy2d | Hybrid v3 (NS) | seed 2024 (epochs=80, norm_io=False)
+[00:03:16]       ep  16/80  loss=0.00132
+[00:03:20]       ep  32/80  loss=0.00062
+[00:03:24]       ep  48/80  loss=0.00043
+[00:03:28]       ep  64/80  loss=0.00037
+[00:03:32]       ep  80/80  loss=0.00036
+[00:03:32]      saved darcy2d__Hybrid_v3_(NS)__seed2024.json  rel L2 clean=0.7732 noisy=1.8333  (20.1s)
+[00:03:32]   -> darcy2d | Hybrid v3 (Darcy) | seed 2024 (epochs=80, norm_io=False)
+[00:03:37]       ep  16/80  loss=0.00007
+[00:03:41]       ep  32/80  loss=0.00003
+[00:03:46]       ep  48/80  loss=0.00002
+[00:03:50]       ep  64/80  loss=0.00002
+[00:03:55]       ep  80/80  loss=0.00002
+[00:03:55]      saved darcy2d__Hybrid_v3_(Darcy)__seed2024.json  rel L2 clean=0.0592 noisy=0.1068  (22.5s)
+[00:03:55] 
+  wrote C:\Users\luisl\repos\AI-SC\nod\results\exp4v3\AGGREGATE.json
+[00:03:55]   wrote C:\Users\luisl\repos\AI-SC\nod\results\exp4v3\AGGREGATE.md

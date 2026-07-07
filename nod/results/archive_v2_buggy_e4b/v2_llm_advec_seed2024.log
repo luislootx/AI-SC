@@ -1,0 +1,1784 @@
+
+
+===== launch 2026-06-22 20:40:35 (model=gemma4:e4b) =====
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                 1D SWARM (resume-safe)  preset=paper-grade-1d                ║
+║                pde=advec  tag=v2_llm_advec_seed2024  seed=2024               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+  Config: 16 labs x 20 iter, res=128, train=256, epochs/iter=40, device=cuda
+  Agentic: ON
+  Run dir: C:\Users\luisl\repos\AI-SC\nod\results\swarm_runs\v2_llm_advec_seed2024
+  LLM backend ready: ollama / gemma4:e4b
+  Generating LinearAdvection-1D data...
+  Train: (256, 1, 128), Test: (64, 1, 128)
+
+  Cached data to C:\Users\luisl\repos\AI-SC\nod\results\swarm_runs\v2_llm_advec_seed2024\data.pt
+  No checkpoint found — initializing fresh swarm
+
+================================================================================
+  INITIALIZING AI SCIENTIFIC COMMUNITY (1D)
+================================================================================
+  Lab 0 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 1 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 2 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 3 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 4 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 5 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 6 (wavelet): blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet'], ch=48, modes=8
+  Lab 7 (hybrid_fno_attn): blocks=['fourier', 'attention', 'fourier', 'attention'], ch=64, modes=10
+  Lab 8 (random): blocks=['residual_conv', 'attention', 'wavelet'], ch=32, modes=8
+  Lab 9 (random): blocks=['branch_trunk', 'branch_trunk', 'attention', 'branch_trunk', 'wavelet'], ch=96, modes=8
+  Lab 10 (random): blocks=['branch_trunk', 'residual_conv'], ch=64, modes=12
+  Lab 11 (random): blocks=['wavelet', 'branch_trunk', 'attention'], ch=48, modes=8
+  Lab 12 (wavelet): blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet'], ch=48, modes=8
+  Lab 13 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 14 (random): blocks=['branch_trunk', 'attention', 'residual_conv'], ch=32, modes=4
+  Lab 15 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+
+  Initialized 16 virtual 1D labs across 6 paradigms
+
+================================================================================
+  BEGINNING SWARM ITERATIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 1/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action= hybridize :: The high exploration rate (0.85) suggests trying novel combinations, and the swarm is domi
+    Lab 2 planner [ollama/gemma4:e4b] action=   explore :: The high exploration rate (0.85) and the similarity of nearby labs (L3, L13) suggest devia
+    Lab 3 planner [ollama/gemma4:e4b] action= hybridize :: With a high exploration rate (0.85), I will hybridize my strong 'branch_trunk' focus with 
+    Lab 4 planner [ollama/gemma4:e4b] action= hybridize :: The high exploration rate (0.85) suggests novelty, but the swarm is dominated by 'attentio
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action= hybridize :: Given the high exploration rate (0.85) and the swarm's strong tendency towards 'fourier'-h
+    Lab 7 planner [ollama/gemma4:e4b] action= hybridize :: The high exploration rate (0.85) suggests novelty, but the swarm shows strong interest in 
+    Lab 8 planner [ollama/gemma4:e4b] action=   explore :: Given the high exploration rate (0.85) and observing many labs using complex, diverse sequ
+    Lab 9 planner [ollama/gemma4:e4b] action=   explore :: Given the high exploration rate (0.85) and a diverse swarm, I will propose an exploratory 
+    Lab 10 planner [ollama/gemma4:e4b] action=   explore :: With a high exploration rate (0.85) and no historical data, we should explore unique combi
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action= hybridize :: With a high exploration rate (0.85), I will hybridize my core 'wavelet' paradigm by incorp
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=   explore :: The high exploration rate (0.85) suggests investigating novel structures, and the swarm sh
+    Lab 15 planner [ollama/gemma4:e4b] action= hybridize :: The lab has a high exploration rate (0.85) and the current swarm is diverse but showing re
+
+  Phase 2: Building and Training...
+    Lab 0: 217,601 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 333,889 params, blocks=['fourier', 'attention', 'residual_conv']
+    Lab 2: 190,145 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 104,769 params, blocks=['attention', 'attention', 'attention']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 183,953 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 10: 429,617 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 11: 69,521 params, blocks=['wavelet', 'branch_trunk', 'attention']
+    Lab 12: 444,961 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 13: 78,657 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 14: 114,065 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 0 (composite=0.3740)
+    ★ NEW GLOBAL BEST: Lab 1 (composite=0.4000)
+    ★ NEW GLOBAL BEST: Lab 3 (composite=0.5385)
+    ★ NEW GLOBAL BEST: Lab 10 (composite=0.5723)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 10 (random            ) | composite=0.5723 | trust=1.000 | [wavelet+attention+branch_trunk+fourier]
+  #2  Lab  3 (deeponet          ) | composite=0.5385 | trust=0.880 | [branch_trunk+fourier+attention+residual_conv]
+  #3  Lab 12 (wavelet           ) | composite=0.5215 | trust=0.835 | [wavelet+attention+residual_conv+fourier]
+  #4  Lab 15 (transformer       ) | composite=0.4531 | trust=0.781 | [branch_trunk+attention+wavelet+residual_conv+fourier]
+  #5  Lab  8 (random            ) | composite=0.4328 | trust=0.756 | [wavelet+branch_trunk+attention+fourier]
+
+  Global best: Lab 10 (fitness=0.5723)
+  Best architecture: wavelet+attention+branch_trunk+fourier | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: attention=26% fourier=24% branch_trunk=18% residual_conv=16% wavelet=16% 
+  Architectural diversity index: 0.2998 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 14, 15], avg composite=0.3944
+  ✓ checkpoint saved (iteration 1/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 2/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action= hybridize :: Given the high exploration rate (0.81), a hybridization approach is best to explore novel 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action= hybridize :: The high exploration rate suggests novelty is desired, but the best global models utilize 
+    Lab 10 planner [ollama/gemma4:e4b] action= hybridize :: The lab's high exploration rate (0.81) suggests trying novel architectures, but the swarm 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action= hybridize :: The high exploration rate suggests trying novel combinations, and the global best shares k
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 217,601 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 333,889 params, blocks=['fourier', 'attention', 'residual_conv']
+    Lab 2: 190,145 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 429,617 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 69,521 params, blocks=['wavelet', 'branch_trunk', 'attention']
+    Lab 12: 429,617 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 13: 78,657 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 14: 114,065 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 10 (composite=0.5759)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 10 (random            ) | composite=0.5759 | trust=1.000 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #2  Lab  9 (random            ) | composite=0.4491 | trust=0.573 | [branch_trunk+wavelet+attention+fourier+residual_conv]
+  #3  Lab  1 (fno               ) | composite=0.4463 | trust=0.630 | [fourier+attention+residual_conv]
+  #4  Lab  0 (fno               ) | composite=0.4131 | trust=0.394 | [fourier+fourier+fourier+fourier]
+  #5  Lab  2 (deeponet          ) | composite=0.4051 | trust=0.482 | [fourier+attention+residual_conv+wavelet]
+
+  Global best: Lab 10 (fitness=0.5759)
+  Best architecture: wavelet+attention+branch_trunk+fourier+residual_conv | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: fourier=25% attention=22% branch_trunk=20% wavelet=18% residual_conv=15% 
+  Architectural diversity index: 0.2784 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15], avg composite=0.3204
+  ✓ checkpoint saved (iteration 2/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 3/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=   exploit :: The current lab performance and the global best mimic the existing architecture, suggestin
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 217,601 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 333,889 params, blocks=['fourier', 'attention', 'residual_conv']
+    Lab 2: 190,145 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 429,617 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 69,521 params, blocks=['wavelet', 'branch_trunk', 'attention']
+    Lab 12: 429,617 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 13: 78,657 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 14: 114,065 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 12 (wavelet           ) | composite=0.5736 | trust=0.691 | [wavelet+attention+branch_trunk+fourier]
+  #2  Lab 10 (random            ) | composite=0.5719 | trust=0.996 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #3  Lab  3 (deeponet          ) | composite=0.5103 | trust=0.657 | [branch_trunk+fourier+attention+residual_conv]
+  #4  Lab  2 (deeponet          ) | composite=0.4343 | trust=0.536 | [fourier+attention+residual_conv+wavelet]
+  #5  Lab  6 (wavelet           ) | composite=0.4303 | trust=0.407 | [wavelet+attention+residual_conv+fourier]
+
+  Global best: Lab 10 (fitness=0.5759)
+  Best architecture: wavelet+attention+branch_trunk+fourier+residual_conv | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(2) hybrid_fno_attn(1) random(5) transformer(3) wavelet(2) 
+  Block usage: fourier=25% attention=22% branch_trunk=20% wavelet=18% residual_conv=15% 
+  Architectural diversity index: 0.2784 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15], avg composite=0.3594
+  ✓ checkpoint saved (iteration 3/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 4/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=   explore :: The exploration rate is high (0.73), suggesting a need for novelty, especially since the l
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 217,601 params, blocks=['fourier', 'fourier', 'fourier', 'fourier']
+    Lab 1: 522,161 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier', 'residual_conv']
+    Lab 2: 190,145 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 429,617 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 69,521 params, blocks=['wavelet', 'branch_trunk', 'attention']
+    Lab 12: 429,617 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 13: 78,657 params, blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk']
+    Lab 14: 114,065 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 7 (composite=0.5809)
+    Lab 13 respawned from Lab 6 (paradigm: wavelet_spawn)
+    Lab 11 respawned from Lab 6 (paradigm: wavelet_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  7 (hybrid_fno_attn   ) | composite=0.5809 | trust=0.493 | [fourier+attention+wavelet+residual_conv]
+  #2  Lab  0 (fno               ) | composite=0.5145 | trust=0.507 | [fourier+fourier+fourier+fourier]
+  #3  Lab  6 (wavelet           ) | composite=0.5090 | trust=0.587 | [wavelet+attention+residual_conv+fourier]
+  #4  Lab  1 (fno               ) | composite=0.5043 | trust=0.546 | [wavelet+branch_trunk+attention+fourier+residual_conv]
+  #5  Lab  9 (random            ) | composite=0.4618 | trust=0.457 | [branch_trunk+wavelet+attention+fourier+residual_conv]
+
+  Global best: Lab 7 (fitness=0.5809)
+  Best architecture: fourier+attention+wavelet+residual_conv | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) hybrid_fno_attn(1) random(4) transformer(3) wavelet(2) wavelet_spawn(2) 
+  Block usage: fourier=28% attention=21% wavelet=19% residual_conv=18% branch_trunk=13% 
+  Architectural diversity index: 0.2221 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3566
+  ✓ checkpoint saved (iteration 4/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 5/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action= hybridize :: My current performance is improving (0.3591 -> 0.5145), suggesting continued focus, but th
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.69) suggests a mix of strategies, so I will hybridize by taking th
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action= hybridize :: The lab's current high exploration rate (0.69) suggests novelty, but the global best match
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.59), suggesting a balance, but the swarm's top perform
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 522,161 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier', 'residual_conv']
+    Lab 2: 190,145 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 135,873 params, blocks=['wavelet', 'fourier', 'residual_conv', 'fourier']
+    Lab 12: 429,617 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 13: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 114,065 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 10 (composite=0.5846)
+    Lab 14 respawned from Lab 9 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 10 (random            ) | composite=0.5846 | trust=0.840 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #2  Lab  9 (random            ) | composite=0.4628 | trust=0.531 | [branch_trunk+wavelet+attention+fourier+residual_conv]
+  #3  Lab  3 (deeponet          ) | composite=0.4511 | trust=0.495 | [branch_trunk+fourier+attention+residual_conv]
+  #4  Lab  1 (fno               ) | composite=0.4245 | trust=0.532 | [wavelet+branch_trunk+attention+fourier+residual_conv]
+  #5  Lab  7 (hybrid_fno_attn   ) | composite=0.4225 | trust=0.494 | [fourier+attention+wavelet+branch_trunk+residual_conv]
+
+  Global best: Lab 10 (fitness=0.5846)
+  Best architecture: wavelet+attention+branch_trunk+fourier+residual_conv | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) hybrid_fno_attn(1) random(3) random_spawn(1) transformer(3) wavelet(2) wavelet_spawn(2) 
+  Block usage: fourier=24% attention=21% wavelet=21% residual_conv=20% branch_trunk=14% 
+  Architectural diversity index: 0.1916 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3650
+  ✓ checkpoint saved (iteration 5/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 6/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action= hybridize :: The high exploration rate (0.66) suggests novelty, but the global best and multiple active
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.59), suggesting a balance; I will hybridize by taking 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 522,161 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier', 'residual_conv']
+    Lab 2: 190,145 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 135,873 params, blocks=['wavelet', 'fourier', 'residual_conv', 'fourier']
+    Lab 12: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  3 (deeponet          ) | composite=0.5444 | trust=0.628 | [branch_trunk+fourier+attention+residual_conv]
+  #2  Lab 13 (wavelet_spawn     ) | composite=0.5391 | trust=0.423 | [fourier+attention+wavelet+residual_conv+branch_trunk]
+  #3  Lab 11 (wavelet_spawn     ) | composite=0.5381 | trust=0.396 | [wavelet+fourier+residual_conv+fourier]
+  #4  Lab  4 (transformer       ) | composite=0.5277 | trust=0.604 | [wavelet+attention+fourier+residual_conv]
+  #5  Lab  5 (transformer       ) | composite=0.4631 | trust=0.436 | [fourier+attention+wavelet+residual_conv]
+
+  Global best: Lab 10 (fitness=0.5846)
+  Best architecture: wavelet+attention+branch_trunk+fourier+residual_conv | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) hybrid_fno_attn(1) random(3) random_spawn(1) transformer(3) wavelet(2) wavelet_spawn(2) 
+  Block usage: fourier=24% attention=21% wavelet=21% residual_conv=21% branch_trunk=14% 
+  Architectural diversity index: 0.1877 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4361
+  ✓ checkpoint saved (iteration 6/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 7/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action= hybridize :: My exploration rate is moderate (0.62), suggesting a hybrid approach combining elements of
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.62) suggests a blend of creativity and optimization, so hybridizat
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 522,161 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier', 'residual_conv']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 522,161 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 135,873 params, blocks=['wavelet', 'fourier', 'residual_conv', 'fourier']
+    Lab 12: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    Lab 5 respawned from Lab 7 (paradigm: hybrid_fno_attn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 13 (wavelet_spawn     ) | composite=0.5762 | trust=0.612 | [fourier+attention+wavelet+residual_conv+branch_trunk]
+  #2  Lab  1 (fno               ) | composite=0.4698 | trust=0.512 | [wavelet+branch_trunk+attention+fourier+residual_conv]
+  #3  Lab  7 (hybrid_fno_attn   ) | composite=0.4589 | trust=0.554 | [fourier+attention+wavelet+branch_trunk+residual_conv]
+  #4  Lab 10 (random            ) | composite=0.4244 | trust=0.622 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #5  Lab 11 (wavelet_spawn     ) | composite=0.4057 | trust=0.425 | [wavelet+fourier+residual_conv+fourier]
+
+  Global best: Lab 10 (fitness=0.5846)
+  Best architecture: wavelet+attention+branch_trunk+fourier+residual_conv | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) hybrid_fno_attn(1) hybrid_fno_attn_spawn(1) random(3) random_spawn(1) transformer(2) wavelet(2) wavelet_spawn(2) 
+  Block usage: fourier=23% attention=21% wavelet=20% residual_conv=20% branch_trunk=16% 
+  Architectural diversity index: 0.1632 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3830
+  ✓ checkpoint saved (iteration 7/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 8/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.59), suggesting a balance of novelty and proven succes
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action= hybridize :: The swarm is converging on architectures featuring 'attention' and 'branch_trunk'. To main
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action= hybridize :: My current genome matches the global best and performs well (0.4001). Since the exploratio
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 568,049 params, blocks=['fourier', 'branch_trunk', 'attention', 'fourier', 'residual_conv']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 448,721 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 522,161 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 522,161 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    Lab 5 respawned from Lab 11 (paradigm: wavelet_spawn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  2 (deeponet          ) | composite=0.5803 | trust=0.628 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #2  Lab  3 (deeponet          ) | composite=0.5560 | trust=0.682 | [branch_trunk+fourier+attention+residual_conv]
+  #3  Lab 11 (wavelet_spawn     ) | composite=0.5331 | trust=0.554 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #4  Lab 13 (wavelet_spawn     ) | composite=0.4808 | trust=0.623 | [fourier+attention+wavelet+residual_conv+branch_trunk]
+  #5  Lab  6 (wavelet           ) | composite=0.4351 | trust=0.512 | [wavelet+attention+residual_conv+fourier]
+
+  Global best: Lab 10 (fitness=0.5846)
+  Best architecture: wavelet+attention+branch_trunk+fourier+residual_conv | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) hybrid_fno_attn(1) random(3) random_spawn(1) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(1) 
+  Block usage: fourier=22% attention=21% wavelet=20% residual_conv=20% branch_trunk=17% 
+  Architectural diversity index: 0.1459 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4030
+  ✓ checkpoint saved (iteration 8/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 9/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.56), suggesting a blend of novelty and stability. I wi
+    Lab 2 planner [ollama/gemma4:e4b] action=   exploit :: My current genome matches the global best and is performing well (composite: 0.5803 in ite
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 522,161 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['branch_trunk', 'wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 522,161 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 11 (composite=0.5873)
+    Lab 14 respawned from Lab 2 (paradigm: deeponet_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 11 (wavelet_spawn     ) | composite=0.5873 | trust=0.693 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab  5 (wavelet_spawn_spawn) | composite=0.5209 | trust=0.411 | [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  2 (deeponet          ) | composite=0.4664 | trust=0.630 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.4362 | trust=0.488 | [fourier+attention+wavelet+branch_trunk+residual_conv]
+  #5  Lab  8 (random            ) | composite=0.4354 | trust=0.484 | [wavelet+branch_trunk+attention+fourier]
+
+  Global best: Lab 11 (fitness=0.5873)
+  Best architecture: fourier+attention+residual_conv+branch_trunk+wavelet | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) deeponet_spawn(1) fno(2) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(1) 
+  Block usage: fourier=21% attention=21% wavelet=21% residual_conv=21% branch_trunk=17% 
+  Architectural diversity index: 0.1490 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4033
+  ✓ checkpoint saved (iteration 9/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 10/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action= hybridize :: The current exploration rate (0.54) suggests balancing novelty and optimization. I will sy
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 522,161 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 192,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'fourier']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 373,937 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 614,705 params, blocks=['wavelet', 'residual_conv', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    Lab 14 respawned from Lab 0 (paradigm: fno_spawn)
+    Lab 1 respawned from Lab 11 (paradigm: wavelet_spawn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  5 (wavelet_spawn_spawn) | composite=0.5754 | trust=0.593 | [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab 11 (wavelet_spawn     ) | composite=0.4873 | trust=0.693 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  0 (fno               ) | composite=0.4379 | trust=0.375 | [fourier+attention+wavelet+residual_conv]
+  #4  Lab 12 (wavelet           ) | composite=0.4379 | trust=0.432 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #5  Lab  2 (deeponet          ) | composite=0.3946 | trust=0.556 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+
+  Global best: Lab 11 (fitness=0.5873)
+  Best architecture: fourier+attention+residual_conv+branch_trunk+wavelet | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: fourier=25% attention=20% wavelet=20% residual_conv=18% branch_trunk=17% 
+  Architectural diversity index: 0.1709 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15], avg composite=0.3828
+  ✓ checkpoint saved (iteration 10/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 11/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=   exploit :: The composite score is fluctuating (0.33 -> 0.43 -> 0.36), suggesting the current architec
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action= hybridize :: The lab has shown improving performance (highest composite score). Given the average explo
+    Lab 13 planner [ollama/gemma4:e4b] action= hybridize :: The lab's exploration rate (0.44) suggests caution, but the composite score decline from i
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 522,161 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 991,121 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 236,177 params, blocks=['fourier', 'fourier', 'fourier', 'branch_trunk', 'fourier']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  6 (wavelet           ) | composite=0.5450 | trust=0.547 | [wavelet+attention+residual_conv+fourier]
+  #2  Lab 11 (wavelet_spawn     ) | composite=0.5436 | trust=0.751 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  7 (hybrid_fno_attn   ) | composite=0.5327 | trust=0.522 | [fourier+attention+wavelet+branch_trunk+residual_conv]
+  #4  Lab 13 (wavelet_spawn     ) | composite=0.4719 | trust=0.431 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #5  Lab 10 (random            ) | composite=0.4685 | trust=0.497 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+
+  Global best: Lab 11 (fitness=0.5873)
+  Best architecture: fourier+attention+residual_conv+branch_trunk+wavelet | ch=96 | modes=12 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: fourier=25% attention=19% wavelet=19% residual_conv=19% branch_trunk=17% 
+  Architectural diversity index: 0.1686 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15], avg composite=0.4043
+  ✓ checkpoint saved (iteration 11/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 12/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.57) suggests a balanced approach, and the swarm is highly convergi
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 444,961 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 522,161 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 991,121 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 14 (composite=0.5896)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 14 (fno_spawn         ) | composite=0.5896 | trust=0.481 | [wavelet+fourier+attention+residual_conv+branch_trunk]
+  #2  Lab 11 (wavelet_spawn     ) | composite=0.5111 | trust=0.751 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  8 (random            ) | composite=0.4443 | trust=0.509 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #4  Lab  6 (wavelet           ) | composite=0.4363 | trust=0.572 | [wavelet+attention+residual_conv+fourier]
+  #5  Lab 13 (wavelet_spawn     ) | composite=0.4158 | trust=0.432 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+
+  Global best: Lab 14 (fitness=0.5896)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: fourier=21% attention=21% wavelet=21% residual_conv=21% branch_trunk=17% 
+  Architectural diversity index: 0.1463 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3872
+  ✓ checkpoint saved (iteration 12/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 13/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.46) suggests a moderate balance, favoring combining strong global 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.46) suggests a balanced approach, and the swarm leaders (Lab 14: f
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=   exploit :: The global best and several high-performing labs (1, 8, 9, 11, 13) share a core structure 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 487,521 params, blocks=['fourier', 'branch_trunk', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 13 (wavelet_spawn     ) | composite=0.5870 | trust=0.604 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab  9 (random            ) | composite=0.5735 | trust=0.500 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  5 (wavelet_spawn_spawn) | composite=0.5620 | trust=0.507 | [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet]
+  #4  Lab 14 (fno_spawn         ) | composite=0.5312 | trust=0.579 | [wavelet+fourier+attention+residual_conv+branch_trunk]
+  #5  Lab  4 (transformer       ) | composite=0.5164 | trust=0.476 | [wavelet+fourier+attention+branch_trunk+residual_conv]
+
+  Global best: Lab 14 (fitness=0.5896)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: fourier=21% wavelet=21% residual_conv=21% attention=19% branch_trunk=19% 
+  Architectural diversity index: 0.1198 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4471
+  ✓ checkpoint saved (iteration 13/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 14/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 487,521 params, blocks=['fourier', 'branch_trunk', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  1 (wavelet_spawn_spawn) | composite=0.5647 | trust=0.614 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab  3 (deeponet          ) | composite=0.5458 | trust=0.572 | [branch_trunk+fourier+attention+residual_conv]
+  #3  Lab 12 (wavelet           ) | composite=0.5223 | trust=0.527 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #4  Lab  6 (wavelet           ) | composite=0.5145 | trust=0.601 | [wavelet+attention+residual_conv+fourier]
+  #5  Lab  8 (random            ) | composite=0.4959 | trust=0.544 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+
+  Global best: Lab 14 (fitness=0.5896)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: fourier=21% wavelet=21% residual_conv=21% attention=19% branch_trunk=19% 
+  Architectural diversity index: 0.1198 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4360
+  ✓ checkpoint saved (iteration 14/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 15/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.41), suggesting a balance, and the swarm shows strong 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 333,793 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 670,097 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 14 (composite=0.5899)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 14 (fno_spawn         ) | composite=0.5899 | trust=0.699 | [wavelet+fourier+attention+residual_conv+branch_trunk]
+  #2  Lab 11 (wavelet_spawn     ) | composite=0.5249 | trust=0.540 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  2 (deeponet          ) | composite=0.4740 | trust=0.534 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #4  Lab 12 (wavelet           ) | composite=0.4570 | trust=0.528 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #5  Lab  4 (transformer       ) | composite=0.4553 | trust=0.459 | [wavelet+fourier+attention+branch_trunk+residual_conv]
+
+  Global best: Lab 14 (fitness=0.5899)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: wavelet=22% fourier=20% attention=20% residual_conv=20% branch_trunk=18% 
+  Architectural diversity index: 0.1279 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4237
+  ✓ checkpoint saved (iteration 15/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 16/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.39) suggests a balance between exploring novel space and exploitin
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 198,337 params, blocks=['wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 7: 670,097 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  8 (random            ) | composite=0.5811 | trust=0.636 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab 10 (random            ) | composite=0.5128 | trust=0.466 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #3  Lab  7 (hybrid_fno_attn   ) | composite=0.4384 | trust=0.405 | [wavelet+fourier+attention+branch_trunk+residual_conv+wavelet]
+  #4  Lab  2 (deeponet          ) | composite=0.4357 | trust=0.541 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #5  Lab 14 (fno_spawn         ) | composite=0.4161 | trust=0.618 | [wavelet+fourier+attention+residual_conv+branch_trunk]
+
+  Global best: Lab 14 (fitness=0.5899)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: wavelet=21% fourier=20% attention=20% residual_conv=20% branch_trunk=19% 
+  Architectural diversity index: 0.1158 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4056
+  ✓ checkpoint saved (iteration 16/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 17/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action= hybridize :: The current exploration rate (0.37) suggests a balanced approach; I will hybridize by taki
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action= hybridize :: The lab's low exploration rate (0.37) suggests leaning towards exploiting the strong globa
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 752,849 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'fourier']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 7: 670,097 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 522,161 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 13: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 11 (wavelet_spawn     ) | composite=0.5881 | trust=0.625 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab  8 (random            ) | composite=0.5847 | trust=0.740 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab 10 (random            ) | composite=0.5678 | trust=0.620 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #4  Lab  4 (transformer       ) | composite=0.5637 | trust=0.573 | [wavelet+fourier+attention+branch_trunk+residual_conv]
+  #5  Lab 12 (wavelet           ) | composite=0.5320 | trust=0.562 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+
+  Global best: Lab 14 (fitness=0.5899)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: wavelet=21% fourier=21% attention=20% branch_trunk=20% residual_conv=20% 
+  Architectural diversity index: 0.1110 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4549
+  ✓ checkpoint saved (iteration 17/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 18/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.36), suggesting a balance between refinement and novel
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is moderate (0.36), suggesting a balance between novelty and performa
+    Lab 13 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.31) suggests a cautious approach, balancing the strong global best
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 752,849 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'fourier']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 7: 670,097 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 634,001 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 11: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 634,001 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 13: 633,233 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 11 (wavelet_spawn     ) | composite=0.5889 | trust=0.738 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab  2 (deeponet          ) | composite=0.5127 | trust=0.519 | [wavelet+fourier+attention+residual_conv+branch_trunk+fourier]
+  #3  Lab  4 (transformer       ) | composite=0.5024 | trust=0.636 | [wavelet+fourier+attention+branch_trunk+residual_conv]
+  #4  Lab 13 (wavelet_spawn     ) | composite=0.4774 | trust=0.480 | [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet]
+  #5  Lab 12 (wavelet           ) | composite=0.4733 | trust=0.586 | [wavelet+fourier+attention+residual_conv+branch_trunk+attention]
+
+  Global best: Lab 14 (fitness=0.5899)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: wavelet=21% attention=21% fourier=20% branch_trunk=19% residual_conv=19% 
+  Architectural diversity index: 0.1120 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4288
+  ✓ checkpoint saved (iteration 18/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 19/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 8 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 9 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate is low (0.29), suggesting exploitation, but the swarm shows convergen
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 752,849 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'fourier']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 7: 670,097 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 8: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 9: 522,161 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 10: 634,001 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 11: 633,233 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 634,001 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 13: 633,233 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  1 (wavelet_spawn_spawn) | composite=0.5726 | trust=0.585 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #2  Lab  0 (fno               ) | composite=0.5725 | trust=0.534 | [wavelet+fourier+attention+branch_trunk+residual_conv]
+  #3  Lab 12 (wavelet           ) | composite=0.5496 | trust=0.679 | [wavelet+fourier+attention+residual_conv+branch_trunk+attention]
+  #4  Lab 14 (fno_spawn         ) | composite=0.5442 | trust=0.585 | [wavelet+fourier+attention+residual_conv+branch_trunk]
+  #5  Lab  3 (deeponet          ) | composite=0.5427 | trust=0.550 | [branch_trunk+fourier+attention+residual_conv]
+
+  Global best: Lab 14 (fitness=0.5899)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: wavelet=22% attention=21% fourier=20% branch_trunk=19% residual_conv=19% 
+  Architectural diversity index: 0.1085 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4776
+  ✓ checkpoint saved (iteration 19/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 20/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 1 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 2 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 3 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 4 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 5 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 6 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 7 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.32) suggests a balance, and the swarm is heavily converging on 5-6
+    Lab 8 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.32) suggests a balance, so I will hybridize by taking the structur
+    Lab 9 planner [ollama/gemma4:e4b] action= hybridize :: The exploration rate (0.32) is moderate, suggesting a balance between exploiting the stron
+    Lab 10 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 11 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 12 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 13 planner [ollama/gemma4:e4b] action= hybridize :: The low exploration rate (0.28) suggests exploitation, but the swarm is converging on a fe
+    Lab 14 planner [ollama/gemma4:e4b] action=      None :: 
+    Lab 15 planner [ollama/gemma4:e4b] action=      None :: 
+
+  Phase 2: Building and Training...
+    Lab 0: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 1: 373,937 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 2: 752,849 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'fourier']
+    Lab 3: 411,089 params, blocks=['branch_trunk', 'fourier', 'attention', 'residual_conv']
+    Lab 4: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 5: 447,953 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 6: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 7: 614,801 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 8: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 9: 521,393 params, blocks=['wavelet', 'fourier', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 10: 634,001 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 11: 633,233 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 12: 634,001 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 13: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 14: 522,161 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 15: 522,161 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 1 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 2 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 3 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 4 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 5 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 6 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 7 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 8 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 9 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 10 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 11 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 12 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 13 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 14 [ollama/gemma4:e4b] :: 
+    Reviewer Lab 15 [ollama/gemma4:e4b] :: 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  3 (deeponet          ) | composite=0.5768 | trust=0.685 | [branch_trunk+fourier+attention+residual_conv]
+  #2  Lab 11 (wavelet_spawn     ) | composite=0.5669 | trust=0.785 | [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  2 (deeponet          ) | composite=0.5294 | trust=0.580 | [wavelet+fourier+attention+residual_conv+branch_trunk+fourier]
+  #4  Lab  5 (wavelet_spawn_spawn) | composite=0.5007 | trust=0.526 | [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet]
+  #5  Lab 14 (fno_spawn         ) | composite=0.4963 | trust=0.627 | [wavelet+fourier+attention+residual_conv+branch_trunk]
+
+  Global best: Lab 14 (fitness=0.5899)
+  Best architecture: wavelet+fourier+attention+residual_conv+branch_trunk | ch=96 | modes=12 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(2) wavelet(2) wavelet_spawn(2) wavelet_spawn_spawn(2) 
+  Block usage: wavelet=22% fourier=20% attention=20% branch_trunk=19% residual_conv=19% 
+  Architectural diversity index: 0.1047 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4393
+  ✓ checkpoint saved (iteration 20/20)
+
+================================================================================
+  FINAL REPORT: AI SCIENTIFIC COMMUNITY RESULTS
+================================================================================
+
+  ★ GLOBAL BEST ARCHITECTURE ★
+  Discovered by: Lab 14
+  Composite fitness: 0.5899
+  Block sequence: wavelet → fourier → attention → residual_conv → branch_trunk
+  Hidden channels: 96
+  Fourier modes: 12
+  Activation: silu
+  Gating: True | Skip: True | Dropout: 0.05
+  LR: 0.0005 | WD: 0.0001
+
+  ── Architecture Classification ──
+  Type: HYBRID
+  Components: wavelet(20%), fourier(20%), attention(20%), residual_conv(20%), branch_trunk(20%)
+  Notable: Spectral-Attention hybrid
+  Notable: Spectral-DeepONet hybrid
+  Notable: Transformer-DeepONet hybrid
+  Notable: Multi-scale spectral hybrid
+
+  ── All Labs Final State ──
+  [ACTIVE] Lab 3 (deeponet): [branch_trunk+fourier+attention+residual_conv] ch=96 modes=12 | acc=0.3384, gen=0.3223, eff=0.9580, nov=0.9238, comp=0.5768 | trust=0.685
+  [ACTIVE] Lab 11 (wavelet_spawn): [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet] ch=96 modes=12 | acc=0.3944, gen=0.3446, eff=0.9353, nov=0.3576, comp=0.5669 | trust=0.785
+  [ACTIVE] Lab 2 (deeponet): [wavelet+fourier+attention+residual_conv+branch_trunk+fourier] ch=96 modes=16 | acc=0.4030, gen=0.3542, eff=0.9233, nov=0.5894, comp=0.5294 | trust=0.580
+  [ACTIVE] Lab 5 (wavelet_spawn_spawn): [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet] ch=96 modes=12 | acc=0.3611, gen=0.3192, eff=0.9541, nov=1.0000, comp=0.5007 | trust=0.526
+  [ACTIVE] Lab 14 (fno_spawn): [wavelet+fourier+attention+residual_conv+branch_trunk] ch=96 modes=12 | acc=0.3807, gen=0.3402, eff=0.9466, nov=0.3245, comp=0.4963 | trust=0.627
+  [ACTIVE] Lab 1 (wavelet_spawn_spawn): [fourier+attention+residual_conv+branch_trunk+wavelet] ch=96 modes=12 | acc=0.3610, gen=0.3350, eff=0.9617, nov=0.8278, comp=0.4963 | trust=0.619
+  [ACTIVE] Lab 13 (wavelet_spawn): [wavelet+fourier+attention+residual_conv+branch_trunk] ch=96 modes=12 | acc=0.3737, gen=0.3302, eff=0.9466, nov=0.3245, comp=0.4901 | trust=0.548
+  [ACTIVE] Lab 6 (wavelet): [wavelet+fourier+attention+residual_conv+branch_trunk] ch=96 modes=12 | acc=0.3889, gen=0.3273, eff=0.9466, nov=0.3245, comp=0.4456 | trust=0.481
+  [ACTIVE] Lab 9 (random): [wavelet+fourier+wavelet+residual_conv+branch_trunk] ch=96 modes=12 | acc=0.3621, gen=0.3259, eff=0.9467, nov=0.5099, comp=0.4385 | trust=0.448
+  [ACTIVE] Lab 7 (hybrid_fno_attn): [wavelet+fourier+attention+residual_conv+branch_trunk+wavelet] ch=96 modes=10 | acc=0.3740, gen=0.3392, eff=0.9371, nov=0.7384, comp=0.3995 | trust=0.513
+  [ACTIVE] Lab 10 (random): [wavelet+fourier+attention+residual_conv+branch_trunk+attention] ch=96 modes=12 | acc=0.3804, gen=0.3444, eff=0.9351, nov=0.3576, comp=0.3963 | trust=0.491
+  [ACTIVE] Lab 12 (wavelet): [wavelet+fourier+attention+residual_conv+branch_trunk+attention] ch=96 modes=12 | acc=0.3753, gen=0.3243, eff=0.9352, nov=0.3576, comp=0.3823 | trust=0.583
+  [ACTIVE] Lab 4 (transformer): [wavelet+fourier+attention+branch_trunk+residual_conv] ch=96 modes=12 | acc=0.3601, gen=0.3288, eff=0.9465, nov=0.3576, comp=0.3738 | trust=0.600
+  [ACTIVE] Lab 8 (random): [wavelet+fourier+attention+residual_conv+branch_trunk] ch=96 modes=12 | acc=0.3912, gen=0.3360, eff=0.9466, nov=0.3245, comp=0.3413 | trust=0.413
+  [ACTIVE] Lab 0 (fno): [wavelet+fourier+attention+branch_trunk+residual_conv] ch=96 modes=12 | acc=0.3805, gen=0.3366, eff=0.9466, nov=0.3245, comp=0.3323 | trust=0.428
+  [ACTIVE] Lab 15 (transformer): [branch_trunk+attention+wavelet+residual_conv+fourier] ch=96 modes=12 | acc=0.2626, gen=0.2551, eff=0.9467, nov=0.6821, comp=0.2636 | trust=0.352
+
+  ── Global Best Evolution ──
+  Iter  1: fitness=0.5723 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier | active=16
+  Iter  2: fitness=0.5759 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier+residual_conv | active=16
+  Iter  3: fitness=0.5759 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier+residual_conv | active=16
+  Iter  4: fitness=0.5809 | lab=7 | blocks=fourier+attention+wavelet+residual_conv | active=16
+  Iter  5: fitness=0.5846 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier+residual_conv | active=16
+  Iter  6: fitness=0.5846 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier+residual_conv | active=16
+  Iter  7: fitness=0.5846 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier+residual_conv | active=16
+  Iter  8: fitness=0.5846 | lab=10 | blocks=wavelet+attention+branch_trunk+fourier+residual_conv | active=16
+  Iter  9: fitness=0.5873 | lab=11 | blocks=fourier+attention+residual_conv+branch_trunk+wavelet | active=16
+  Iter 10: fitness=0.5873 | lab=11 | blocks=fourier+attention+residual_conv+branch_trunk+wavelet | active=16
+  Iter 11: fitness=0.5873 | lab=11 | blocks=fourier+attention+residual_conv+branch_trunk+wavelet | active=16
+  Iter 12: fitness=0.5896 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 13: fitness=0.5896 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 14: fitness=0.5896 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 15: fitness=0.5899 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 16: fitness=0.5899 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 17: fitness=0.5899 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 18: fitness=0.5899 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 19: fitness=0.5899 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+  Iter 20: fitness=0.5899 | lab=14 | blocks=wavelet+fourier+attention+residual_conv+branch_trunk | active=16
+
+  ✓ FINAL.json written. Done.

@@ -1,0 +1,1790 @@
+
+
+===== launch 2026-06-25 17:24:50 (model=gemma3:12b) =====
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              PAPER-GRADE SWARM (resume-safe)  preset=paper-grade             ║
+║                     pde=ns  tag=v2_llm_ns_seed42  seed=42                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+  Config: 16 labs × 20 iter, res=32, train=512, epochs/iter=50, device=cuda
+  Agentic: ON (planner=True, reviewer=True, backend=ollama)
+  Run dir: C:\Users\luisl\repos\AI-SC\nod\results\swarm_runs\v2_llm_ns_seed42
+  LLM backend ready: ollama / gemma3:12b
+  Generating Navier-Stokes data...
+  Train: (512, 1, 32, 32), Test: (128, 1, 32, 32)
+
+  Cached data to C:\Users\luisl\repos\AI-SC\nod\results\swarm_runs\v2_llm_ns_seed42\data.pt
+  No checkpoint found — initializing fresh swarm
+
+================================================================================
+  INITIALIZING AI SCIENTIFIC COMMUNITY
+================================================================================
+  Lab 0 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 1 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 2 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 3 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+  Lab 4 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 5 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 6 (wavelet): blocks=['wavelet', 'wavelet', 'wavelet', 'wavelet'], ch=48, modes=8
+  Lab 7 (hybrid_fno_attn): blocks=['fourier', 'attention', 'fourier', 'attention'], ch=64, modes=10
+  Lab 8 (random): blocks=['branch_trunk', 'branch_trunk', 'attention', 'attention', 'branch_trunk'], ch=32, modes=4
+  Lab 9 (random): blocks=['wavelet', 'residual_conv'], ch=32, modes=10
+  Lab 10 (random): blocks=['attention', 'branch_trunk'], ch=32, modes=6
+  Lab 11 (random): blocks=['branch_trunk', 'attention', 'branch_trunk', 'fourier'], ch=48, modes=12
+  Lab 12 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 13 (fno): blocks=['fourier', 'fourier', 'fourier', 'fourier'], ch=64, modes=12
+  Lab 14 (transformer): blocks=['attention', 'attention', 'attention'], ch=64, modes=8
+  Lab 15 (deeponet): blocks=['branch_trunk', 'branch_trunk', 'branch_trunk', 'branch_trunk'], ch=64, modes=8
+
+  Initialized 16 virtual labs across 6 paradigms
+
+================================================================================
+  BEGINNING SWARM ITERATIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 1/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: Several labs are converging on FNO and transformer architectures. To maintain diversity an
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the prevalence of 'attention' blocks in other labs, I 
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the prevalence of Fourier blocks in other labs, I'll h
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards FNO and Transformer architectures, but also some dive
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the prevalence of attention blocks across the swarm, I
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the prevalence of attention blocks across labs, I will
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the prevalence of Fourier blocks across other labs, I 
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the prevalence of Fourier blocks in other labs' archit
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence towards Fourier and attention blocks, but many ar
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting a trend toward Fourier and Attention blocks with relatively high h
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be heavily invested in Fourier and Attention blocks, with many labs usi
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be heavily exploring FNO and Deeponet variants. To maintain diversity a
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: Several labs are already exploring FNO architectures with attention and residual blocks; t
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around FNO and Deeponet architectures. To maintai
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and observing that several labs are using attention blocks
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and a swarm converging towards FNO/Transformer architectur
+
+  Phase 2: Building and Training...
+    Lab 0: 2,479,297 params, blocks=['fourier', 'attention', 'fourier', 'residual_conv']
+    Lab 1: 3,589,249 params, blocks=['fourier', 'attention', 'fourier', 'fourier']
+    Lab 2: 662,257 params, blocks=['branch_trunk', 'fourier', 'branch_trunk', 'branch_trunk']
+    Lab 3: 167,281 params, blocks=['branch_trunk', 'attention', 'branch_trunk', 'branch_trunk']
+    Lab 4: 186,881 params, blocks=['attention', 'wavelet', 'attention', 'attention']
+    Lab 5: 186,881 params, blocks=['attention', 'wavelet', 'attention', 'attention']
+    Lab 6: 252,145 params, blocks=['wavelet', 'residual_conv', 'wavelet', 'wavelet']
+    Lab 7: 1,100,033 params, blocks=['fourier', 'attention', 'wavelet', 'attention']
+    Lab 8: 105,521 params, blocks=['branch_trunk', 'branch_trunk', 'attention', 'wavelet', 'branch_trunk']
+    Lab 9: 48,769 params, blocks=['wavelet', 'attention', 'residual_conv']
+    Lab 10: 92,369 params, blocks=['attention', 'branch_trunk', 'wavelet']
+    Lab 11: 1,070,753 params, blocks=['branch_trunk', 'attention', 'fourier', 'branch_trunk']
+    Lab 12: 3,637,889 params, blocks=['fourier', 'wavelet', 'fourier', 'fourier']
+    Lab 13: 2,488,977 params, blocks=['fourier', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 14: 186,881 params, blocks=['attention', 'wavelet', 'attention', 'attention']
+    Lab 15: 206,241 params, blocks=['branch_trunk', 'attention', 'branch_trunk', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 12's FNO-based architecture demonstrates the highest accuracy and a relatively low rel
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 11 demonstrates a strong balance of accuracy, generalization ability, and efficiency, 
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-attention architecture demonstrates a reasonable balance of accuracy, g
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 15's Deeponet architecture incorporating both attention and wavelet blocks demonstrate
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 12's FNO architecture demonstrates significantly better accuracy and generalization th
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 12's FNO architecture demonstrates significantly higher accuracy and a notably lower r
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 7 demonstrates superior accuracy and a relatively low relative L2 error compared to th
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 6's wavelet-based approach demonstrates reasonable accuracy and excellent efficiency, 
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 7 demonstrates significantly superior accuracy and generalization compared to the othe
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 0's architecture demonstrates a good balance of accuracy, generalization and efficienc
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 1's FNO architecture demonstrates superior accuracy and generalization compared to the
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 10 demonstrates a reasonable balance of accuracy, generalization and efficiency with i
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 6 exhibits the highest accuracy and generalization performance alongside reasonable ef
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 6's wavelet-based architecture demonstrated superior accuracy and efficiency while mai
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-attention architecture demonstrates significantly higher accuracy and g
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 0's FNO architecture demonstrates superior accuracy and a relatively low relative L2 e
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 0 (composite=0.0466)
+    ★ NEW GLOBAL BEST: Lab 1 (composite=0.5323)
+    ★ NEW GLOBAL BEST: Lab 6 (composite=0.6653)
+    ★ NEW GLOBAL BEST: Lab 7 (composite=0.7297)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  7 (hybrid_fno_attn   ) | composite=0.7297 | trust=1.000 | [fourier+attention+wavelet+attention]
+  #2  Lab  6 (wavelet           ) | composite=0.6653 | trust=0.783 | [wavelet+residual_conv+wavelet+wavelet]
+  #3  Lab 12 (fno               ) | composite=0.6544 | trust=0.761 | [fourier+wavelet+fourier+fourier]
+  #4  Lab 11 (random            ) | composite=0.5426 | trust=0.435 | [branch_trunk+attention+fourier+branch_trunk]
+  #5  Lab  1 (fno               ) | composite=0.5323 | trust=0.587 | [fourier+attention+fourier+fourier]
+
+  Global best: Lab 7 (fitness=0.7297)
+  Best architecture: fourier+attention+wavelet+attention | ch=64 | modes=10 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(4) hybrid_fno_attn(1) random(4) transformer(3) wavelet(1) 
+  Block usage: attention=30% branch_trunk=24% fourier=21% wavelet=19% residual_conv=6% 
+  Architectural diversity index: 0.3092 (0=homogeneous, 1=maximally diverse)
+  Detected 4 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 7, 9, 10, 11, 13, 15], avg composite=0.3354
+    Camp 'fourier-dominant': Labs [1, 12], avg composite=0.5934
+    Camp 'branch_trunk-dominant': Labs [2, 3, 8], avg composite=0.0367
+    Camp 'attention-dominant': Labs [4, 5, 14], avg composite=0.0359
+  ✓ checkpoint saved (iteration 1/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 2/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around FNO and Transformer architectures utilizin
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on FNO-like architectures with attention and wavelet bloc
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and to avoid converging towards the swarm's current best (
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the convergence of other labs around Fourier/Attention
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on attention and wavelet blocks; to maintain diversity and potenti
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and observing some convergence in the swarm (multiple labs
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures with attention and wavelet blocks. To ma
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on FNO-like architectures with attention and wavelet bloc
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is trending towards attention and wavelet blocks, but my current architecture in
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and observing that several labs are using 'branch_trunk' b
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and a swarm that seems to be converging on Fourier/Attenti
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be favoring architectures that combine Fourier layers and attention mec
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and swarm convergence around attention/wavelet blocks, I w
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: Given the relatively high exploration rate and recent convergence in the swarm towards att
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and observing that several labs are utilizing 'branch_trun
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and a desire to avoid converging with other labs (particul
+
+  Phase 2: Building and Training...
+    Lab 0: 1,017,153 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 1: 2,479,297 params, blocks=['fourier', 'attention', 'fourier', 'residual_conv']
+    Lab 2: 701,217 params, blocks=['branch_trunk', 'fourier', 'wavelet', 'branch_trunk']
+    Lab 3: 329,505 params, blocks=['branch_trunk', 'attention', 'branch_trunk', 'wavelet']
+    Lab 4: 227,265 params, blocks=['attention', 'wavelet', 'attention', 'residual_conv']
+    Lab 5: 319,825 params, blocks=['attention', 'wavelet', 'branch_trunk', 'attention']
+    Lab 6: 399,169 params, blocks=['wavelet', 'attention', 'residual_conv', 'wavelet']
+    Lab 7: 1,109,713 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk']
+    Lab 8: 459,041 params, blocks=['fourier', 'branch_trunk', 'wavelet', 'attention']
+    Lab 9: 133,937 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 10: 360,209 params, blocks=['attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 11: 1,109,713 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 12: 722,241 params, blocks=['fourier', 'wavelet', 'attention', 'residual_conv']
+    Lab 13: 683,281 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 14: 196,561 params, blocks=['attention', 'wavelet', 'branch_trunk', 'attention']
+    Lab 15: 236,945 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 11 demonstrates a reasonable balance of accuracy, generalization, and efficiency with 
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 11 demonstrates a good balance of accuracy, generalization, and efficiency with a reas
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 11 demonstrates a strong combination of blocks and achieves the highest accuracy and g
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 5's transformer-based architecture demonstrates a compelling combination of blocks and
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-attention architecture demonstrates a good balance of accuracy, general
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 14's transformer architecture demonstrates superior efficiency and accuracy compared t
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 13's FNO architecture demonstrates superior accuracy and generalization compared to th
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 1's FNO architecture demonstrates a reasonable balance of accuracy and efficiency, inc
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 11's random architecture demonstrates significantly higher accuracy and a much lower r
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 11 demonstrates a compelling combination of blocks and achieves significantly higher a
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 3 demonstrates significantly higher accuracy and a relatively low relative L2 error co
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 5 demonstrates a reasonable balance of accuracy and efficiency with its transformer-ba
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 15 demonstrates the highest accuracy and efficiency while maintaining reasonable gener
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 0's FNO-based architecture demonstrates a good balance of accuracy and efficiency, ali
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 5's transformer-based architecture demonstrates a strong balance of accuracy and param
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Candidate 5 demonstrates a compelling combination of transformer and wavelet blocks with h
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 11 (composite=0.7495)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 11 (random            ) | composite=0.7495 | trust=0.767 | [branch_trunk+attention+wavelet+fourier]
+  #2  Lab  5 (transformer       ) | composite=0.6769 | trust=0.622 | [attention+wavelet+branch_trunk+attention]
+  #3  Lab  2 (deeponet          ) | composite=0.6020 | trust=0.568 | [branch_trunk+fourier+wavelet+branch_trunk]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.4931 | trust=0.580 | [fourier+attention+wavelet+branch_trunk]
+  #5  Lab  0 (fno               ) | composite=0.4578 | trust=0.380 | [fourier+attention+wavelet+residual_conv]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(4) hybrid_fno_attn(1) random(4) transformer(3) wavelet(1) 
+  Block usage: attention=28% wavelet=23% branch_trunk=20% fourier=14% residual_conv=14% 
+  Architectural diversity index: 0.2099 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.2840
+  ✓ checkpoint saved (iteration 2/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 3/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some movement towards architectures incorporating branch_trunk blocks
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for incorporating Wavelet blocks and Branch-Trunk, but m
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: Given a high exploration rate and some convergence in the swarm (many labs using attention
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for 'silu' activation and higher Fourier modes (10). My 
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: Given the high exploration rate and the swarm converging around attention/wavelet combinat
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on attention and wavelet blocks, but the global best uses
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for 'branch_trunk' blocks; let's introduce this while ma
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a 'branch_trunk', 'attention', 'wavelet' sequence, a
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including attention and wavelet blocks, 
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards `branch_trunk`, `attention`, and `wavelet` blocks, bu
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence towards architectures incorporating attention and wa
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the current block sequence. To maintain diver
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around a 'fourier, attention, wavelet' block sequence and
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for `wavelet` blocks and `silu` activation, but my curre
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for residual_conv blocks and the global best includes it
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around attention and wavelet blocks, but the global 
+
+  Phase 2: Building and Training...
+    Lab 0: 986,449 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk']
+    Lab 1: 722,241 params, blocks=['fourier', 'wavelet', 'attention', 'residual_conv']
+    Lab 2: 624,929 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 3: 360,209 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv']
+    Lab 4: 236,945 params, blocks=['attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 5: 360,209 params, blocks=['attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 6: 360,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 7: 1,109,713 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk']
+    Lab 8: 1,109,713 params, blocks=['fourier', 'wavelet', 'branch_trunk', 'attention']
+    Lab 9: 1,109,713 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 10: 91,025 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 11: 1,109,713 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 12: 2,287,585 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 13: 1,140,417 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 14: 236,945 params, blocks=['attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 15: 986,449 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and generalization performance while maintaining g
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 10's random architecture demonstrates a compelling combination of blocks and hyperpara
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 12 demonstrates a slightly better combination of accuracy and efficiency compared to L
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 13 demonstrates significantly higher accuracy and a comparatively low relative L2 erro
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 9's random architecture demonstrates a good balance of accuracy and efficiency, while 
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Candidate 11 demonstrates superior accuracy and a relatively low relative L2 error compare
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 9 demonstrates the best overall performance with a respectable accuracy and excellent 
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 9 demonstrates a reasonable balance of accuracy and efficiency with an interesting blo
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 9's random design demonstrates superior accuracy and a relatively low relative L2 erro
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 13 demonstrates a reasonable balance of accuracy, generalization and efficiency using 
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 3 demonstrates the best overall performance with a good balance of accuracy, generaliz
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 6 demonstrates the highest accuracy and generalization ability while maintaining excel
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-attention architecture demonstrates a promising combination of establis
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-attention architecture demonstrates a good balance of accuracy, general
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 5's transformer-based architecture exhibits superior accuracy and generalization compa
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Candidate 9 demonstrates a good balance of accuracy, generalization and efficiency while i
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.7437 | trust=0.649 | [fourier+attention+branch_trunk+wavelet]
+  #2  Lab 13 (fno               ) | composite=0.6226 | trust=0.498 | [fourier+attention+wavelet+residual_conv]
+  #3  Lab  3 (deeponet          ) | composite=0.5900 | trust=0.363 | [branch_trunk+attention+wavelet+residual_conv]
+  #4  Lab  5 (transformer       ) | composite=0.5804 | trust=0.596 | [attention+wavelet+branch_trunk+residual_conv]
+  #5  Lab  7 (hybrid_fno_attn   ) | composite=0.5621 | trust=0.514 | [fourier+attention+wavelet+branch_trunk]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(4) hybrid_fno_attn(1) random(4) transformer(3) wavelet(1) 
+  Block usage: attention=25% wavelet=25% branch_trunk=20% fourier=16% residual_conv=14% 
+  Architectural diversity index: 0.1891 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3609
+  ✓ checkpoint saved (iteration 3/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 4/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a few block sequences (attention, wavelet, br
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few block sequence patterns (attention, wavelet, bra
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a slight convergence towards architectures using 'branch_trunk', 'att
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is somewhat converging on a 'branch_trunk', 'attention', 'wavelet' block order, 
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging around a few block sequences and fourier modes of 10, but lab 3 ha
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards 'attention', 'wavelet' and 'branch_trunk'. To main
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around wavelet-attention-fourier blocks and the glob
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around attention and wavelet blocks, but the global 
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a block sequence of ['branch_trunk', 'attention', 'wav
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around the `branch_trunk`, `attention`, `wavelet`
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including 'attention', 'branch_trunk', a
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on architectures similar to the global best (branch_trunk, attenti
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including attention and wavelet blocks, 
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the `branch_trunk`, `attention`, `wavelet`, a
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some preference for architectures containing 'branch_trunk' and 'atte
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around the current block sequence and hidden chan
+
+  Phase 2: Building and Training...
+    Lab 0: 986,449 params, blocks=['wavelet', 'attention', 'fourier', 'branch_trunk']
+    Lab 1: 691,537 params, blocks=['fourier', 'wavelet', 'attention', 'branch_trunk']
+    Lab 2: 620,273 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 3: 1,109,713 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 4: 60,113 params, blocks=['attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 1,150,097 params, blocks=['fourier', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 6: 278,385 params, blocks=['wavelet', 'fourier', 'branch_trunk', 'attention']
+    Lab 7: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 8: 319,825 params, blocks=['branch_trunk', 'attention', 'wavelet', 'attention']
+    Lab 9: 360,209 params, blocks=['attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 10: 91,025 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv']
+    Lab 11: 1,109,713 params, blocks=['wavelet', 'attention', 'fourier', 'branch_trunk']
+    Lab 12: 203,345 params, blocks=['wavelet', 'residual_conv', 'attention', 'branch_trunk']
+    Lab 13: 1,140,417 params, blocks=['attention', 'fourier', 'wavelet', 'residual_conv']
+    Lab 14: 236,945 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 15: 360,209 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 15 demonstrates significantly higher accuracy and a lower relative L2 error than the o
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Candidate 0 demonstrates a reasonable blend of components within the FNO paradigm and achi
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 11 demonstrates a good balance of accuracy and efficiency with a reasonable block sequ
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Candidate 0 demonstrates a strong balance of accuracy and efficiency while maintaining rea
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 3's Deeponet architecture demonstrates the highest accuracy and a relatively low relat
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 11 demonstrates a significant improvement in accuracy and relative L2 error compared t
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 3's Deeponet demonstrates a reasonable balance of accuracy, generalization and efficie
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 10 demonstrates a good balance of accuracy and efficiency with a reasonable block sequ
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and a relatively low relative L2 error, suggestin
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 13 demonstrates superior accuracy and a lower relative L2 error compared to the other 
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 3's DeepONet architecture demonstrates a reasonable balance of accuracy, generalizatio
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Candidate 5 demonstrates significantly higher accuracy and generalization ability than the
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 15 demonstrates significantly higher accuracy and generalization compared to the other
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 11's random architecture demonstrates significantly superior accuracy and relative L2 
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 13's FNO architecture demonstrates superior accuracy and a relatively low relative L2 
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Candidate 0 demonstrates significantly better accuracy and generalization than the others 
+
+  Phase 4: Composite Fitness...
+    Lab 8 respawned from Lab 0 (paradigm: fno_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  0 (fno               ) | composite=0.7123 | trust=0.550 | [wavelet+attention+fourier+branch_trunk]
+  #2  Lab  3 (deeponet          ) | composite=0.7010 | trust=0.568 | [branch_trunk+attention+wavelet+fourier]
+  #3  Lab 11 (random            ) | composite=0.6983 | trust=0.659 | [wavelet+attention+fourier+branch_trunk]
+  #4  Lab 13 (fno               ) | composite=0.6783 | trust=0.583 | [attention+fourier+wavelet+residual_conv]
+  #5  Lab 15 (deeponet          ) | composite=0.6302 | trust=0.405 | [branch_trunk+attention+wavelet+residual_conv]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(4) fno_spawn(1) hybrid_fno_attn(1) random(3) transformer(3) wavelet(1) 
+  Block usage: attention=25% wavelet=23% branch_trunk=23% fourier=15% residual_conv=14% 
+  Architectural diversity index: 0.2032 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3587
+  ✓ checkpoint saved (iteration 4/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 5/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few block sequences and hidden channel sizes. To mai
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'branch_trunk', 'attention', 'wavelet', and 'fourier
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the 'attention', 'branch_trunk', and 'wavelet
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'branch_trunk', 'attention', 'wavelet', and some com
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around a few block sequences and hidden channel s
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around attention and branch_trunk blocks. To maintai
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be gravitating towards architectures with 'attention', 'wavelet' and 'b
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on block sequences including attention, wavelet and residual_conv,
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards attention and wavelet blocks. Our current architectur
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a block sequence including attention and wavelet blocks. To mai
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a few block sequences and hidden channel sizes. To maintain div
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a common block sequence (attention, wavelet, fourier). To maint
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on architectures including attention, branch_trunk and residual_co
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the 'branch_trunk' block sequence. To maintai
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging around attention and residual_conv blocks, but global b
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be gravitating towards 'branch_trunk', 'attention', 'wavelet', and 'fou
+
+  Phase 2: Building and Training...
+    Lab 0: 1,140,417 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 1: 978,193 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 2: 1,140,417 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 3: 1,101,457 params, blocks=['branch_trunk', 'attention', 'fourier', 'residual_conv']
+    Lab 4: 624,929 params, blocks=['attention', 'branch_trunk', 'wavelet', 'fourier']
+    Lab 5: 360,209 params, blocks=['attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 6: 845,505 params, blocks=['wavelet', 'fourier', 'attention', 'residual_conv']
+    Lab 7: 1,101,457 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 8: 1,184,273 params, blocks=['fourier', 'attention', 'attention', 'wavelet', 'branch_trunk']
+    Lab 9: 1,109,713 params, blocks=['attention', 'branch_trunk', 'fourier', 'wavelet']
+    Lab 10: 624,929 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 11: 1,109,713 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 12: 360,209 params, blocks=['wavelet', 'residual_conv', 'attention', 'branch_trunk']
+    Lab 13: 1,101,457 params, blocks=['attention', 'fourier', 'branch_trunk', 'residual_conv']
+    Lab 14: 360,209 params, blocks=['wavelet', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 1,109,713 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 8's architecture demonstrates a compelling blend of Fourier, attention, wavelet, and b
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 8's FNO-spawn architecture demonstrates a compelling balance of accuracy and efficienc
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 14 demonstrates superior accuracy and a significantly lower relative L2 error compared
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 8's FNO-Spawn architecture demonstrates a slightly more sophisticated block sequence (
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 0 and Lab 11 both demonstrate significantly higher accuracy and generalization than La
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 9 demonstrates a good balance of accuracy and efficiency with a reasonable block seque
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 13 and Lab 3 demonstrate significantly better accuracy than Lab 1, with Lab 13 exhibit
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 6's wavelet-based architecture demonstrates a strong balance of accuracy and efficienc
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 6's wavelet-based architecture demonstrates superior efficiency and accuracy while mai
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 0's FNO architecture demonstrates slightly better accuracy and generalization than Lab
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 6's wavelet-fourier-attention architecture demonstrates a good balance of accuracy and
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and a relatively low relative L2 error, indicatin
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 7 and Lab 6 both demonstrate solid performance with FNO-inspired architectures, exhibi
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 11 demonstrates a reasonable balance of accuracy, generalization, and efficiency with 
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 8's FNO-Spawn architecture demonstrates a good balance of accuracy and efficiency, whi
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-Attention architecture demonstrates superior accuracy and generalizatio
+
+  Phase 4: Composite Fitness...
+    Lab 12 respawned from Lab 6 (paradigm: wavelet_spawn)
+    Lab 4 respawned from Lab 0 (paradigm: fno_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  8 (fno_spawn         ) | composite=0.7479 | trust=0.501 | [fourier+attention+attention+wavelet+branch_trunk]
+  #2  Lab  6 (wavelet           ) | composite=0.6860 | trust=0.495 | [wavelet+fourier+attention+residual_conv]
+  #3  Lab  0 (fno               ) | composite=0.6424 | trust=0.610 | [wavelet+attention+fourier+residual_conv]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.6300 | trust=0.518 | [fourier+attention+branch_trunk+residual_conv]
+  #5  Lab 13 (fno               ) | composite=0.6229 | trust=0.600 | [attention+fourier+branch_trunk+residual_conv]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(3) fno(3) fno_spawn(2) hybrid_fno_attn(1) random(3) transformer(2) wavelet(1) wavelet_spawn(1) 
+  Block usage: attention=26% fourier=22% branch_trunk=18% wavelet=17% residual_conv=17% 
+  Architectural diversity index: 0.1237 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4440
+  ✓ checkpoint saved (iteration 5/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 6/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around `attention`, `fourier`, and `residual_conv` blocks
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on attention and wavelet blocks, but our current architec
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around attention and wavelet blocks; I'll introdu
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'branch_trunk, attention, wavelet, fourier' sequence
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on attention and wavelet blocks. To maintain diversity and potenti
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the attention and wavelet blocks, but lab 8 s
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on architectures featuring 'branch_trunk' and the block sequence [
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a 'branch_trunk, attention, wavelet, fourier'
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing attention, wavelet, and fouri
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures involving attention, wavelet and branch_
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence towards a `branch_trunk`, `attention`, `wavelet`,
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a few block sequences (branch_trunk, attention, wave
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'branch_trunk', 'attention', 'wavelet', and 'residua
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing attention, wavelet, and resid
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few block sequences. To maintain diversity and poten
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing attention, wavelet and fourie
+
+  Phase 2: Building and Training...
+    Lab 0: 1,214,977 params, blocks=['wavelet', 'attention', 'attention', 'fourier', 'residual_conv']
+    Lab 1: 1,017,153 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 2: 1,140,417 params, blocks=['fourier', 'wavelet', 'attention', 'residual_conv']
+    Lab 3: 360,209 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv']
+    Lab 4: 845,505 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 5: 1,224,657 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 6: 855,185 params, blocks=['wavelet', 'fourier', 'branch_trunk', 'residual_conv']
+    Lab 7: 1,109,713 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 8: 1,109,713 params, blocks=['attention', 'fourier', 'wavelet', 'branch_trunk']
+    Lab 9: 1,119,393 params, blocks=['branch_trunk', 'branch_trunk', 'fourier', 'wavelet']
+    Lab 10: 1,224,657 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier', 'residual_conv']
+    Lab 11: 2,494,001 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 12: 1,140,417 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv']
+    Lab 13: 1,101,457 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 14: 1,101,457 params, blocks=['fourier', 'branch_trunk', 'attention', 'residual_conv']
+    Lab 15: 1,140,417 params, blocks=['residual_conv', 'attention', 'wavelet', 'fourier']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 9 demonstrates the best overall performance with a good balance of accuracy, generaliz
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 9's random architecture surprisingly performs well with high accuracy and a low relati
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 3's Deeponet architecture demonstrates superior accuracy and efficiency compared to th
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 15 (Deeponet) demonstrates the highest accuracy and generalization performance while m
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 11 demonstrates a good balance of accuracy and efficiency with a reasonable block sequ
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 7's hybrid FNO-Attention architecture demonstrates a good balance of accuracy and effi
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 3's Deeponet architecture demonstrates a good balance of accuracy and efficiency, whil
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Candidate 0 demonstrates a solid balance of accuracy, generalization, and efficiency, alig
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 11 demonstrates a promising combination of attention and wavelet blocks which aligns w
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 8 demonstrates the highest accuracy and a low relative L2 error, suggesting superior p
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 4's FNO-Spawn architecture demonstrates a good balance of accuracy, generalization, an
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 12 demonstrates the highest accuracy and lowest relative L2 error, suggesting superior
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 6's wavelet-first architecture demonstrates superior accuracy and generalization compa
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 14's transformer architecture demonstrates the highest accuracy and a relatively low r
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 4's FNO-Spawn architecture demonstrates a good balance of accuracy and efficiency, wit
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 12's wavelet-spawn architecture demonstrates superior accuracy and a lower relative L2
+
+  Phase 4: Composite Fitness...
+    Lab 2 respawned from Lab 14 (paradigm: transformer_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 10 (random            ) | composite=0.6638 | trust=0.548 | [branch_trunk+attention+wavelet+fourier+residual_conv]
+  #2  Lab  3 (deeponet          ) | composite=0.6444 | trust=0.648 | [branch_trunk+attention+wavelet+residual_conv]
+  #3  Lab 14 (transformer       ) | composite=0.6440 | trust=0.520 | [fourier+branch_trunk+attention+residual_conv]
+  #4  Lab  4 (fno_spawn         ) | composite=0.5858 | trust=0.357 | [fourier+attention+wavelet+residual_conv]
+  #5  Lab 11 (random            ) | composite=0.5816 | trust=0.546 | [attention+wavelet+branch_trunk+fourier]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(3) fno_spawn(2) hybrid_fno_attn(1) random(3) transformer(2) transformer_spawn(1) wavelet(1) wavelet_spawn(1) 
+  Block usage: attention=22% fourier=21% wavelet=19% residual_conv=19% branch_trunk=18% 
+  Architectural diversity index: 0.1387 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4881
+  ✓ checkpoint saved (iteration 6/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 7/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm shows a preference for architectures including 'branch_trunk' and 'wavelet'. My 
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be settling on attention and wavelet blocks, but we've seen diminishi
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including attention and wavelet blocks; 
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'branch_trunk', 'attention', 'wavelet' block sequenc
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging around a 'fourier, attention, wavelet' block sequence a
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on an architecture involving attention, wavelet, and bran
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on attention and wavelet blocks; let's introduce a new bl
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a few block sequences, but lab 3 and 9 are de
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence on block sequences including attention and wavelet b
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be exploring variations of attention and wavelet blocks; I'll introduce
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a sequence including 'attention', 'wavelet', and 'four
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a `branch_trunk`, `attention`, `wavelet`, `fourier` se
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures containing 'branch_trunk', 'attentio
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards including wavelet blocks and some labs are exploring 
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on variations of attention and wavelet blocks. To maintai
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing attention, wavelet and fourie
+
+  Phase 2: Building and Training...
+    Lab 0: 1,224,657 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 1: 180,897 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 2: 360,209 params, blocks=['residual_conv', 'branch_trunk', 'attention', 'wavelet']
+    Lab 3: 459,041 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 4: 1,109,713 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk']
+    Lab 5: 138,641 params, blocks=['attention', 'wavelet', 'branch_trunk']
+    Lab 6: 203,345 params, blocks=['attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 7: 1,109,713 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk']
+    Lab 8: 1,224,657 params, blocks=['attention', 'fourier', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 9: 1,224,657 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier', 'residual_conv']
+    Lab 10: 814,801 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 11: 2,564,641 params, blocks=['residual_conv', 'attention', 'wavelet', 'fourier']
+    Lab 12: 1,224,657 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 523,745 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 929,745 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 15: 204,657 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 4's FNO-spawn architecture demonstrates a good balance of accuracy, generalization, an
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 6's Wavelet architecture demonstrates the highest accuracy and a relatively low relati
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 4's FNO_spawn architecture demonstrated the highest accuracy and a comparatively low r
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 8 demonstrates the highest accuracy and generalization ability, despite a slightly low
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 12's wavelet-spawn architecture demonstrates the best overall performance and smallest
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 4's FNO-Spawn architecture demonstrates a good balance of accuracy, generalization, an
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 11 shows a reasonable balance of accuracy and efficiency given its random search; Lab 
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 14 demonstrates a more interesting architectural combination with the inclusion of 'br
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 4's architecture demonstrates a sensible block sequence and strong efficiency, alignin
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 4's FNO-spawn architecture demonstrates the highest accuracy and lowest relative L2 er
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 12 demonstrates the highest accuracy and lowest relative L2 error, suggesting a more e
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 8 and Lab 4 both demonstrate strong performance with reasonable relative L2 error; Lab
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 4's FNO-spawn architecture demonstrates a strong balance of accuracy and efficiency, w
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 11's random architecture demonstrates a reasonable balance of accuracy and efficiency,
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 4 demonstrates the best overall performance with a strong accuracy and low relative L2
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 7 demonstrates superior accuracy and a slightly better relative L2 error compared to t
+
+  Phase 4: Composite Fitness...
+    Lab 13 respawned from Lab 11 (paradigm: random_spawn)
+    Lab 5 respawned from Lab 11 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  4 (fno_spawn         ) | composite=0.7391 | trust=0.567 | [fourier+attention+wavelet+branch_trunk]
+  #2  Lab  9 (random            ) | composite=0.5554 | trust=0.412 | [branch_trunk+attention+wavelet+fourier+residual_conv]
+  #3  Lab 11 (random            ) | composite=0.5488 | trust=0.489 | [residual_conv+attention+wavelet+fourier]
+  #4  Lab  8 (fno_spawn         ) | composite=0.5104 | trust=0.371 | [attention+fourier+wavelet+branch_trunk+residual_conv]
+  #5  Lab  6 (wavelet           ) | composite=0.5032 | trust=0.354 | [attention+branch_trunk+wavelet+residual_conv]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(2) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(2) transformer(1) transformer_spawn(1) wavelet(1) wavelet_spawn(1) 
+  Block usage: wavelet=23% attention=23% branch_trunk=22% fourier=19% residual_conv=13% 
+  Architectural diversity index: 0.1794 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.3897
+  ✓ checkpoint saved (iteration 7/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 8/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures with 'attention', 'wavelet', and 'branch
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a strong preference for 'branch_trunk' and has largely converged on t
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a `branch_trunk`, `attention`, `wavelet`, and `fourier` block s
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is largely converging on a few block sequences and hidden channel sizes (64, 10 
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around the 'attention', 'wavelet', and 'branch_tr
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'attention-wavelet-branch_trunk-fourier' block seque
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for `branch_trunk` and `attention` blocks, but my curren
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a `branch_trunk, attention, wavelet, fourier`
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a few block sequence combinations (attention, wavele
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a `branch_trunk, attention, wavelet, fourier` sequence
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a 'branch_trunk, attention, wavelet, fourier' block sequence an
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for attention and wavelet blocks, and several labs are u
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for combinations including 'attention', 'wavelet', and '
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on attention, wavelet and branch_trunk blocks. To avoid g
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a `branch_trunk`-`attention`-`wavelet` sequence, and l
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on `branch_trunk`, `attention`, `wavelet`, and `fourier` 
+
+  Phase 2: Building and Training...
+    Lab 0: 1,109,713 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 1: 60,113 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 2: 360,209 params, blocks=['residual_conv', 'branch_trunk', 'attention', 'wavelet']
+    Lab 3: 459,041 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 4: 1,140,417 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 5: 1,140,417 params, blocks=['attention', 'wavelet', 'residual_conv', 'fourier']
+    Lab 6: 203,345 params, blocks=['attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 7: 360,209 params, blocks=['residual_conv', 'attention', 'wavelet', 'branch_trunk']
+    Lab 8: 1,109,713 params, blocks=['attention', 'fourier', 'wavelet', 'branch_trunk']
+    Lab 9: 1,184,273 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier', 'attention']
+    Lab 10: 1,109,713 params, blocks=['attention', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 11: 807,569 params, blocks=['residual_conv', 'attention', 'wavelet', 'branch_trunk']
+    Lab 12: 814,801 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 13: 360,209 params, blocks=['attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 14: 1,224,657 params, blocks=['attention', 'wavelet', 'fourier', 'branch_trunk', 'residual_conv']
+    Lab 15: 624,929 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 5 demonstrates the strongest overall performance with a good balance of accuracy, gene
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 12's wavelet-spawn architecture shows a good balance of accuracy and efficiency while 
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 12's wavelet-based approach demonstrates a solid balance of accuracy and efficiency, w
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Candidate 0 demonstrates a reasonable balance of accuracy and efficiency with a sensible b
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 12's wavelet-spawn architecture demonstrates a strong balance of accuracy and efficien
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 6 demonstrates the highest accuracy and efficiency while maintaining a reasonable gene
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 10 demonstrates a strong balance of accuracy, generalization, and efficiency with a re
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 6 demonstrates a strong balance of accuracy and efficiency with its wavelet-based appr
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 4's architecture closely aligns with my seed paradigm (fno_spawn) and demonstrates a g
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 11's random architecture demonstrates superior accuracy and a relatively low relative 
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and generalization ability while maintaining good 
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 8 demonstrates a strong combination of Fourier and wavelet blocks, achieving high accu
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 9 demonstrates a good balance of accuracy and efficiency with an interesting block seq
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 2's transformer-spawn architecture demonstrates the most promising combination of accu
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 12's wavelet_spawn architecture shows a good balance of accuracy and efficiency with a
+
+  Phase 4: Composite Fitness...
+    Lab 13 respawned from Lab 5 (paradigm: random_spawn_spawn)
+    Lab 1 respawned from Lab 5 (paradigm: random_spawn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 12 (wavelet_spawn     ) | composite=0.7431 | trust=0.511 | [wavelet+attention+branch_trunk+fourier]
+  #2  Lab  5 (random_spawn      ) | composite=0.6889 | trust=0.447 | [attention+wavelet+residual_conv+fourier]
+  #3  Lab  9 (random            ) | composite=0.6536 | trust=0.536 | [branch_trunk+attention+wavelet+fourier+attention]
+  #4  Lab  0 (fno               ) | composite=0.6196 | trust=0.465 | [wavelet+attention+branch_trunk+fourier]
+  #5  Lab  6 (wavelet           ) | composite=0.6186 | trust=0.440 | [attention+branch_trunk+wavelet+residual_conv]
+
+  Global best: Lab 11 (fitness=0.7495)
+  Best architecture: branch_trunk+attention+wavelet+fourier | ch=64 | modes=10 | act=silu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(2) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(1) random_spawn_spawn(2) transformer(1) transformer_spawn(1) wavelet(1) wavelet_spawn(1) 
+  Block usage: wavelet=25% attention=23% branch_trunk=20% fourier=17% residual_conv=14% 
+  Architectural diversity index: 0.1664 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4792
+  ✓ checkpoint saved (iteration 8/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 9/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around attention/wavelet/branch_trunk/fourier combination
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a strong preference for attention and wavelet blocks, but my lab's pe
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'branch_trunk, attention, wavelet' sequence. To main
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a 'branch_trunk, attention, wavelet, fourier' block sequence an
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around attention and wavelet blocks, but many labs a
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a slight preference for 'branch_trunk' blocks and the global best inc
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around attention and wavelet blocks, but my recent i
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures including attention, wavelet, and br
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a few block sequences (attention, wavelet, br
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards architectures including attention and wavelet blocks.
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures similar to the global best and other lab
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a 'branch_trunk, attention, wavelet' block sequence and 64 hidd
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures with 'branch_trunk' blocks and highe
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a strong preference for 'branch_trunk' and 'attention' blocks, as see
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a `branch_trunk`, `attention`, `wavelet`, and `fourier
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around attention and wavelet blocks, but also sho
+
+  Phase 2: Building and Training...
+    Lab 0: 1,224,657 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 1: 91,025 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'wavelet']
+    Lab 2: 360,209 params, blocks=['residual_conv', 'attention', 'wavelet', 'branch_trunk']
+    Lab 3: 1,224,657 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv', 'fourier']
+    Lab 4: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 5: 968,705 params, blocks=['attention', 'wavelet', 'residual_conv', 'fourier', 'wavelet']
+    Lab 6: 360,209 params, blocks=['branch_trunk', 'attention', 'wavelet', 'residual_conv']
+    Lab 7: 814,801 params, blocks=['attention', 'fourier', 'wavelet', 'branch_trunk']
+    Lab 8: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 9: 1,109,713 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 10: 360,209 params, blocks=['attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 11: 1,066,001 params, blocks=['residual_conv', 'residual_conv', 'attention', 'wavelet', 'branch_trunk']
+    Lab 12: 1,109,713 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 13: 1,224,657 params, blocks=['fourier', 'wavelet', 'residual_conv', 'branch_trunk', 'attention']
+    Lab 14: 523,745 params, blocks=['attention', 'residual_conv', 'wavelet', 'branch_trunk', 'fourier']
+    Lab 15: 641,809 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 4's architecture demonstrates superior accuracy and a relatively low relative L2 error
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 4's architecture demonstrates a good balance of accuracy, generalization and efficienc
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 13 demonstrates slightly better accuracy and generalization than the others while main
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 4's FNO-Spawn architecture demonstrates significantly superior accuracy and a low rela
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Candidate 0 demonstrates a good balance of accuracy and efficiency while incorporating key
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 4 demonstrates a strong combination of blocks and achieves the highest accuracy and lo
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and a relatively low relative L2 error, suggestin
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and efficiency while maintaining a reasonable gene
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 9 demonstrates a good balance of accuracy and efficiency with its block sequence, whil
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 8's FNO-Spawn architecture demonstrates significantly higher accuracy and generalizati
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Candidate 4 demonstrates the highest accuracy and lowest relative L2 error, suggesting sup
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and a relatively low measured relative L2 error, i
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 9 demonstrates the highest accuracy and a relatively low relative L2 error, indicating
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 6 demonstrates the highest accuracy and efficiency while maintaining reasonable genera
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 12 demonstrates the highest accuracy and generalization ability while maintaining good
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 9's architecture demonstrates a good balance of accuracy, generalization, and efficien
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 4 (composite=0.7685)
+    Lab 15 respawned from Lab 9 (paradigm: random_spawn)
+    Lab 2 respawned from Lab 9 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  4 (fno_spawn         ) | composite=0.7685 | trust=0.628 | [fourier+attention+branch_trunk+wavelet]
+  #2  Lab  9 (random            ) | composite=0.6063 | trust=0.545 | [branch_trunk+attention+wavelet+fourier]
+  #3  Lab  8 (fno_spawn         ) | composite=0.5983 | trust=0.425 | [fourier+attention+branch_trunk+wavelet]
+  #4  Lab  6 (wavelet           ) | composite=0.5321 | trust=0.443 | [branch_trunk+attention+wavelet+residual_conv]
+  #5  Lab  5 (random_spawn      ) | composite=0.5197 | trust=0.438 | [attention+wavelet+residual_conv+fourier+wavelet]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(2) transformer(1) wavelet(1) wavelet_spawn(1) 
+  Block usage: wavelet=24% branch_trunk=24% attention=20% fourier=16% residual_conv=16% 
+  Architectural diversity index: 0.1726 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4243
+  ✓ checkpoint saved (iteration 9/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 10/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a Fourier-Attention-BranchTrunk-Wavelet sequence, and 
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend toward architectures including Fourier blocks and attention m
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures with 'fourier', 'attention', and 'wavele
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing decent performance but some are converging on similar block sequences
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a similar block sequence and hidden channel size (fourier, atte
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on Fourier-Attention-Wavelet-Branch Trunk structures, but
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including attention and wavelet blocks. 
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' block se
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a similar block sequence and hidden channel size. To maintain d
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a 'fourier, attention, branch_trunk, wavelet' block 
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing 'fourier', 'attention', and '
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around attention and wavelet blocks. My recent fi
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for Fourier-Attention-BranchTrunk-Wavelet block order an
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for attention and wavelet blocks in various combinations
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, wavelet' block sequence and gen
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for 'attention' and 'wavelet' blocks, but there's also c
+
+  Phase 2: Building and Training...
+    Lab 0: 1,314,353 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 1: 352,625 params, blocks=['residual_conv', 'fourier', 'branch_trunk', 'wavelet']
+    Lab 2: 360,209 params, blocks=['branch_trunk', 'attention', 'residual_conv', 'wavelet']
+    Lab 3: 203,345 params, blocks=['attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 4: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 1,378,561 params, blocks=['residual_conv', 'attention', 'wavelet', 'residual_conv', 'fourier', 'wavelet']
+    Lab 6: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 7: 929,745 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 8: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 9: 106,353 params, blocks=['attention', 'wavelet', 'fourier', 'branch_trunk']
+    Lab 10: 346,897 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 11: 806,545 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'fourier']
+    Lab 12: 1,224,657 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv', 'fourier']
+    Lab 13: 845,505 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 14: 845,505 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 15: 945,713 params, blocks=['branch_trunk', 'attention', 'fourier', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 6's wavelet-based approach shows a good balance of accuracy and efficiency, while also
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 12 demonstrates a strong balance of accuracy and efficiency with a reasonable block se
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 11 demonstrates the best balance of accuracy, generalization, and efficiency while usi
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 12's wavelet_spawn architecture demonstrates a compelling blend of blocks and slightly
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 9 demonstrates a compelling combination of blocks and achieves excellent efficiency al
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 7 demonstrates the best balance of accuracy and efficiency while incorporating a reaso
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 12's wavelet-spawn architecture demonstrates superior accuracy and generalization comp
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 15 demonstrates a good balance of accuracy and efficiency with its hybrid FNO-attentio
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 4 and 6 demonstrate significantly better accuracy and generalization than Lab 10, alig
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 0 demonstrates the highest accuracy and a reasonable relative L2 error, showcasing str
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 15 demonstrates a good balance of accuracy, generalization and efficiency with a reaso
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and a reasonable generalization score while maint
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 9 demonstrates a reasonable balance of accuracy, generalization, and parameter efficie
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 15 demonstrates superior accuracy and a slightly better relative L2 error compared to 
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 3's Deeponet architecture demonstrates a compelling balance of accuracy and generaliza
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and efficiency while maintaining a reasonable rel
+
+  Phase 4: Composite Fitness...
+    Lab 1 respawned from Lab 12 (paradigm: wavelet_spawn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 12 (wavelet_spawn     ) | composite=0.7437 | trust=0.580 | [wavelet+attention+branch_trunk+residual_conv+fourier]
+  #2  Lab  7 (hybrid_fno_attn   ) | composite=0.7056 | trust=0.449 | [fourier+attention+residual_conv+branch_trunk+wavelet]
+  #3  Lab  6 (wavelet           ) | composite=0.6789 | trust=0.555 | [fourier+attention+branch_trunk+wavelet]
+  #4  Lab 15 (random_spawn      ) | composite=0.6751 | trust=0.395 | [branch_trunk+attention+fourier+wavelet]
+  #5  Lab  9 (random            ) | composite=0.6743 | trust=0.626 | [attention+wavelet+fourier+branch_trunk]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=23% wavelet=21% fourier=20% branch_trunk=19% residual_conv=17% 
+  Architectural diversity index: 0.2083 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5330
+  ✓ checkpoint saved (iteration 10/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 11/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier-attention-branch_trunk-wavelet' block seque
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is trending towards architectures containing a wavelet block and attention mecha
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some diversity but many labs are converging on Fourier-Attention-Wave
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on architectures with 'fourier', 'attention', and 'branch_trunk' b
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a structure including Fourier, Attention, Branch Trunk
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around Fourier, Attention, and Wavelet blocks. To av
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence on the block sequence and hidden channels. To mainta
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a Fourier-Attention-Branch Trunk architecture. To ma
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a fourier-attention-branch_trunk-wavelet sequ
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards architectures including 'fourier', 'attention', and '
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards using 'branch_trunk' and 'residual_conv', which our c
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures including 'wavelet' blocks, which my c
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around a 'fourier-attention-branch_trunk-wavelet' structu
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards `branch_trunk` blocks and maintaining Fourier, Attent
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a 'fourier-attention-branch_trunk-wavelet' se
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier-attention-branch_trunk-wavelet' sequence, a
+
+  Phase 2: Building and Training...
+    Lab 0: 929,745 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'fourier', 'wavelet']
+    Lab 1: 1,109,713 params, blocks=['branch_trunk', 'attention', 'wavelet', 'fourier']
+    Lab 2: 845,505 params, blocks=['attention', 'residual_conv', 'fourier', 'wavelet']
+    Lab 3: 203,345 params, blocks=['attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 4: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 5: 203,345 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'wavelet']
+    Lab 6: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 7: 929,745 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 2,088,881 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 9: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 10: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 11: 360,209 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'wavelet']
+    Lab 12: 394,721 params, blocks=['wavelet', 'attention', 'fourier', 'branch_trunk', 'residual_conv']
+    Lab 13: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 14: 806,545 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 15: 1,016,353 params, blocks=['residual_conv', 'attention', 'fourier', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 9 demonstrates the highest accuracy and efficiency while retaining architectural novel
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 6 and Lab 2 demonstrate significantly higher accuracy than Lab 10 while maintaining go
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 13's inclusion of a wavelet block offers a slight architectural novelty over the other
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Candidate 4 demonstrates significantly higher accuracy and a lower relative L2 error than 
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 2's architecture demonstrates a compelling balance of accuracy and efficiency, exhibit
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 15's random spawn architecture shows a slight improvement over the FNO baseline in acc
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and a relatively low relative L2 error, indicatin
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 1 and Lab 6 demonstrate solid performance with a good mix of blocks; however, Lab 6's 
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 15 demonstrates a good balance of accuracy, generalization, and efficiency, making it 
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 14 demonstrates the highest accuracy and lowest relative L2 error, suggesting a strong
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 6 demonstrates the highest accuracy and efficiency while maintaining a reasonable gene
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 2 exhibits the best overall performance with a strong accuracy and relatively good gen
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 0 demonstrates the strongest combination of accuracy and generalization while maintain
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 1's architecture demonstrates the highest accuracy and a relatively low measured relat
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 6's wavelet architecture demonstrates a strong balance of accuracy and efficiency, alt
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 2 demonstrates the highest accuracy and efficiency while maintaining a reasonable gene
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  2 (random_spawn      ) | composite=0.7478 | trust=0.565 | [attention+residual_conv+fourier+wavelet]
+  #2  Lab  6 (wavelet           ) | composite=0.7468 | trust=0.691 | [fourier+attention+branch_trunk+wavelet]
+  #3  Lab 13 (random_spawn_spawn) | composite=0.7125 | trust=0.504 | [fourier+attention+branch_trunk+wavelet]
+  #4  Lab 14 (transformer       ) | composite=0.6758 | trust=0.488 | [fourier+attention+branch_trunk+residual_conv]
+  #5  Lab 15 (random_spawn      ) | composite=0.6153 | trust=0.456 | [residual_conv+attention+fourier+wavelet]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=23% wavelet=22% branch_trunk=20% fourier=19% residual_conv=16% 
+  Architectural diversity index: 0.1609 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5360
+  ✓ checkpoint saved (iteration 11/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 12/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around a 'fourier, attention, branch_trunk, wavelet' sequ
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' block se
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for 'branch_trunk' blocks and Fourier layers, but our cu
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging towards architectures including 'fourier', 'attention', 'branch_tr
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a 'fourier, attention, branch_trunk, wavelet' sequence. To main
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards architectures including 'fourier', 'attention', 'bran
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be settling on a 'fourier-attention-branch_trunk-wavelet' block sequenc
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards simpler architectures (fewer blocks). To maintain div
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on architectures with 4 blocks and skip connections. Gi
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few block sequences (fourier-attention-branch_trunk-
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on FNO-like architectures, but several labs are exploring
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on Fourier-Attention-BranchTrunk-Wavelet sequences, and m
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a Fourier-Attention-BranchTrunk combination, but with 
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence on a fourier-attention-branch_trunk-wavelet structur
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the 'fourier', 'attention', 'branch_trunk' bl
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on architectures with `fourier`, `attention`, and `bran
+
+  Phase 2: Building and Training...
+    Lab 0: 1,044,689 params, blocks=['residual_conv', 'residual_conv', 'attention', 'branch_trunk', 'fourier', 'wavelet']
+    Lab 1: 1,109,713 params, blocks=['attention', 'branch_trunk', 'wavelet', 'fourier']
+    Lab 2: 360,209 params, blocks=['attention', 'residual_conv', 'branch_trunk', 'wavelet']
+    Lab 3: 806,545 params, blocks=['fourier', 'attention', 'residual_conv', 'branch_trunk']
+    Lab 4: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 5: 203,345 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'wavelet']
+    Lab 6: 459,041 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 7: 889,361 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'attention']
+    Lab 8: 806,545 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 9: 806,545 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 10: 845,505 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 11: 929,745 params, blocks=['residual_conv', 'attention', 'branch_trunk', 'wavelet', 'fourier']
+    Lab 12: 929,745 params, blocks=['wavelet', 'attention', 'fourier', 'branch_trunk', 'residual_conv']
+    Lab 13: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 15: 805,121 params, blocks=['fourier', 'attention', 'attention', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 9 demonstrates the highest accuracy and efficiency while maintaining a reasonable gene
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 9 demonstrates a solid balance of accuracy and efficiency, while Lab 4 builds on that 
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 9 demonstrates superior accuracy and a lower relative L2 error compared to the other c
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Candidate 10 demonstrates the best combination of accuracy and efficiency while incorporat
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 10 demonstrates superior accuracy and a lower relative L2 error compared to the others
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 14's transformer architecture incorporating a wavelet block demonstrates architectural
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 14 demonstrates slightly better accuracy and generalization than the others while main
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 12's architecture demonstrates superior generalization and accuracy while maintaining 
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 15 demonstrates slightly superior accuracy and efficiency compared to the others while
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 3 demonstrates superior efficiency and a slightly more novel architecture (Deeponet) c
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 10 demonstrates a slightly better accuracy and lower relative L2 error than the others
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 15 demonstrates the highest accuracy and a reasonable level of generalization while ma
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 10's architecture demonstrates the best balance of accuracy and efficiency while avoid
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 4's FNO-Spawn architecture demonstrates a good balance of accuracy, generalization, an
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+
+  Phase 4: Composite Fitness...
+    Lab 5 respawned from Lab 10 (paradigm: random_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  9 (random            ) | composite=0.7375 | trust=0.658 | [fourier+attention+branch_trunk+residual_conv]
+  #2  Lab 10 (random            ) | composite=0.7053 | trust=0.476 | [fourier+attention+residual_conv+wavelet]
+  #3  Lab  4 (fno_spawn         ) | composite=0.6864 | trust=0.620 | [fourier+attention+branch_trunk+residual_conv+wavelet]
+  #4  Lab 14 (transformer       ) | composite=0.6270 | trust=0.527 | [fourier+attention+branch_trunk+wavelet]
+  #5  Lab 15 (random_spawn      ) | composite=0.5833 | trust=0.453 | [fourier+attention+attention+wavelet]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=25% fourier=21% branch_trunk=18% wavelet=18% residual_conv=17% 
+  Architectural diversity index: 0.1284 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5300
+  ✓ checkpoint saved (iteration 12/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 13/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on architectures including attention and branch trunk b
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a `fourier`, `attention`, `branch_trunk`, and `wavelet
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging around Fourier blocks and attention mechanisms. To maintain divers
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around the 'fourier', 'attention', 'branch_trunk'
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence on architectures including Fourier, Attention, Branc
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for 'branch_trunk' blocks, and many architectures have i
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend toward using multiple attention blocks, and the global best u
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including Fourier layers, attention mech
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on architectures including wavelet blocks; lab 4 is per
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including Fourier, Attention, Branch Tru
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' sequence
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging around a 'fourier-attention-branch_trunk-wavelet' seque
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a 'fourier-attention-branch_trunk-wavelet' se
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including Fourier, Attention, Branch Tru
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be settling on a core set of blocks (fourier, attention, branch_trunk, 
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a strong preference for 'branch_trunk' blocks after 'attention'. My c
+
+  Phase 2: Building and Training...
+    Lab 0: 1,044,689 params, blocks=['residual_conv', 'residual_conv', 'attention', 'branch_trunk', 'fourier', 'wavelet']
+    Lab 1: 360,209 params, blocks=['attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 2: 360,209 params, blocks=['attention', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 3: 845,505 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet']
+    Lab 4: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 6: 889,361 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 7: 929,745 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 8: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 9: 806,545 params, blocks=['residual_conv', 'fourier', 'attention', 'branch_trunk']
+    Lab 10: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 11: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 12: 889,361 params, blocks=['wavelet', 'attention', 'fourier', 'branch_trunk', 'attention']
+    Lab 13: 1,004,305 params, blocks=['fourier', 'attention', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 15: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 12 exhibits the highest overall merit due to slightly improved accuracy and generaliza
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 3's DeepONet architecture demonstrates the highest accuracy and efficiency while maint
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 14 demonstrates the highest accuracy and a relatively low measured relative L2 error, 
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 6's wavelet inclusion and slightly better accuracy give it a moderate edge over the ot
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 3's architecture demonstrates a strong balance of accuracy and efficiency while incorp
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 15's random spawn architecture demonstrates superior overall fitness with high accurac
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 10 demonstrates the best combination of accuracy and efficiency while maintaining a re
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 12 demonstrates a good balance of accuracy and efficiency with a reasonable block sequ
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 10 demonstrates the highest accuracy and a reasonable generalization score while maint
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 5 demonstrates the best balance of accuracy, generalization, and efficiency, with a re
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 14 demonstrates the highest accuracy and lowest relative L2 error, indicating superior
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 14 demonstrates the highest accuracy and a reasonable balance of fitness components, w
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 9 demonstrates slightly superior efficiency and accuracy compared to the others, while
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 15 demonstrates a good balance of accuracy and efficiency while incorporating attentio
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest overall fitness and efficiency while incorporating a well-b
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 7 demonstrates the best overall performance with a good balance of accuracy, generaliz
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  7 (hybrid_fno_attn   ) | composite=0.7424 | trust=0.582 | [fourier+attention+wavelet+branch_trunk+residual_conv]
+  #2  Lab  3 (deeponet          ) | composite=0.6750 | trust=0.566 | [fourier+attention+residual_conv+wavelet]
+  #3  Lab 12 (wavelet_spawn     ) | composite=0.6478 | trust=0.577 | [wavelet+attention+fourier+branch_trunk+attention]
+  #4  Lab  6 (wavelet           ) | composite=0.6447 | trust=0.600 | [fourier+attention+branch_trunk+wavelet+attention]
+  #5  Lab 14 (transformer       ) | composite=0.6361 | trust=0.563 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=25% branch_trunk=20% wavelet=20% fourier=19% residual_conv=16% 
+  Architectural diversity index: 0.1046 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5612
+  ✓ checkpoint saved (iteration 13/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 14/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for including residual_conv blocks and shorter sequences
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be settling on architectures including 'fourier', 'attention', and 'wav
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on Fourier, Attention, Branch Trunk and Wavelet blocks. To maintai
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the 'fourier, attention, branch_trunk, wavele
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: Given the exploration rate of 0.39 and recent fitness decline, a hybridized approach is wa
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing decent performance but some labs are exploring longer sequences and d
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including Fourier and attention blocks, 
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around a 'fourier-attention-branch_trunk-wavelet' sequenc
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards longer block sequences (5-6 blocks). While our cur
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a Fourier-Attention-BranchTrunk-Wavelet-ResidualConv s
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a slight preference for shorter block sequences (4 blocks), and the g
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures including Fourier, Attention, Branch
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures including Fourier, attention, branch_t
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around a Fourier-Attention-BranchTrunk-Wavelet core. To m
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is somewhat converging on a Fourier-Attention-BranchTrunk-Wavelet-ResidualConv s
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be settling on a few common block sequences (fourier-attention-branch_t
+
+  Phase 2: Building and Training...
+    Lab 0: 1,004,305 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv', 'fourier', 'attention']
+    Lab 1: 929,745 params, blocks=['branch_trunk', 'wavelet', 'attention', 'residual_conv', 'fourier']
+    Lab 2: 360,209 params, blocks=['attention', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 3: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 4: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 6: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 7: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 8: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 9: 889,361 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 10: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 11: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 12: 920,065 params, blocks=['wavelet', 'attention', 'fourier', 'residual_conv', 'attention']
+    Lab 13: 1,004,305 params, blocks=['fourier', 'attention', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 845,505 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv']
+    Lab 15: 889,361 params, blocks=['fourier', 'attention', 'attention', 'branch_trunk', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 11 demonstrates the highest overall fitness and a slightly lower relative L2 error tha
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 7 demonstrates the highest accuracy and a very competitive generalization score while 
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest accuracy and a slightly better generalization score while m
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 10 demonstrates the highest accuracy and efficiency while maintaining a reasonable blo
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 0's FNO-based architecture demonstrates a slightly superior balance of accuracy and ge
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 10 demonstrates the highest accuracy and efficiency while maintaining a reasonable gen
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 11's random architecture demonstrates superior accuracy and a slightly better generali
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 8's architecture closely mirrors my own hybrid_fno_attn paradigm but outperforms it sl
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 4 (fno_spawn) exhibits the highest accuracy and a reasonable generalization score alon
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and a slightly better generalization performance c
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest overall fitness across accuracy, generalization and efficie
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and lowest relative L2 error while maintaining goo
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 14 demonstrates the highest accuracy and efficiency while maintaining a reasonable gen
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 14 demonstrates slightly superior performance across all measured fitness metrics comp
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 11 demonstrates superior accuracy and efficiency compared to the other candidates, whi
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 5's architecture demonstrates superior accuracy and efficiency compared to the others 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 14 (transformer       ) | composite=0.7440 | trust=0.695 | [fourier+attention+wavelet+residual_conv]
+  #2  Lab  0 (fno               ) | composite=0.6841 | trust=0.477 | [wavelet+attention+branch_trunk+residual_conv+fourier+attention]
+  #3  Lab 11 (random            ) | composite=0.6727 | trust=0.460 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #4  Lab  5 (random_spawn      ) | composite=0.6662 | trust=0.401 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #5  Lab  6 (wavelet           ) | composite=0.6265 | trust=0.612 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=27% wavelet=20% fourier=19% branch_trunk=18% residual_conv=16% 
+  Architectural diversity index: 0.0563 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5794
+  ✓ checkpoint saved (iteration 14/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 15/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a common block sequence (Fourier, Attention, Branch 
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a `fourier`-`attention`-`branch_trunk`-`wavelet` architecture, 
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' structur
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a few common block sequences (fourier, attention, branch_trunk,
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a FNO architecture with attention and wavelet blocks, 
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards architectures with 4 or 5 blocks; my current architec
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures including 'fourier', 'attention', an
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a 4-block architecture incorporating Fourier, Attention, Branch
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few block sequences involving Fourier, attention, br
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' sequence
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a similar architecture; I will introduce some divers
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a core sequence of 'fourier', 'attention', 'b
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: Given the moderate exploration rate and recent fitness decline (iteration 13), it's pruden
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few common blocks (fourier, attention, branch_trunk,
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a structure involving Fourier, Attention, Branch Trunk
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around Fourier-Attention-BranchTrunk-Wavelet sequenc
+
+  Phase 2: Building and Training...
+    Lab 0: 889,361 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'attention']
+    Lab 1: 929,745 params, blocks=['fourier', 'attention', 'wavelet', 'residual_conv', 'branch_trunk']
+    Lab 2: 360,209 params, blocks=['attention', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 3: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 4: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 5: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 6: 276,305 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 7: 700,369 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 8: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 9: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 10: 233,457 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 11: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 12: 889,361 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'attention']
+    Lab 13: 963,921 params, blocks=['fourier', 'attention', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 14: 805,121 params, blocks=['fourier', 'attention', 'wavelet', 'attention']
+    Lab 15: 806,545 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 2 demonstrates superior efficiency and a slightly higher accuracy than the others, des
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 0 demonstrates the highest accuracy and lowest relative L2 error, suggesting a superio
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 0 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 0's FNO architecture demonstrates the highest overall accuracy and a slightly better g
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 2 demonstrates a reasonable balance of accuracy and efficiency with a slightly more co
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 8's FNO-spawn architecture demonstrates a slightly superior balance of accuracy and ge
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest accuracy and lowest relative L2 error, suggesting a more ro
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 12's architecture demonstrates a slightly more sophisticated block sequence than the o
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 5 demonstrates the best overall performance with a slightly higher accuracy and genera
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 10 demonstrates a strong balance of accuracy and efficiency, while Lab 12 shows the hi
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 12 demonstrates the best balance of accuracy, generalization, and parameter efficiency
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 14's transformer architecture shows a slightly better balance of accuracy and efficien
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 0's FNO-inspired architecture demonstrates superior accuracy and efficiency compared t
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and a relatively low relative L2 error, signifying
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 10 and Lab 13 both demonstrate good accuracy and efficiency; however, Lab 13's archite
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 3 demonstrates slightly improved accuracy and generalization compared to Lab 11 while 
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  4 (fno_spawn         ) | composite=0.7237 | trust=0.711 | [fourier+attention+branch_trunk+wavelet]
+  #2  Lab  2 (random_spawn      ) | composite=0.6802 | trust=0.458 | [attention+residual_conv+wavelet+branch_trunk]
+  #3  Lab  0 (fno               ) | composite=0.6791 | trust=0.576 | [wavelet+attention+branch_trunk+fourier+attention]
+  #4  Lab  3 (deeponet          ) | composite=0.6201 | trust=0.554 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #5  Lab 13 (random_spawn_spawn) | composite=0.6101 | trust=0.514 | [fourier+attention+attention+branch_trunk+wavelet+attention]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=28% branch_trunk=20% fourier=20% wavelet=18% residual_conv=14% 
+  Architectural diversity index: 0.1029 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5406
+  ✓ checkpoint saved (iteration 15/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 16/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing Fourier, Attention, Branch Tr
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around Fourier, Attention, Branch Trunk and Wavelet 
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on architectures including Fourier, Attention, Branch Trunk, and W
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a standard FNO architecture (fourier, attenti
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the current architecture. To maintain diversi
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a structure including fourier, attention, branch_trunk and wave
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on architectures with 'wavelet' and many using hidden channels of 
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a strong preference for 8 Fourier modes and architectures containing 
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' sequence
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier-attention-branch_trunk-wavelet' sequence, a
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures with Fourier, Attention, Branch Trunk an
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a sequence of `fourier`, `attention`, `branch_trunk`
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a structure containing Fourier, Attention and Branch
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures containing Fourier, Attention, Branch Tr
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around FNO-like architectures, but the novelty score
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet' sequence
+
+  Phase 2: Building and Training...
+    Lab 0: 929,745 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 1: 889,361 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'attention']
+    Lab 2: 845,505 params, blocks=['attention', 'residual_conv', 'wavelet', 'fourier']
+    Lab 3: 307,185 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 4: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 814,801 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet']
+    Lab 6: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 7: 1,830,449 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 8: 307,185 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 9: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 10: 223,505 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 11: 889,361 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 12: 929,745 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 13: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 920,065 params, blocks=['fourier', 'attention', 'wavelet', 'attention', 'residual_conv']
+    Lab 15: 806,545 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 11 demonstrates the highest accuracy and lowest relative L2 error while maintaining re
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 2 demonstrates the highest accuracy and a relatively low relative L2 error, indicating
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and efficiency while maintaining a reasonable numb
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and a comparatively better efficiency score while
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 13 demonstrates a compelling balance of accuracy, efficiency and architectural element
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 9 demonstrates the best overall performance with higher accuracy and a lower relative 
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 5 and 7 both show promise with reasonable accuracy and efficiency; Lab 5's architectur
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 9 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 5's random spawn architecture demonstrates a good balance of accuracy and efficiency, 
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 7 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and a reasonable generalization performance alongs
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 7 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 2 demonstrates the highest overall fitness with a good balance of accuracy, generaliza
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 2 demonstrates a good balance of accuracy and efficiency with a reasonable block seque
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 9 demonstrates the highest accuracy and lowest relative L2 error, suggesting a superio
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 12 demonstrates a compelling balance of accuracy and efficiency while incorporating wa
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 11 (random            ) | composite=0.7273 | trust=0.644 | [fourier+attention+branch_trunk+wavelet+attention]
+  #2  Lab  5 (random_spawn      ) | composite=0.7083 | trust=0.501 | [attention+fourier+branch_trunk+wavelet]
+  #3  Lab  2 (random_spawn      ) | composite=0.6489 | trust=0.523 | [attention+residual_conv+wavelet+fourier]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.6374 | trust=0.479 | [fourier+attention+branch_trunk+wavelet]
+  #5  Lab  9 (random            ) | composite=0.6256 | trust=0.445 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=27% fourier=21% wavelet=20% branch_trunk=19% residual_conv=13% 
+  Architectural diversity index: 0.1062 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5400
+  ✓ checkpoint saved (iteration 16/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 17/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a Fourier-Attention-BranchTrunk-Wavelet sequence, but 
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures including 'fourier', 'attention', an
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures including attention and wavelet blocks
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards shorter block sequences (4-5 blocks) and higher hi
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures containing 'residual_conv' blocks and 
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around a core architecture (fourier, attention, b
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards including residual_conv blocks for improved performan
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging around a 'fourier, attention, branch_trunk, wavelet' sequ
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a common structure (fourier, attention, branch_trunk, wavelet),
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures including 'fourier', 'attention', and 
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend towards architectures including 'residual_conv' and increasin
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around the 'fourier', 'attention', 'branch_trunk'
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a 'fourier-attention-branch_trunk-wavelet' se
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around FNO architectures with Fourier, Attention, an
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures including 'branch_trunk' and 'wavelet'
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a slight preference for Wavelet blocks and using more than four block
+
+  Phase 2: Building and Training...
+    Lab 0: 1,004,305 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv', 'attention']
+    Lab 1: 1,004,305 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv', 'attention']
+    Lab 2: 285,537 params, blocks=['attention', 'wavelet', 'residual_conv', 'fourier']
+    Lab 3: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 4: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 5: 929,745 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 6: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 7: 2,088,881 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 8: 203,345 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv']
+    Lab 9: 1,830,449 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 10: 233,457 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 11: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 12: 1,004,305 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv', 'attention']
+    Lab 13: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 929,745 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'residual_conv']
+    Lab 15: 921,489 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 15 demonstrates significantly improved accuracy and generalization compared to the oth
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 14's transformer architecture demonstrates a slightly better balance of accuracy and e
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and efficiency while maintaining a reasonable arch
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and efficiency while maintaining reasonable genera
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest accuracy and lowest relative L2 error, suggesting superior 
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 13 demonstrates the highest accuracy and generalization ability while maintaining good
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 11 demonstrates the most significant improvement in accuracy and relative L2 error com
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 5 demonstrates a reasonable balance of accuracy, generalization, and efficiency with a
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 5 demonstrates a slight edge in accuracy and generalization over Lab 14 while maintain
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 3 demonstrates a strong balance of accuracy and efficiency while maintaining reasonabl
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and a relatively low relative L2 error, suggesting
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 9 shows a slight improvement in accuracy and generalization over Lab 4 while maintaini
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 4 demonstrates a superior balance of accuracy and efficiency while incorporating wavel
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 3's Deeponet architecture demonstrates significantly higher accuracy and a very low re
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 3's Deeponet architecture demonstrates superior accuracy and efficiency compared to th
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 7 demonstrates significantly better accuracy and a relatively low measured relative L2
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  3 (deeponet          ) | composite=0.7526 | trust=0.571 | [fourier+attention+branch_trunk+wavelet]
+  #2  Lab  4 (fno_spawn         ) | composite=0.6886 | trust=0.640 | [fourier+attention+branch_trunk+wavelet]
+  #3  Lab  5 (random_spawn      ) | composite=0.6663 | trust=0.612 | [attention+fourier+branch_trunk+wavelet+residual_conv]
+  #4  Lab  7 (hybrid_fno_attn   ) | composite=0.6569 | trust=0.557 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #5  Lab 14 (transformer       ) | composite=0.5495 | trust=0.516 | [fourier+attention+wavelet+branch_trunk+residual_conv]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(3) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=24% wavelet=19% branch_trunk=19% fourier=19% residual_conv=18% 
+  Architectural diversity index: 0.1106 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5136
+  ✓ checkpoint saved (iteration 17/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 18/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around a 'fourier, attention, branch_trunk, wavel
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a 'fourier-attention-branch_trunk-wavelet' co
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a strong preference for architectures including 'fourier', 'attention
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on the current architecture (fourier, attention, branch_t
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a few common block sequences and hidden channel sizes 
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a few block sequences and hidden channel sizes. To maintain div
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet, residual
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a structure of fourier, attention, branch_trunk, and w
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The recent fitness drop suggests we need to move away from the current architecture while 
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is somewhat converging on a 'fourier, attention, branch_trunk, wavelet' block se
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around a Fourier-Attention-BranchTrunk-Wavelet-Resid
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: Given the relatively low exploration rate (0.36), I will focus on exploiting and hybridizi
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a core set of blocks (fourier, attention, branch_trunk
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging around a few basic architectures (fourier, attention, branch_trunk
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a relatively standard Fourier-Attention-BranchTrunk-Wavelet seq
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including Fourier, Attention, Branch Tru
+
+  Phase 2: Building and Training...
+    Lab 0: 1,004,305 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv', 'attention']
+    Lab 1: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 2: 307,185 params, blocks=['attention', 'wavelet', 'residual_conv', 'branch_trunk', 'fourier']
+    Lab 3: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 4: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 1,044,689 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet', 'residual_conv', 'residual_conv']
+    Lab 6: 1,830,449 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 7: 2,365,841 params, blocks=['wavelet', 'fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 8: 394,721 params, blocks=['wavelet', 'attention', 'branch_trunk', 'residual_conv', 'fourier']
+    Lab 9: 2,088,881 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 10: 262,257 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet', 'residual_conv']
+    Lab 11: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 12: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 13: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 889,361 params, blocks=['fourier', 'attention', 'wavelet', 'branch_trunk', 'attention']
+    Lab 15: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 12 demonstrates the highest accuracy and lowest relative L2 error, suggesting a slight
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 11 demonstrates significantly higher accuracy and a very low relative L2 error compare
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 15 demonstrates significantly higher accuracy than the others and a relatively good ge
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Candidate 1 demonstrates a slightly better balance of accuracy and efficiency compared to 
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest accuracy and efficiency while maintaining reasonable genera
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 3 and Lab 11 demonstrate superior accuracy and efficiency compared to Lab 4, with Lab 
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 5 demonstrates superior accuracy and a relatively low relative L2 error compared to th
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 15 demonstrates the highest efficiency and a reasonable accuracy/generalization trade-
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 12 demonstrates a slightly improved architecture over Lab 9 and Lab 6 by incorporating
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 15 and 12 demonstrate slightly superior accuracy and efficiency compared to Lab 5, whi
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 7 demonstrates the highest accuracy and a reasonable balance across fitness metrics, w
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 3 demonstrates the highest accuracy and a slightly better generalization score than th
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 11 and Lab 3 demonstrate reasonable performance with a common block sequence; however,
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 11 demonstrates the highest accuracy and efficiency while maintaining a reasonable arc
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 11 demonstrates the strongest combination of accuracy and efficiency while Lab 2's low
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 3 demonstrates slightly superior accuracy and efficiency compared to the other candida
+
+  Phase 4: Composite Fitness...
+    Lab 2 respawned from Lab 3 (paradigm: deeponet_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab 11 (random            ) | composite=0.7465 | trust=0.684 | [fourier+attention+branch_trunk+wavelet]
+  #2  Lab  3 (deeponet          ) | composite=0.6792 | trust=0.640 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #3  Lab 12 (wavelet_spawn     ) | composite=0.6702 | trust=0.523 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #4  Lab 15 (random_spawn      ) | composite=0.5959 | trust=0.426 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+  #5  Lab  5 (random_spawn      ) | composite=0.5783 | trust=0.588 | [attention+fourier+branch_trunk+wavelet+residual_conv+residual_conv]
+
+  Global best: Lab 4 (fitness=0.7685)
+  Best architecture: fourier+attention+branch_trunk+wavelet | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) deeponet_spawn(1) fno(1) fno_spawn(2) hybrid_fno_attn(1) random(3) random_spawn(2) random_spawn_spawn(1) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=22% wavelet=21% branch_trunk=20% fourier=20% residual_conv=17% 
+  Architectural diversity index: 0.1177 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.5069
+  ✓ checkpoint saved (iteration 18/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 19/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging around a 'fourier, attention, branch_trunk, wavelet' co
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: Given the relatively low exploration rate and recent fitness improvements, a hybridized ap
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a similar architecture (fourier, attention, branch_t
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: Given the moderate exploration rate and that several labs are converging on a four-block s
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including attention, branch_trunk, and w
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures including Fourier and Attention blocks
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the current block sequence and hyperparameter
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is leaning towards architectures with 4 blocks and hidden channels of 64, but ou
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is trending towards architectures with 'fourier', 'attention', 'branch_trunk', a
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for architectures with four blocks, as seen in the globa
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures with 4 blocks and a mix of Fourier, Atte
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a slight convergence on the current architecture, but lab 3 and 15 ar
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is somewhat converging on architectures including Fourier, Attention, Branch Tru
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is exhibiting some convergence around the block sequence 'fourier, attention, br
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a standard 'fourier-attention-branch_trunk-wavelet' se
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on architectures including 'fourier', 'attention', 'branc
+
+  Phase 2: Building and Training...
+    Lab 0: 929,745 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv']
+    Lab 1: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 2: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 3: 2,752,433 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 4: 1,384,337 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'fourier']
+    Lab 5: 814,801 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet']
+    Lab 6: 2,088,881 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 7: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 8: 394,721 params, blocks=['residual_conv', 'wavelet', 'attention', 'branch_trunk', 'fourier']
+    Lab 9: 1,109,713 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 10: 1,224,657 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 11: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 12: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+    Lab 13: 2,752,433 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 14: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 15: 929,745 params, blocks=['residual_conv', 'fourier', 'attention', 'branch_trunk', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 4's FNO-spawn architecture demonstrates superior accuracy and a relatively low measure
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and efficiency while maintaining reasonable genera
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 5's random spawn architecture demonstrates a good balance of accuracy and efficiency, 
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 5 demonstrates the highest accuracy and a relatively low relative L2 error despite mod
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 0's FNO-spawn architecture demonstrates the highest accuracy and efficiency while main
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 4 demonstrates a strong balance of accuracy and efficiency while incorporating key arc
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 11 demonstrates the highest overall fitness and closely aligns with my wavelet paradig
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 1's architecture demonstrates the highest accuracy and a relatively low measured relat
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 4's architecture, closely aligned with the fno_spawn paradigm, demonstrates superior a
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 5 demonstrates superior accuracy and efficiency while maintaining a reasonable block c
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and lowest relative L2 error, suggesting superior 
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 1 demonstrates the highest overall merit due to its superior accuracy and efficiency w
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 1's wavelet_spawn_spawn architecture demonstrates superior accuracy and efficiency com
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 1's architecture demonstrates superior accuracy and a slightly better relative L2 erro
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 10 demonstrates the highest accuracy and a good balance of efficiency and generalizati
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 12 demonstrates superior accuracy and efficiency compared to the others while maintain
+
+  Phase 4: Composite Fitness...
+    ★ NEW GLOBAL BEST: Lab 4 (composite=0.7698)
+    Lab 13 respawned from Lab 4 (paradigm: fno_spawn_spawn)
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  4 (fno_spawn         ) | composite=0.7698 | trust=0.717 | [fourier+attention+branch_trunk+wavelet+fourier]
+  #2  Lab  1 (wavelet_spawn_spawn) | composite=0.7335 | trust=0.511 | [fourier+attention+branch_trunk+wavelet]
+  #3  Lab  5 (random_spawn      ) | composite=0.6561 | trust=0.606 | [attention+fourier+branch_trunk+wavelet]
+  #4  Lab  0 (fno               ) | composite=0.6219 | trust=0.433 | [wavelet+attention+branch_trunk+fourier+residual_conv]
+  #5  Lab 12 (wavelet_spawn     ) | composite=0.5811 | trust=0.489 | [fourier+attention+branch_trunk+wavelet]
+
+  Global best: Lab 4 (fitness=0.7698)
+  Best architecture: fourier+attention+branch_trunk+wavelet+fourier | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) deeponet_spawn(1) fno(1) fno_spawn(2) fno_spawn_spawn(1) hybrid_fno_attn(1) random(3) random_spawn(2) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: fourier=23% wavelet=21% attention=21% branch_trunk=21% residual_conv=14% 
+  Architectural diversity index: 0.1477 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4673
+  ✓ checkpoint saved (iteration 19/20)
+
+────────────────────────────────────────────────────────────────────────────────
+  ITERATION 20/20
+────────────────────────────────────────────────────────────────────────────────
+  Active labs: 16/16
+
+  Phase 1: Planning...
+    Lab 0 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around Fourier-Attention-BranchTrunk-Wavelet sequenc
+    Lab 1 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend toward architectures including 'residual_conv'. My lab's expl
+    Lab 2 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a 'fourier, attention, branch_trunk, wavelet, residual
+    Lab 3 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a 'fourier, attention, branch_trunk, wavelet' sequen
+    Lab 4 planner [ollama/gemma3:12b] action= hybridize :: The swarm seems to be converging on a fairly standard sequence of blocks. Given the relati
+    Lab 5 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a 'fourier, attention, branch_trunk, wavelet' sequence. To main
+    Lab 6 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a tendency towards architectures ending in 'fourier' blocks. To maint
+    Lab 7 planner [ollama/gemma3:12b] action= hybridize :: The swarm is somewhat converging on a 'fourier, attention, branch_trunk, wavelet, residual
+    Lab 8 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a trend toward 'fourier', 'attention', 'branch_trunk', 'wavelet' bloc
+    Lab 9 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging on a structure of `fourier`, `attention`, `branch_trunk` and `wave
+    Lab 10 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing a preference for Fourier and Attention blocks, but there's also some 
+    Lab 11 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on the current block sequence and parameters; however, 
+    Lab 12 planner [ollama/gemma3:12b] action= hybridize :: The swarm is converging towards architectures with a fifth block (e.g., global best, lab 1
+    Lab 13 planner [ollama/gemma3:12b] action= hybridize :: The swarm is somewhat converging on a 'fourier, attention, branch_trunk, wavelet' block se
+    Lab 14 planner [ollama/gemma3:12b] action= hybridize :: The swarm is showing some convergence around the current architecture, but lab 4 and 5 hav
+    Lab 15 planner [ollama/gemma3:12b] action= hybridize :: The swarm appears to be converging on a few common block sequences (fourier, attention, br
+
+  Phase 2: Building and Training...
+    Lab 0: 1,052,945 params, blocks=['wavelet', 'attention', 'branch_trunk', 'fourier', 'residual_conv', 'wavelet']
+    Lab 1: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 2: 938,001 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'wavelet']
+    Lab 3: 2,793,361 params, blocks=['fourier', 'attention', 'branch_trunk', 'residual_conv', 'wavelet']
+    Lab 4: 929,745 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 5: 929,745 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 6: 929,745 params, blocks=['attention', 'branch_trunk', 'wavelet', 'residual_conv', 'fourier']
+    Lab 7: 1,384,337 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'fourier']
+    Lab 8: 929,745 params, blocks=['attention', 'fourier', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 9: 1,224,657 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 10: 1,184,273 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 11: 889,361 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 12: 929,745 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet', 'residual_conv']
+    Lab 13: 1,004,305 params, blocks=['residual_conv', 'fourier', 'attention', 'branch_trunk', 'wavelet', 'attention']
+    Lab 14: 929,745 params, blocks=['fourier', 'attention', 'residual_conv', 'wavelet', 'branch_trunk']
+    Lab 15: 814,801 params, blocks=['fourier', 'attention', 'branch_trunk', 'wavelet']
+
+  Phase 3: Peer Review...
+    Reviewer Lab 0 [ollama/gemma3:12b] :: Lab 15 demonstrates the highest overall fitness scores and a very low relative L2 error, s
+    Reviewer Lab 1 [ollama/gemma3:12b] :: Lab 4 demonstrates the best balance of accuracy, generalization ability, and efficiency wh
+    Reviewer Lab 2 [ollama/gemma3:12b] :: Lab 7 demonstrates a strong balance of accuracy, generalization, and efficiency, making it
+    Reviewer Lab 3 [ollama/gemma3:12b] :: Lab 15 demonstrates the highest accuracy and efficiency while maintaining a reasonable arc
+    Reviewer Lab 4 [ollama/gemma3:12b] :: Lab 7 demonstrates the highest accuracy and lowest relative L2 error, indicating superior 
+    Reviewer Lab 5 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and efficiency while maintaining reasonable genera
+    Reviewer Lab 6 [ollama/gemma3:12b] :: Lab 12's wavelet-spawn architecture demonstrates the highest efficiency and a slightly imp
+    Reviewer Lab 7 [ollama/gemma3:12b] :: Lab 1 demonstrates a good balance of accuracy and efficiency with an interesting block seq
+    Reviewer Lab 8 [ollama/gemma3:12b] :: Lab 4 (fno_spawn) demonstrates the strongest performance with high accuracy and excellent 
+    Reviewer Lab 9 [ollama/gemma3:12b] :: Lab 1 demonstrates the highest accuracy and lowest relative L2 error among the candidates,
+    Reviewer Lab 10 [ollama/gemma3:12b] :: Lab 8 demonstrates the highest accuracy and generalization while maintaining good efficien
+    Reviewer Lab 11 [ollama/gemma3:12b] :: Lab 1 and Lab 0 demonstrate slightly superior accuracy and generalization compared to Lab 
+    Reviewer Lab 12 [ollama/gemma3:12b] :: Lab 7 demonstrates the highest accuracy and a reasonable balance of generalization and eff
+    Reviewer Lab 13 [ollama/gemma3:12b] :: Lab 7 demonstrates the best balance of accuracy, generalization ability, and efficiency; i
+    Reviewer Lab 14 [ollama/gemma3:12b] :: Lab 4's FNO-Spawn architecture demonstrates a compelling combination of blocks and achieve
+    Reviewer Lab 15 [ollama/gemma3:12b] :: Lab 4 demonstrates the highest accuracy and lowest relative L2 error while maintaining goo
+
+  Phase 4: Composite Fitness...
+
+================================================================================
+  SWARM LEADERBOARD
+================================================================================
+  #1  Lab  4 (fno_spawn         ) | composite=0.7294 | trust=0.802 | [attention+fourier+branch_trunk+wavelet+residual_conv]
+  #2  Lab  7 (hybrid_fno_attn   ) | composite=0.6522 | trust=0.525 | [fourier+attention+branch_trunk+wavelet+fourier]
+  #3  Lab 15 (random_spawn      ) | composite=0.5675 | trust=0.378 | [fourier+attention+branch_trunk+wavelet]
+  #4  Lab 10 (random            ) | composite=0.5526 | trust=0.365 | [fourier+attention+branch_trunk+wavelet+attention]
+  #5  Lab  1 (wavelet_spawn_spawn) | composite=0.5521 | trust=0.488 | [fourier+attention+branch_trunk+wavelet+residual_conv]
+
+  Global best: Lab 4 (fitness=0.7698)
+  Best architecture: fourier+attention+branch_trunk+wavelet+fourier | ch=64 | modes=8 | act=gelu
+================================================================================
+
+
+  ── Diversity Metrics ──
+  Active paradigms: deeponet(1) deeponet_spawn(1) fno(1) fno_spawn(2) fno_spawn_spawn(1) hybrid_fno_attn(1) random(3) random_spawn(2) transformer(1) wavelet(1) wavelet_spawn(1) wavelet_spawn_spawn(1) 
+  Block usage: attention=23% wavelet=22% fourier=21% branch_trunk=20% residual_conv=14% 
+  Architectural diversity index: 0.1163 (0=homogeneous, 1=maximally diverse)
+  Detected 1 rival camp(s):
+    Camp 'hybrid-mixed': Labs [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], avg composite=0.4883
+  ✓ checkpoint saved (iteration 20/20)
+
+================================================================================
+  FINAL REPORT: AI SCIENTIFIC COMMUNITY RESULTS
+================================================================================
+
+  ★ GLOBAL BEST ARCHITECTURE ★
+  Discovered by: Lab 4
+  Composite fitness: 0.7698
+  Block sequence: fourier → attention → branch_trunk → wavelet → fourier
+  Hidden channels: 64
+  Fourier modes: 8
+  Activation: gelu
+  Gating: True | Skip: True | Dropout: 0.015
+  LR: 0.001 | WD: 0.0001
+
+  ── Architecture Classification ──
+  Type: HYBRID
+  Components: fourier(40%), attention(20%), branch_trunk(20%), wavelet(20%)
+  Notable: Spectral-Attention hybrid
+  Notable: Spectral-DeepONet hybrid
+  Notable: Transformer-DeepONet hybrid
+  Notable: Multi-scale spectral hybrid
+
+  ── All Labs Final State ──
+  [ACTIVE] Lab 4 (fno_spawn): [attention+fourier+branch_trunk+wavelet+residual_conv] ch=64 modes=8 | acc=0.6827, gen=0.3882, eff=0.9046, nov=0.2534, comp=0.7294 | trust=0.802
+  [ACTIVE] Lab 7 (hybrid_fno_attn): [fourier+attention+branch_trunk+wavelet+fourier] ch=64 modes=8 | acc=0.7104, gen=0.3910, eff=0.8599, nov=0.3071, comp=0.6522 | trust=0.525
+  [ACTIVE] Lab 15 (random_spawn): [fourier+attention+branch_trunk+wavelet] ch=64 modes=8 | acc=0.7302, gen=0.3735, eff=0.9165, nov=0.3854, comp=0.5675 | trust=0.378
+  [ACTIVE] Lab 10 (random): [fourier+attention+branch_trunk+wavelet+attention] ch=64 modes=10 | acc=0.6302, gen=0.3771, eff=0.8793, nov=0.5112, comp=0.5526 | trust=0.365
+  [ACTIVE] Lab 1 (wavelet_spawn_spawn): [fourier+attention+branch_trunk+wavelet+residual_conv] ch=64 modes=8 | acc=0.6608, gen=0.3772, eff=0.9056, nov=0.3876, comp=0.5521 | trust=0.488
+  [ACTIVE] Lab 0 (fno): [wavelet+attention+branch_trunk+fourier+residual_conv+wavelet] ch=64 modes=8 | acc=0.6620, gen=0.3960, eff=0.8919, nov=0.3205, comp=0.5311 | trust=0.412
+  [ACTIVE] Lab 11 (random): [fourier+attention+branch_trunk+wavelet+attention] ch=64 modes=8 | acc=0.6076, gen=0.3848, eff=0.9085, nov=0.3071, comp=0.5009 | trust=0.479
+  [ACTIVE] Lab 8 (fno_spawn): [attention+fourier+branch_trunk+wavelet+residual_conv] ch=64 modes=8 | acc=0.6297, gen=0.3897, eff=0.9050, nov=0.2672, comp=0.4926 | trust=0.258
+  [ACTIVE] Lab 9 (random): [fourier+attention+branch_trunk+wavelet+residual_conv] ch=64 modes=10 | acc=0.6820, gen=0.3746, eff=0.8752, nov=0.4575, comp=0.4841 | trust=0.268
+  [ACTIVE] Lab 2 (deeponet_spawn): [fourier+attention+branch_trunk+wavelet+wavelet] ch=64 modes=8 | acc=0.5766, gen=0.3761, eff=0.9039, nov=0.4432, comp=0.4739 | trust=0.315
+  [ACTIVE] Lab 12 (wavelet_spawn): [fourier+attention+branch_trunk+wavelet+residual_conv] ch=64 modes=8 | acc=0.6575, gen=0.3876, eff=0.9047, nov=0.2847, comp=0.4588 | trust=0.383
+  [ACTIVE] Lab 5 (random_spawn): [attention+fourier+branch_trunk+wavelet+residual_conv] ch=64 modes=8 | acc=0.6760, gen=0.3854, eff=0.9047, nov=0.3876, comp=0.4558 | trust=0.449
+  [ACTIVE] Lab 13 (fno_spawn_spawn): [residual_conv+fourier+attention+branch_trunk+wavelet+attention] ch=64 modes=8 | acc=0.5753, gen=0.3848, eff=0.8966, nov=0.3742, comp=0.4514 | trust=0.273
+  [ACTIVE] Lab 6 (wavelet): [attention+branch_trunk+wavelet+residual_conv+fourier] ch=64 modes=8 | acc=0.6561, gen=0.3869, eff=0.9046, nov=0.2534, comp=0.4416 | trust=0.203
+  [ACTIVE] Lab 14 (transformer): [fourier+attention+residual_conv+wavelet+branch_trunk] ch=64 modes=8 | acc=0.5657, gen=0.3941, eff=0.9051, nov=0.3071, comp=0.4307 | trust=0.373
+  [ACTIVE] Lab 3 (deeponet): [fourier+attention+branch_trunk+residual_conv+wavelet] ch=128 modes=6 | acc=0.4103, gen=0.3943, eff=0.7190, nov=1.0000, comp=0.0386 | trust=0.395
+
+  ── Global Best Evolution ──
+  Iter  1: fitness=0.7297 | lab=7 | blocks=fourier+attention+wavelet+attention | active=16
+  Iter  2: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  3: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  4: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  5: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  6: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  7: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  8: fitness=0.7495 | lab=11 | blocks=branch_trunk+attention+wavelet+fourier | active=16
+  Iter  9: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 10: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 11: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 12: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 13: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 14: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 15: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 16: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 17: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 18: fitness=0.7685 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet | active=16
+  Iter 19: fitness=0.7698 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet+fourier | active=16
+  Iter 20: fitness=0.7698 | lab=4 | blocks=fourier+attention+branch_trunk+wavelet+fourier | active=16
+
+  ✓ FINAL.json written. Done.

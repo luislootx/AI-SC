@@ -1,0 +1,15 @@
+====================================================================================
+  DEEPONET FAITHFUL — diagnostic sweep
+====================================================================================
+  device: cuda | seed: 42 | train/test/res: 512/64/32
+
+  generating data...
+  data: x.std=3.131, y.std=4.553, x.range=[-5.98,5.99], y.range=[-8.96,8.96]
+   baseline (current)          rel L2=0.9243  params= 323,201  ep= 15  loss 20.3119->17.73341  2.9s
+   +norm                       rel L2=0.9249  params= 323,201  ep= 15  loss 0.9945->0.85591  2.1s
+   +norm +gelu                 rel L2=0.7787  params= 323,201  ep= 15  loss 0.9853->0.60809  2.1s
+   +norm +gelu +100ep          rel L2=0.4736  params= 323,201  ep=100  loss 0.9853->0.22432  14.2s
+   +norm +gelu +256lat         rel L2=0.2259  params= 537,217  ep=100  loss 0.9907->0.05103  14.3s
+   +norm +gelu +400ep          rel L2=0.0737  params= 537,217  ep=400  loss 0.9907->0.00543  57.4s
+
+  saved: C:\Users\luisl\OneDrive\Documentos\TAMU\2026.4 ICERM\Neural Operator Discovery\results\diagnose_deeponet.json

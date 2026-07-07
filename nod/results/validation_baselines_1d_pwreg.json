@@ -1,0 +1,80 @@
+{
+  "pde": "pwreg",
+  "config": {
+    "epochs": 40,
+    "samples": 256,
+    "resolution": 128,
+    "seed": 42,
+    "hybrid_tag": "paper_pwreg_seed42"
+  },
+  "results": [
+    {
+      "name": "Pure Wavelet (4xwavelet)",
+      "blocks": [
+        "wavelet",
+        "wavelet",
+        "wavelet",
+        "wavelet"
+      ],
+      "params": 104737,
+      "rel_l2_clean": 0.042766910046339035,
+      "rel_l2_noisy": 0.04961329698562622,
+      "efficiency": 0.9885683699119567,
+      "time_seconds": 3.07889461517334
+    },
+    {
+      "name": "Discovered Hybrid (paper_pwreg_seed42)",
+      "blocks": [
+        "residual_conv",
+        "residual_conv",
+        "residual_conv"
+      ],
+      "params": 169614,
+      "rel_l2_clean": 0.042989298701286316,
+      "rel_l2_noisy": 0.0498398095369339,
+      "efficiency": 0.9822645979248047,
+      "time_seconds": 2.668226480484009
+    },
+    {
+      "name": "Pure FNO (4xfourier)",
+      "blocks": [
+        "fourier",
+        "fourier",
+        "fourier",
+        "fourier"
+      ],
+      "params": 217601,
+      "rel_l2_clean": 0.06222255155444145,
+      "rel_l2_noisy": 0.06633877754211426,
+      "efficiency": 0.9774142683815003,
+      "time_seconds": 3.802454948425293
+    },
+    {
+      "name": "Pure Transformer (3xattention)",
+      "blocks": [
+        "attention",
+        "attention",
+        "attention"
+      ],
+      "params": 104769,
+      "rel_l2_clean": 0.07775137573480606,
+      "rel_l2_noisy": 0.09217880666255951,
+      "efficiency": 0.9889621130043029,
+      "time_seconds": 3.012258768081665
+    },
+    {
+      "name": "Pure DeepONet (4xbranch_trunk)",
+      "blocks": [
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk",
+        "branch_trunk"
+      ],
+      "params": 78657,
+      "rel_l2_clean": 0.22384802997112274,
+      "rel_l2_noisy": 0.22568024694919586,
+      "efficiency": 0.9913648994033813,
+      "time_seconds": 2.748826503753662
+    }
+  ]
+}
