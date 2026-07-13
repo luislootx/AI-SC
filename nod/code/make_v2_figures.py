@@ -4,11 +4,11 @@ Resilient: each figure is independent and skipped (with a note) if its data is
 not yet present, so it runs on a partial campaign. PDF+PNG to paper/figures/.
 
   fig_baselines    : cross-method rel L2 on NS vs Darcy (no universal winner)
-  fig_ablation     : per-PDE discovered rel L2, LLM (Gemma 3) vs PSO
-  fig_convergence  : best rel L2 vs iteration, LLM vs PSO, mean +/- band (multi-PDE)
+  fig_ablation     : per-PDE discovered rel L2, LLM (Gemma 3) vs rule-based
+  fig_convergence  : best rel L2 vs iteration, LLM vs rule-based, mean +/- band (multi-PDE)
   fig_pareto       : params vs rel L2 for all swarm labs + baselines (NS, Darcy)
   fig_blockevo     : block-type usage fraction across iterations (emergent recipe)
-  fig_timing       : per-lab-eval wall time, LLM vs PSO (cost of agency)
+  fig_timing       : per-lab-eval wall time, LLM vs rule-based (cost of agency)
   fig_archdiagram  : discovered block sequence per PDE, as colored chips
 """
 from __future__ import annotations
@@ -38,6 +38,7 @@ SEEDS = [42, 137, 2024]
 PDES = ["pwreg", "advec", "burgers", "ns", "darcy"]
 PDE_LABEL = {"pwreg": "Piecewise Reg.", "advec": "Advection",
              "burgers": "Burgers", "ns": "Navier-Stokes", "darcy": "Darcy"}
+DISPLAY = {"DeepONet faithful": "DeepONet", "FNO h32 m12": "FNO", "Pure Transformer": "Transformer", "Hybrid v3 (NS)": "Discovered hybrid (NS)", "Hybrid v3 (Darcy)": "Discovered hybrid (Darcy)"}
 # block-type palette (consistent across all figures)
 BLOCKS = ["fourier", "attention", "wavelet", "residual_conv", "branch_trunk"]
 BCOL = {"fourier": "#1f77b4", "attention": "#d62728", "wavelet": "#2ca02c",
@@ -64,6 +65,15 @@ def _save(fig, name):
 def _base_paradigm(p):
     return p.split("_spawn")[0] if p else p
 
+def _clean_para(bp):
+    m = {"fno": "FNO", "deeponet": "DeepONet", "transformer": "Transformer",
+         "wavelet": "Wavelet", "random": "Random"}
+    if bp in m:
+        return m[bp]
+    if bp and bp.startswith("hybrid"):
+        return "Hybrid"
+    return (bp or "").replace("_", " ").title()
+
 
 def _iters(tag):
     return sorted(glob.glob(os.path.join(RUNS, tag, "iter_*.json")))
@@ -88,8 +98,8 @@ def fig_baselines():
     ax.bar(x - w/2, ns, w, label="Navier-Stokes 2D", color="#1f77b4")
     ax.bar(x + w/2, dc, w, label="Darcy 2D", color="#ff7f0e")
     ax.set_yscale("log"); ax.set_ylabel("relative $L_2$ (clean)")
-    ax.set_xticks(x); ax.set_xticklabels(models, rotation=30, ha="right")
-    ax.set_title("No universal winner: optimal operator is PDE-dependent")
+    ax.set_xticks(x); ax.set_xticklabels([DISPLAY.get(m, m) for m in models], rotation=30, ha="right")
+    ax.set_title("No universal winner: optimal operator is problem-dependent")
     ax.legend(frameon=False); ax.grid(axis="y", alpha=0.3, which="both")
     _save(fig, "fig_baselines")
 
@@ -112,10 +122,10 @@ def fig_ablation():
     x = np.arange(len(labs)); w = 0.38
     fig, ax = plt.subplots(figsize=(7.5, 4))
     ax.bar(x - w/2, llm, w, label="LLM agents (Gemma 3)", color="#d62728")
-    ax.bar(x + w/2, pso, w, label="PSO (rules)", color="#7f7f7f")
+    ax.bar(x + w/2, pso, w, label="rule-based", color="#7f7f7f")
     ax.set_yscale("log"); ax.set_ylabel("discovered rel $L_2$ (clean)")
     ax.set_xticks(x); ax.set_xticklabels(labs)
-    ax.set_title("Ablation: LLM-agent vs.\\ rule-based coordination")
+    ax.set_title("Ablation: LLM-agent vs. rule-based coordination")
     ax.legend(frameon=False); ax.grid(axis="y", alpha=0.3, which="both")
     _save(fig, "fig_ablation")
 
@@ -148,7 +158,7 @@ def fig_convergence():
             arr = np.array([c[:m] for c in curves])
             xs = np.arange(1, m+1)
             mu = arr.mean(0)
-            ax.plot(xs, mu, color=col, label=cond.upper(), lw=1.8)
+            ax.plot(xs, mu, color=col, label={"llm": "LLM", "pso": "rule-based"}[cond], lw=1.8)
             if arr.shape[0] > 1:
                 sd = arr.std(0)
                 ax.fill_between(xs, mu-sd, mu+sd, color=col, alpha=0.18)
@@ -156,7 +166,7 @@ def fig_convergence():
         ax.set_xlabel("iteration"); ax.grid(alpha=0.3, which="both")
     axes[0][0].set_ylabel("best rel $L_2$")
     axes[0][-1].legend(frameon=False)
-    fig.suptitle("Swarm convergence: LLM agents vs.\\ PSO (mean $\\pm$ s.d.\\ over seeds)",
+    fig.suptitle("Swarm convergence: LLM agents vs. rule-based (mean $\\pm$ s.d. over seeds)",
                  y=1.04)
     _save(fig, "fig_convergence")
 
@@ -173,46 +183,54 @@ def _baseline_points(pde2d):
     agg = defaultdict(lambda: [[], []])
     for m, p, r in pts:
         agg[m][0].append(p); agg[m][1].append(r)
-    return [(m, mean(v[0]), mean(v[1])) for m, v in agg.items()]
+    return [(m, mean(v[0]), mean(v[1])) for m, v in agg.items() if m not in ("FNO h64 m12", "FNO h128 m16", "Discovered Hybrid")]
 
 
 def fig_pareto():
+    # Every swarm lab is a neutral gray dot: all are multi-family hybrids, so
+    # coloring by seed paradigm (fixed at init, never recomputed from the genome)
+    # would misrepresent them. Baselines and the retrained discovered winners are
+    # black stars, measured at a different fidelity than the labs -- so the two
+    # marker types are not directly comparable, as the legend states.
+    from matplotlib.lines import Line2D
+    HYB = "#7f7f7f"
     mapping = {"ns": "ns2d", "darcy": "darcy2d"}
     have = [(p, q) for p, q in mapping.items()
             if any(_iters(f"v2_llm_{p}_seed{s}") for s in SEEDS)
             and glob.glob(os.path.join(EXP4, f"{q}__*.json"))]
     if not have:
         print("  skip fig_pareto (need 2D swarm + baselines)"); return
-    fig, axes = plt.subplots(1, len(have), figsize=(5*len(have), 4), squeeze=False)
+    fig, axes = plt.subplots(1, len(have), figsize=(5.2*len(have), 4.1),
+                             squeeze=False)
     for ax, (pde, pde2d) in zip(axes[0], have):
-        # all swarm labs from final iteration, all seeds
-        seen_par = set()
+        # every swarm lab, final iteration, all seeds (16 labs x 3 seeds)
+        xs, ys = [], []
         for s in SEEDS:
             its = _iters(f"v2_llm_{pde}_seed{s}")
             if not its:
                 continue
             for e in (_load(its[-1]) or {}).get("leaderboard", []):
                 if e.get("params") and e.get("rel_l2_clean"):
-                    bp = _base_paradigm(e["paradigm"])
-                    ax.scatter(e["params"], e["rel_l2_clean"], s=28, alpha=0.55,
-                               color={"fno": "#1f77b4", "deeponet": "#9467bd",
-                                      "transformer": "#d62728", "wavelet": "#2ca02c"}
-                               .get(bp, "#7f7f7f"),
-                               label=bp if bp not in seen_par else None,
-                               edgecolors="none")
-                    seen_par.add(bp)
-        # baselines as black stars
+                    xs.append(e["params"]); ys.append(e["rel_l2_clean"])
+        ax.scatter(xs, ys, s=32, alpha=0.5, color=HYB, edgecolors="none", zorder=3)
         for m, p, r in _baseline_points(pde2d):
-            ax.scatter(p, r, marker="*", s=140, color="black", zorder=5)
-            ax.annotate(m, (p, r), fontsize=6.5, xytext=(4, 4),
-                        textcoords="offset points")
+            ax.scatter(p, r, marker="*", s=170, color="black",
+                       edgecolors="white", linewidths=0.5, zorder=5)
+            ax.annotate(DISPLAY.get(m, m), (p, r), fontsize=6.5,
+                        xytext=(5, 4), textcoords="offset points")
         ax.set_xscale("log"); ax.set_yscale("log")
         ax.set_xlabel("parameters"); ax.set_title(f"{PDE_LABEL[pde]} 2D")
         ax.grid(alpha=0.3, which="both")
-        ax.legend(frameon=False, title="swarm labs", fontsize=7)
     axes[0][0].set_ylabel("relative $L_2$ (clean)")
-    fig.suptitle("Accuracy-parameter trade-off: swarm labs ($\\circ$) vs.\\ baselines ($\\star$)",
-                 y=1.02)
+    handles = [
+        Line2D([], [], marker="o", ls="", color=HYB, alpha=0.7, markersize=7,
+               label="Architectures at screening fidelity"),
+        Line2D([], [], marker="*", ls="", color="black", markeredgecolor="white",
+               markersize=12,
+               label="Baselines and winning architectures retrained from scratch"),
+    ]
+    fig.legend(handles=handles, loc="upper center", ncol=2, frameon=False,
+               bbox_to_anchor=(0.5, 1.03), fontsize=8)
     _save(fig, "fig_pareto")
 
 
@@ -275,7 +293,7 @@ def fig_timing():
     x = np.arange(len(labs)); w = 0.38
     fig, ax = plt.subplots(figsize=(7.5, 4))
     ax.bar(x - w/2, llm, w, label="LLM agents (Gemma 3)", color="#d62728")
-    ax.bar(x + w/2, pso, w, label="PSO (rules)", color="#7f7f7f")
+    ax.bar(x + w/2, pso, w, label="rule-based", color="#7f7f7f")
     ax.set_ylabel("wall time per lab-evaluation (s)")
     ax.set_xticks(x); ax.set_xticklabels(labs)
     ax.set_title("Cost of agency: LLM planning+review overhead per lab-evaluation")
@@ -307,7 +325,7 @@ def fig_archdiagram():
     ax.legend(handles, [f"{BABBR[b]} = {b}" for b in BLOCKS],
               frameon=False, ncol=5, loc="upper center",
               bbox_to_anchor=(0.5, 0.0), fontsize=8)
-    ax.set_title("Discovered architecture per PDE (LLM agents): different recipe per regime")
+    ax.set_title("Discovered architecture per problem (LLM agents): different recipe per problem")
     _save(fig, "fig_archdiagram")
 
 

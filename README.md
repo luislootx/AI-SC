@@ -1,4 +1,4 @@
-# An Agentic AI Science Community for Automated Neural Operator Discovery
+# An Agentic AI Scientific Community for Automated Neural Operator Discovery
 
 **Luis Loo, Ulisses Braga-Neto** — Texas A&M University
 *arXiv preprint (link coming soon)*
@@ -11,12 +11,12 @@ way science does: each lab **proposes** an architecture (an LLM planner),
 **trains and measures** it (a deterministic PyTorch worker), and **peer-reviews**
 rival designs (an LLM reviewer). Peer-review votes act as citations: influential
 labs breed, uncited labs are culled and replaced. Every LLM decision is ablated
-against a rule-based particle-swarm coordinator under an identical training
+against a rule-based coordinator under an identical training
 budget, and every LLM call is logged, so the claim "the agents are LLMs" is
 auditable rather than assumed.
 
 <p align="center">
-  <img src="nod/paper/figures/fig_method2.png" width="95%"
+  <img src="nod/paper/figures/fig_method1.png" width="95%"
        alt="Overview: five PDE regimes feed a community of 16 virtual labs
             (planner LLM / numerical worker / reviewer LLM, citation economy),
             which returns a different discovered architecture per regime">
@@ -81,8 +81,8 @@ Requirements: Python 3.11, PyTorch (CUDA), matplotlib, and a local
 ```bash
 ollama pull gemma3:12b
 
-# full campaign: 5 PDEs x {LLM, PSO} x 3 seeds = 30 runs
-# (resume-safe; ~2 days on a single RTX 4080; PSO runs need no LLM)
+# full campaign: 5 PDEs x {LLM, rule-based} x 3 seeds = 30 runs
+# (resume-safe; ~2 days on a single RTX 4080; rule-based runs need no LLM)
 OLLAMA_MODEL=gemma3:12b OLLAMA_NUM_CTX=8192 python nod/code/run_campaign.py
 
 # converged cross-method baselines (FNO / DeepONet / POD-DeepONet /
@@ -118,7 +118,7 @@ virtual-lab swarms:
 
 ```bibtex
 @article{loo2026agentic,
-  title  = {An Agentic AI Science Community for Automated Neural Operator Discovery},
+  title  = {An Agentic AI Scientific Community for Automated Neural Operator Discovery},
   author = {Loo, Luis and Braga-Neto, Ulisses},
   journal= {arXiv preprint},
   year   = {2026},
@@ -132,4 +132,4 @@ MIT — see [LICENSE](LICENSE).
 
 ## Contact
 
-Luis Loo — `luis.loo@tamu.edu`
+Luis Loo — `loo@tamu.edu`

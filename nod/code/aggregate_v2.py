@@ -25,6 +25,7 @@ EXP4 = os.path.join(ROOT, "results", "exp4v3")
 PAPER_TAB = os.path.join(ROOT, "paper", "tables")
 SEEDS = [42, 137, 2024]
 PDES = ["pwreg", "advec", "burgers", "ns", "darcy"]
+DISPLAY = {"DeepONet faithful": "DeepONet"}
 PDE_LABEL = {"pwreg": "Piecewise Reg. (1D)", "advec": "Advection (1D)",
              "burgers": "Burgers (1D)", "ns": "Navier-Stokes (2D)",
              "darcy": "Darcy (2D)"}
@@ -354,7 +355,7 @@ def main():
 
     # ---- LaTeX: discovery table ----
     L = [r"\begin{tabular}{lcccc}", r"\toprule",
-         r"PDE & \multicolumn{2}{c}{Discovered rel.\ $L_2$ (clean)} & "
+         r"Problem & \multicolumn{2}{c}{Discovered rel.\ $L_2$ (clean)} & "
          r"\multicolumn{2}{c}{Params} \\",
          r" & LLM (Gemma~3) & PSO & LLM & PSO \\", r"\midrule"]
     def fmtp(s):
@@ -395,7 +396,7 @@ def main():
     for m in models:
         ns = fmt(bl.get("ns2d", {}).get(m))
         dc = fmt(bl.get("darcy2d", {}).get(m))
-        B.append(f"{m} & {human_params(bpar.get(m))} & {ns} & {dc} \\\\")
+        B.append(f"{DISPLAY.get(m, m)} & {human_params(bpar.get(m))} & {ns} & {dc} \\\\")
     B += [r"\bottomrule", r"\end{tabular}"]
     open(os.path.join(PAPER_TAB, "tab_baselines.tex"), "w").write("\n".join(B))
 
@@ -405,7 +406,7 @@ def main():
     cols = [a for a in ACTS if a in seen_acts] + \
            [a for a in seen_acts if a not in ACTS]
     A = [r"\begin{tabular}{l" + "c" * len(cols) + "}", r"\toprule",
-         "PDE & " + " & ".join(rf"\textsc{{{c}}}" for c in cols) + r" \\",
+         "Problem & " + " & ".join(rf"\textsc{{{c}}}" for c in cols) + r" \\",
          r"\midrule"]
     for pde in PDES:
         c = pacts["counts"].get(pde, {})
@@ -426,7 +427,7 @@ def main():
     ABBR = {"fourier": "F", "attention": "A", "wavelet": "W",
             "residual_conv": "R", "branch_trunk": "T"}
     P = [r"\begin{tabular}{llllrr}", r"\toprule",
-         r"PDE & Cond. & Seed & Discovered blocks & rel.\ $L_2$ & Params \\",
+         r"Problem & Cond. & Seed & Discovered blocks & rel.\ $L_2$ & Params \\",
          r"\midrule"]
     for pde in PDES:
         for cond in CONDS:
@@ -449,7 +450,7 @@ def main():
         return "--" if not s else (f"{s['mean']:.{p}f}" +
                (f"$\\pm${s['std']:.{p}f}" if s["n"] > 1 else ""))
     T = [r"\begin{tabular}{lcccc}", r"\toprule",
-         r"PDE & \multicolumn{2}{c}{Total run (min)} & "
+         r"Problem & \multicolumn{2}{c}{Total run (min)} & "
          r"\multicolumn{2}{c}{Per lab-eval (s)} \\",
          r" & LLM & PSO & LLM & PSO \\", r"\midrule"]
     for pde in PDES:
@@ -469,7 +470,7 @@ def main():
     O = [r"\begin{tabular}{lc}", r"\toprule",
          r"Operator (NS-2D, screening fidelity) & Train time (s) \\", r"\midrule"]
     for m, s in sorted(ot.items(), key=lambda kv: (kv[1]["mean"] if kv[1] else 0)):
-        O.append(f"{m} & {fm(s)} \\\\")
+        O.append(f"{DISPLAY.get(m, m)} & {fm(s)} \\\\")
     O += [r"\bottomrule", r"\end{tabular}"]
     open(os.path.join(PAPER_TAB, "tab_trainop.tex"), "w").write("\n".join(O))
 
